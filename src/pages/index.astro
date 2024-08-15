@@ -20,52 +20,65 @@ import SignUp from "../components/sign-up/sign-up.tsx";
     <title>Human Side of Code</title>
   </head>
   <body>
-    <header>
-      <h1>
-        <!-- Accessible text is included in the SVG itself -->
-        <img src="/husoc-logo.svg" alt="" aria-hidden="true" />
-      </h1>
-    </header>
-    <section class="sign-up">
-      <h2>Sign up to be notified when we launch our first content!</h2>
-      <SignUp client:load />
-    </section>
-    <main>
-      <p>
-        Human Side of Code (HuSOC) is a platform that bridges the gap between
-        technical expertise and human-centred development in the tech industry.
-        We challenge the stereotype of the 'socially awkward developer' and
-        empower tech professionals to excel in both coding and interpersonal
-        skills.
-      </p>
-      <p>
-        Founded by experienced developers-turned-managers, we offer unique
-        insights into the critical role of soft skills in creating better
-        products and fostering more effective teams. Our blog posts and upcoming
-        courses cater to developers and managers alike, providing practical
-        strategies to implement human-centred design and development practices.
-      </p>
-      <p>
-        At HuSOC, we're not just improving code - we're enhancing the entire
-        development ecosystem by focusing on the people behind the screens.
-      </p>
-      <p>
-        <strong
-          >Join us in reshaping the future of tech, one human connection at a
-          time.</strong
-        >
-      </p>
-    </main>
+    <div>
+      <header>
+        <h1>
+          <!-- Accessible text is included in the SVG itself -->
+          <img src="/husoc-logo.svg" alt="" aria-hidden="true" />
+        </h1>
+      </header>
+      <section class="sign-up">
+        <h2>Sign up to be notified when we launch our first content!</h2>
+        <SignUp client:load />
+      </section>
+      <main>
+        <p>
+          Human Side of Code (HuSOC) is a platform that bridges the gap between
+          technical expertise and human-centred development in the tech
+          industry. We challenge the stereotype of the 'socially awkward
+          developer' and empower tech professionals to excel in both coding and
+          interpersonal skills.
+        </p>
+        <div class="creators">
+          <div>
+            <img src="Keeghan.png" alt="Keeghan" /><h3>Keeghan</h3>
+          </div>
+        </div>
+        <p>
+          Founded by experienced developers-turned-manager Keeghan, we offer
+          unique insights into the critical role of soft skills in creating
+          better products and fostering more effective teams. Our blog posts and
+          upcoming courses cater to developers and managers alike, providing
+          practical strategies to implement human-centred design and development
+          practices.
+        </p>
+        <p>
+          At HuSOC, we're not just improving code - we're enhancing the entire
+          development ecosystem by focusing on the people behind the screens.
+        </p>
+        <p>
+          <strong
+            >Join us in reshaping the future of tech, one human connection at a
+            time.</strong
+          >
+        </p>
+      </main>
+    </div>
   </body>
 </html>
 
 <style lang="scss">
+  * {
+    margin: 0;
+    padding: 0;
+  }
   body {
     font-family: "Inter", sans-serif;
     line-height: 1.6;
     font-size: 16px;
     display: grid;
     place-items: center;
+    min-height: 100dvh;
   }
 
   header {
@@ -84,6 +97,11 @@ import SignUp from "../components/sign-up/sign-up.tsx";
     text-align: center;
     width: fit-content;
     margin: auto;
+    margin-bottom: 1rem;
+
+    h2 {
+      font-size: 1rem;
+    }
   }
 
   main {
@@ -92,5 +110,31 @@ import SignUp from "../components/sign-up/sign-up.tsx";
     margin: auto;
     padding: 0 20px;
     text-align: center;
+
+    p {
+      margin: 0;
+      padding: 0.5rem 0;
+    }
+
+    .creators {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h3 {
+          font-weight: 400;
+          font-size: 0.8rem;
+          font-style: italic;
+        }
+      }
+      img {
+        height: 100px;
+      }
+    }
   }
 </style>
