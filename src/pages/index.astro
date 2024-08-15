@@ -1,5 +1,6 @@
 ---
 import SignUp from "../components/sign-up/sign-up.tsx";
+import Content from "../components/content/content.astro";
 ---
 
 <html lang="en">
@@ -31,38 +32,7 @@ import SignUp from "../components/sign-up/sign-up.tsx";
         <h2>Sign up to be notified when we launch our first content!</h2>
         <SignUp client:load />
       </section>
-      <main>
-        <p>
-          Human Side of Code (HuSOC) is a platform that bridges the gap between
-          technical expertise and human-centred development in the tech
-          industry. We challenge the stereotype of the 'socially awkward
-          developer' and empower tech professionals to excel in both coding and
-          interpersonal skills.
-        </p>
-        <div class="creators">
-          <div>
-            <img src="Keeghan.png" alt="Keeghan" /><h3>Keeghan</h3>
-          </div>
-        </div>
-        <p>
-          Founded by experienced developers-turned-manager Keeghan, we offer
-          unique insights into the critical role of soft skills in creating
-          better products and fostering more effective teams. Our blog posts and
-          upcoming courses cater to developers and managers alike, providing
-          practical strategies to implement human-centred design and development
-          practices.
-        </p>
-        <p>
-          At HuSOC, we're not just improving code - we're enhancing the entire
-          development ecosystem by focusing on the people behind the screens.
-        </p>
-        <p>
-          <strong
-            >Join us in reshaping the future of tech, one human connection at a
-            time.</strong
-          >
-        </p>
-      </main>
+      <Content />
     </div>
   </body>
 </html>
@@ -101,40 +71,6 @@ import SignUp from "../components/sign-up/sign-up.tsx";
 
     h2 {
       font-size: 1rem;
-    }
-  }
-
-  main {
-    margin-top: auto;
-    max-width: 80ch;
-    margin: auto;
-    padding: 0 20px;
-    text-align: center;
-
-    p {
-      margin: 0;
-      padding: 0.5rem 0;
-    }
-
-    .creators {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-
-      div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        h3 {
-          font-weight: 400;
-          font-size: 0.8rem;
-          font-style: italic;
-        }
-      }
-      img {
-        height: 100px;
-      }
     }
   }
 </style>

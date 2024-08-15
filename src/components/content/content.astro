@@ -1,0 +1,188 @@
+---
+
+---
+
+<main>
+  <div class="options">
+    <button id="btn-super-short"> Super Short </button>
+    <button id="btn-short"> Short </button>
+    <button id="btn-elevator" class="active"> Elevator Pitch </button>
+    <button id="btn-for-nerds"> For Nerds </button>
+    <button id="btn-for-managers"> For Managers </button>
+  </div>
+  <div id="super-short" class="content hidden">
+    <p>
+      HuSOC helps tech professionals how to communicate better and progress
+      their careers.
+    </p>
+  </div>
+  <div id="short" class="content hidden">
+    <p>
+      HuSOC is a blog by developer-turned-manager, Keeghan, that bridges the gap
+      between technical expertise and human-centred development in the tech
+      industry.
+    </p>
+    <p>
+      By focusing on the people behind the screens, both developers and
+      customers, we can help tech professionals develop their careers and create
+      better products.
+    </p>
+  </div>
+  <div id="elevator" class="content">
+    <p>
+      Human Side of Code (HuSOC) is a platform that bridges the gap between
+      technical expertise and human-centred development in the tech industry. We
+      challenge the stereotype of the 'socially awkward developer' and empower
+      tech professionals to excel in both coding and interpersonal skills.
+    </p>
+    <p>
+      Founded by experienced developers-turned-manager Keeghan, we offer unique
+      insights into the critical role of soft skills in creating better products
+      and fostering more effective teams. Our blog posts and upcoming courses
+      cater to developers and managers alike, providing practical strategies to
+      implement human-centred design and development practices.
+    </p>
+    <p>
+      At HuSOC, we're not just improving code - we're enhancing the entire
+      development ecosystem by focusing on the people behind the screens.
+    </p>
+  </div>
+  <div id="for-nerds" class="content hidden">
+    <p>
+      First of all, I can't believe you <strong>actually</strong> clicked on this.
+      But since you're here, hello fellow nerd!
+    </p>
+    <p>
+      Tired of feeling like your brilliant ideas are lost in translation?
+      Struggling to communicate with your team or stakeholders? Feeling like
+      you're stuck in a rut and can't progress your career?
+    </p>
+    <p><i>Yeah, we know what that's like.</i></p>
+    <p>
+      HuSOC is not about changing who you are - it's about expanding your tech
+      stack to include human protocols. It's been created by a
+      developer-turned-manager who has faced the same "undefined" errors in team
+      communications. Hopefully these articles will help you learn to navigate
+      office politics without selling your soul to the corporate overlords.
+    </p>
+    <p>
+      Did you know? <i>80% of devs are unhappy at work.</i> But here's the twist:
+      it's often not the code that's the problem. It's everything else.
+    </p>
+  </div>
+  <div id="for-managers" class="content hidden">
+    <p>
+      Are you a manager who's tired of dealing with the same old problems in
+      your team? Are you struggling to get your developers to communicate
+      effectively with each other or with stakeholders?
+    </p>
+    <p>
+      HuSOC is here to help you bridge the gap between technical expertise and
+      human-centred development. Our platform offers unique insights into the
+      critical role of soft skills in creating better products and fostering
+      more effective teams.
+    </p>
+    <p>
+      Founded by experienced developers-turned-manager Keeghan, HuSOC provides
+      practical strategies to implement human-centred design and development
+      practices. Our blog posts and upcoming courses cater to developers and
+      managers alike, empowering you to create a more collaborative and
+      productive work environment.
+    </p>
+    <p>
+      At HuSOC, we're not just improving code - we're enhancing the entire
+      development ecosystem by focusing on the people behind the screens.
+    </p>
+  </div>
+  <p>
+    <strong
+      >Remember: Even the most elegant code is written by humans, for humans.
+      Let's make sure you're fluent in both languages.</strong
+    >
+  </p>
+  <div class="creators">
+    <div>
+      <img src="Keeghan.png" alt="Keeghan" /><h3>Keeghan</h3>
+    </div>
+  </div>
+</main>
+
+<script lang="ts">
+  const buttons = document.querySelectorAll("button");
+  const content = document.querySelectorAll(".content");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      buttons.forEach((btn) => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      content.forEach((c) => c.classList.add("hidden"));
+      const id = button.id.replace("btn-", "");
+      document.getElementById(id).classList.remove("hidden");
+    });
+  });
+</script>
+
+<style>
+  main {
+    margin-top: auto;
+    max-width: 80ch;
+    margin: auto;
+    padding: 0 20px;
+    text-align: center;
+
+    p {
+      margin: 0;
+      padding: 0.5rem 0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .options {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+
+      button {
+        padding: 0.5rem 1rem;
+        border: none;
+        background-color: #bac0b8;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+
+        &:hover {
+          background-color: #92c97e;
+        }
+
+        &.active {
+          background-color: #44bf19;
+        }
+      }
+    }
+
+    .creators {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h3 {
+          font-weight: 400;
+          font-size: 0.8rem;
+          font-style: italic;
+        }
+      }
+      img {
+        height: 100px;
+      }
+    }
+  }
+</style>
