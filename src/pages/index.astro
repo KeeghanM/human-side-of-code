@@ -1,0 +1,96 @@
+---
+import SignUp from "../components/sign-up/sign-up.tsx";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Human Side of Code - Bridging technical expertise and human-centred development in the tech industry."
+    />
+    <meta
+      name="keywords"
+      content="tech, development, soft skills, human-centred design"
+    />
+    <meta name="author" content="Human Side of Code" />
+    <title>Human Side of Code</title>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <!-- Accessible text is included in the SVG itself -->
+        <img src="/husoc-logo.svg" alt="" aria-hidden="true" />
+      </h1>
+    </header>
+    <section class="sign-up">
+      <h2>Sign up to be notified when we launch our first content!</h2>
+      <SignUp client:load />
+    </section>
+    <main>
+      <p>
+        Human Side of Code (HuSOC) is a platform that bridges the gap between
+        technical expertise and human-centred development in the tech industry.
+        We challenge the stereotype of the 'socially awkward developer' and
+        empower tech professionals to excel in both coding and interpersonal
+        skills.
+      </p>
+      <p>
+        Founded by experienced developers-turned-managers, we offer unique
+        insights into the critical role of soft skills in creating better
+        products and fostering more effective teams. Our blog posts and upcoming
+        courses cater to developers and managers alike, providing practical
+        strategies to implement human-centred design and development practices.
+      </p>
+      <p>
+        At HuSOC, we're not just improving code - we're enhancing the entire
+        development ecosystem by focusing on the people behind the screens.
+      </p>
+      <p>
+        <strong
+          >Join us in reshaping the future of tech, one human connection at a
+          time.</strong
+        >
+      </p>
+    </main>
+  </body>
+</html>
+
+<style lang="scss">
+  body {
+    font-family: "Inter", sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    display: grid;
+    place-items: center;
+  }
+
+  header {
+    h1 {
+      width: 100%;
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+
+  .sign-up {
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+  }
+
+  main {
+    margin-top: auto;
+    max-width: 80ch;
+    margin: auto;
+    padding: 0 20px;
+    text-align: center;
+  }
+</style>

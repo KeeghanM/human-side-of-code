@@ -1,0 +1,51 @@
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  gap: 10px;
+
+  input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  button {
+    width: fit-content;
+    min-width: fit-content;
+    padding: 10px 20px;
+    background-color: #44bf19;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #289202;
+    }
+  }
+}
+
+.message {
+  text-align: center;
+  font-style: italic;
+
+  &.error {
+    color: red;
+  }
+
+  &.success {
+    color: green;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .signup-form {
+    flex-direction: row;
+  }
+}
