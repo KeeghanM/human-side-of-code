@@ -15,8 +15,8 @@ export const POST: APIRoute = async ({ request }) => {
       },
       body: JSON.stringify({
         attributes: {
-          FNAME: firstName,
-          LNAME: lastName,
+          FIRSTNAME: firstName,
+          LASTNAME: lastName,
         },
       }),
     });
