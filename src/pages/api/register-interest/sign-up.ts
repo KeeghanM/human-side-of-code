@@ -7,11 +7,10 @@ export const POST: APIRoute = async ({ request }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${import.meta.env.BREVO_API_KEY}`,
+        "api-key": `${import.meta.env.BREVO_API_KEY}`,
       },
       body: JSON.stringify({ email, listIds: [2] }), // 2 is the ID of the list we want to add the contact to "Registered Interest"
     });
-
     if (!response.ok) {
       const message = await response.text();
       throw new Error(`Failed to register interest: ${message}`);

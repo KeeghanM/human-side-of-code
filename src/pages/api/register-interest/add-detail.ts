@@ -11,7 +11,7 @@ export const POST: APIRoute = async ({ request }) => {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${import.meta.env.BREVO_API_KEY}`,
+        "api-key": `${import.meta.env.BREVO_API_KEY}`,
       },
       body: JSON.stringify({
         attributes: {
