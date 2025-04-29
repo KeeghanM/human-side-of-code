@@ -1,0 +1,166 @@
+---
+import { hygraph } from '../../lib/hygraph-client.ts'
+import { query } from '../../lib/graphql-api.ts'
+import MainLayout from '../../layouts/MainLayout.astro'
+export async function getStaticPaths() {
+  // Fetch all articles to generate static paths
+  // This is a simple query to get all articles with their slugs
+  const articlesQuery = query((q) => [q.articles({}, (a) => [a.slug])])
+  const articles = await hygraph.request(articlesQuery)
+
+  // This will return an array of objects with the slug of each article
+  // This is used to generate static paths for each article
+  return [
+    ...articles.articles.map((article) => ({
+      params: { slug: article.slug },
+    })),
+  ]
+}
+
+// This function will run at build time to generate the static page for each article
+const { slug } = Astro.params
+const articleQuery = query((q) => [
+  q.article({ where: { slug } }, (a) => [
+    a.title,
+    a.content((c) => [c.html, c.text]),
+    a.publishedAt,
+  ]),
+])
+
+const articleResponse = await hygraph.request(articleQuery)
+
+// Check if the article exists, if not redirect to 404 page
+if (!articleResponse.article) {
+  return Astro.redirect('/404')
+}
+const { article } = articleResponse
+
+const articleNavQuery = query((q) => [
+  q
+    .articles(
+      {
+        first: 1,
+        where: {
+          publishedAt_gt: article.publishedAt,
+        },
+      },
+      (a) => [a.slug]
+    )
+    .as('nextArticles'),
+  q
+    .articles(
+      {
+        first: 1,
+        where: {
+          publishedAt_lt: article.publishedAt,
+        },
+      },
+      (a) => [a.slug]
+    )
+    .as('prevArticles'),
+])
+
+const articleNavResponse = await hygraph.request(articleNavQuery)
+const { nextArticles, prevArticles } = articleNavResponse
+const nextArticle = nextArticles[0]
+const prevArticle = prevArticles[0]
+const { title, content, publishedAt } = article
+---
+
+<MainLayout
+  seo={{
+    title: title,
+    description: content.text.substring(0, 150) + '...',
+  }}
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    datePublished: publishedAt,
+    articleBody: content.text,
+  }}
+>
+  <main
+    class="mx-auto max-w-3xl py-8 px-4"
+    transition:animate="slide"
+  >
+    <h1 class="text-3xl font-bold">{title}</h1>
+    {
+      publishedAt && (
+        <p class="text-sm text-gray-500">
+          Published on {new Date(publishedAt).toLocaleDateString('en-GB')}
+        </p>
+      )
+    }
+    <article
+      set:html={content.html}
+      class="mt-4 mb-24"
+    />
+  </main>
+  <nav
+    class="fixed bottom-0 left-0 right-0 flex justify-center gap-4 bg-slate-100 px-4 py-6"
+  >
+    {
+      prevArticle && (
+        <a
+          class="bg-gray-200 px-4 py-2 rounded-lg hover:bg-green-500 transition-colors duration-300"
+          href={`/articles/${prevArticle.slug}`}
+        >
+          Previous Article
+        </a>
+      )
+    }
+    <a
+      class="bg-gray-200 px-4 py-2 rounded-lg hover:bg-green-500 transition-colors duration-300"
+      href="/articles"
+      >Hub Page</a
+    >
+    {
+      nextArticle && (
+        <a
+          class="bg-gray-200 px-4 py-2 rounded-lg hover:bg-green-500 transition-colors duration-300"
+          href={`/articles/${nextArticle.slug}`}
+        >
+          Next Article
+        </a>
+      )
+    }
+  </nav>
+</MainLayout>
+
+<style is:global>
+  article > * + * {
+    margin-top: 1em;
+  }
+
+  article {
+    h2 {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    h4 {
+      font-size: 1.125rem;
+      font-weight: bold;
+    }
+
+    a {
+      color: #44bf19;
+    }
+
+    ul {
+      list-style: disc;
+      padding-left: 1.5rem;
+    }
+
+    ol {
+      list-style: decimal;
+      padding-left: 1.5rem;
+    }
+  }
+</style>

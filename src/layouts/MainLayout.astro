@@ -1,7 +1,11 @@
 ---
+// import { Head } from 'astro-capo'
 import { SEO, type SEOProps } from 'astro-seo'
 import { Schema, type SchemaProps } from 'astro-seo-schema'
 import Posthog from '../components/posthog.astro'
+
+import './src/styles/global.css'
+import { ClientRouter } from 'astro:transitions'
 interface Props {
   seo: SEOProps
   schema?: SchemaProps<any>['item']
@@ -21,53 +25,44 @@ seo.description =
       name="viewport"
       content="width=device-width"
     />
+    <SEO {...seo} />
+    {schema && <Schema item={schema} />}
+    <Posthog />
     <link
       rel="icon"
       type="image/svg+xml"
       href="/favicon.svg"
     />
-    <SEO {...seo} />
-    {schema && <Schema item={schema} />}
-    <Posthog />
+    <ClientRouter />
   </head>
   <body>
     <header>
-      <h1>
-        <!-- Accessible text is included in the SVG itself -->
+      <a href="/">
         <img
           src="/husoc-logo.svg"
           alt=""
           aria-hidden="true"
+          width="300"
+          height="300"
+          loading="eager"
         />
-      </h1>
+      </a>
     </header>
     <slot />
   </body>
 </html>
 
-<style is:global>
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    font-size: 16px;
-    display: grid;
-    place-items: center;
-    min-height: 100dvh;
-  }
-
+<style>
   header {
-    h1 {
-      width: 100%;
+    display: flex;
+    justify-content: center;
+    a {
       text-align: center;
-    }
 
-    img {
-      width: 100%;
-      max-width: 300px;
+      img {
+        width: 100%;
+        max-width: 300px;
+      }
     }
   }
 </style>
