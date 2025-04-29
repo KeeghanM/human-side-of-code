@@ -1,0 +1,73 @@
+---
+import { SEO, type SEOProps } from 'astro-seo'
+import { Schema, type SchemaProps } from 'astro-seo-schema'
+import Posthog from '../components/posthog.astro'
+interface Props {
+  seo: SEOProps
+  schema?: SchemaProps<any>['item']
+}
+
+const { seo, schema } = Astro.props
+seo.title = seo.title || 'Human Side of Code'
+seo.description =
+  seo.description ||
+  'Bridging technical expertise and human-centred development in the tech industry.'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
+    <SEO {...seo} />
+    {schema && <Schema item={schema} />}
+    <Posthog />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <!-- Accessible text is included in the SVG itself -->
+        <img
+          src="/husoc-logo.svg"
+          alt=""
+          aria-hidden="true"
+        />
+      </h1>
+    </header>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    display: grid;
+    place-items: center;
+    min-height: 100dvh;
+  }
+
+  header {
+    h1 {
+      width: 100%;
+      text-align: center;
+    }
+
+    img {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+</style>

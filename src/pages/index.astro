@@ -1,70 +1,31 @@
 ---
-import SignUp from "../components/sign-up/sign-up.tsx";
-import Content from "../components/content/content.astro";
-import Posthog from "../components/posthog.astro";
+import SignUp from '../components/sign-up/sign-up.tsx'
+import Content from '../components/content/content.astro'
+import MainLayout from '../layouts/MainLayout.astro'
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="Human Side of Code - Bridging technical expertise and human-centred development in the tech industry."
-    />
-    <meta
-      name="keywords"
-      content="tech, development, soft skills, human-centred design"
-    />
-    <meta name="author" content="Human Side of Code" />
-    <title>Human Side of Code</title>
-    <Posthog />
-  </head>
-  <body>
-    <div>
-      <header>
-        <h1>
-          <!-- Accessible text is included in the SVG itself -->
-          <img src="/husoc-logo.svg" alt="" aria-hidden="true" />
-        </h1>
-      </header>
-      <section class="sign-up">
-        <h2>Sign up to be notified when we launch our first content!</h2>
-        <SignUp client:load />
-      </section>
-      <Content />
-    </div>
-  </body>
-</html>
-
-<style lang="scss">
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    font-family: "Inter", sans-serif;
-    line-height: 1.6;
-    font-size: 16px;
-    display: grid;
-    place-items: center;
-    min-height: 100dvh;
-  }
-
-  header {
-    h1 {
-      width: 100%;
-      text-align: center;
-    }
-
-    img {
-      width: 100%;
-      max-width: 300px;
-    }
-  }
-
+<MainLayout
+  seo={{
+    title: 'Human Side of Code',
+    description:
+      'Bridging technical expertise and human-centred development in the tech industry.',
+  }}
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Human Side of Code',
+    url: 'https://humansideofcode.com',
+    description:
+      'Bridging technical expertise and human-centred development in the tech industry.',
+  }}
+>
+  <section class="sign-up">
+    <h2>Sign up to be notified when we launch our first content!</h2>
+    <SignUp client:visible />
+  </section>
+  <Content />
+</MainLayout>
+<style>
   .sign-up {
     text-align: center;
     width: fit-content;

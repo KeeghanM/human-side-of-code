@@ -1,11 +1,18 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+
 import react from "@astrojs/react";
 
-import vercel from "@astrojs/vercel/serverless";
+import node from "@astrojs/node";
+
+import purgecss from "astro-purgecss";
+
+import compress from "astro-compress";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
-  output: "server",
-  adapter: vercel()
+  integrations: [react(), purgecss(), compress()],
+
+  adapter: node({
+    mode: "standalone"
+  })
 });
