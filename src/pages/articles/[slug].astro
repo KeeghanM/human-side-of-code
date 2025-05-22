@@ -81,8 +81,10 @@ const { title, content, publishedAt } = article
   }}
 >
   <main
-    class="mx-auto max-w-3xl py-8 px-4"
+    class="mx-auto max-w-3xl py-8 px-4 select-none"
     transition:animate="slide"
+    data-next-slug={nextArticle?.slug}
+    data-prev-slug={prevArticle?.slug}
   >
     <h1 class="text-3xl font-bold">{title}</h1>
     {
@@ -97,36 +99,116 @@ const { title, content, publishedAt } = article
       class="mt-4 mb-24"
     />
   </main>
-  <nav
-    class="fixed bottom-0 left-0 right-0 flex justify-center gap-4 bg-slate-100 px-4 py-6"
-  >
-    {
-      prevArticle && (
-        <a
-          class="bg-gray-200 px-4 py-2 rounded-lg hover:bg-green-500 transition-colors duration-300"
-          href={`/articles/${prevArticle.slug}`}
-        >
-          Previous Article
-        </a>
-      )
-    }
-    <a
-      class="bg-gray-200 px-4 py-2 rounded-lg hover:bg-green-500 transition-colors duration-300"
-      href="/articles"
-      >Hub Page</a
+  <div class="fixed right-0 top-0 bottom-0 flex items-center text-black">
+    <svg
+      class="rotate-90 hidden"
+      id="next-arrow"
+      xmlns="http://www.w3.org/2000/svg"
+      width="0"
+      height="0"
+      viewBox="0 0 24 24"
+      ><path
+        fill="currentColor"
+        d="M12 21c-1.654 0-3-1.346-3-3v-4.764c-1.143 1.024-3.025.979-4.121-.115a3 3 0 0 1 0-4.242L12 1.758l7.121 7.121a3 3 0 0 1 0 4.242c-1.094 1.095-2.979 1.14-4.121.115V18c0 1.654-1.346 3-3 3M11 8.414V18a1.001 1.001 0 0 0 2 0V8.414l3.293 3.293a1.023 1.023 0 0 0 1.414 0a1 1 0 0 0 0-1.414L12 4.586l-5.707 5.707a1 1 0 0 0 0 1.414a1.023 1.023 0 0 0 1.414 0z"
+      ></path></svg
     >
-    {
-      nextArticle && (
-        <a
-          class="bg-gray-200 px-4 py-2 rounded-lg hover:bg-green-500 transition-colors duration-300"
-          href={`/articles/${nextArticle.slug}`}
-        >
-          Next Article
-        </a>
-      )
-    }
-  </nav>
+  </div>
+  <div class="fixed left-0 top-0 bottom-0 flex items-center text-black">
+    <svg
+      class="-rotate-90 hidden"
+      id="prev-arrow"
+      xmlns="http://www.w3.org/2000/svg"
+      width="0"
+      height="0"
+      viewBox="0 0 24 24"
+      ><path
+        fill="currentColor"
+        d="M12 21c-1.654 0-3-1.346-3-3v-4.764c-1.143 1.024-3.025.979-4.121-.115a3 3 0 0 1 0-4.242L12 1.758l7.121 7.121a3 3 0 0 1 0 4.242c-1.094 1.095-2.979 1.14-4.121.115V18c0 1.654-1.346 3-3 3M11 8.414V18a1.001 1.001 0 0 0 2 0V8.414l3.293 3.293a1.023 1.023 0 0 0 1.414 0a1 1 0 0 0 0-1.414L12 4.586l-5.707 5.707a1 1 0 0 0 0 1.414a1.023 1.023 0 0 0 1.414 0z"
+      ></path></svg
+    >
+  </div>
 </MainLayout>
+
+<script>
+  const prevSlug = document.querySelector('main')?.dataset.prevSlug
+  const nextSlug = document.querySelector('main')?.dataset.nextSlug
+
+  const prevArrow = document.getElementById('prev-arrow')
+  const nextArrow = document.getElementById('next-arrow')
+
+  import { navigate } from 'astro:transitions/client'
+  if ((prevSlug || nextSlug) && prevArrow && nextArrow) {
+    const minMoveRequirement = 150
+    let touching = false
+    let willNav = false
+    let startX = 0
+    let direction = 'prev'
+
+    prevArrow.style.display = 'none'
+    nextArrow.style.display = 'none'
+    prevArrow.style.color = '#000'
+    nextArrow.style.color = '#000'
+
+    window.addEventListener('pointerdown', (e) => {
+      touching = true
+      startX = e.clientX
+    })
+    window.addEventListener('pointermove', (e) => {
+      if (!touching) return
+
+      const deltaX = startX - e.clientX
+      direction = deltaX > 0 ? 'next' : 'prev'
+      willNav =
+        Math.abs(deltaX) > minMoveRequirement
+          ? direction === 'next'
+            ? nextSlug !== undefined
+            : prevSlug !== undefined
+          : false
+
+      const arrowSize = Math.min(Math.abs(deltaX), minMoveRequirement)
+      const opacity = Math.abs(deltaX) / minMoveRequirement
+      if (direction === 'prev' && prevSlug !== undefined) {
+        prevArrow.style.display = 'block'
+        prevArrow.style.width = `${arrowSize}px`
+        prevArrow.style.height = `${arrowSize}px`
+        prevArrow.style.opacity = opacity.toString()
+
+        if (willNav) {
+          prevArrow.style.color = 'var(--color-primary)'
+        } else {
+          prevArrow.style.color = '#000'
+        }
+      } else if (direction === 'next' && nextSlug !== undefined) {
+        nextArrow.style.display = 'block'
+        nextArrow.style.width = `${arrowSize}px`
+        nextArrow.style.height = `${arrowSize}px`
+        nextArrow.style.opacity = opacity.toString()
+        if (willNav) {
+          nextArrow.style.color = 'var(--color-primary)'
+        } else {
+          nextArrow.style.color = '#000'
+        }
+      }
+    })
+
+    window.addEventListener('pointerup', (e) => {
+      console.log(willNav)
+      if (willNav) {
+        navigate(
+          direction === 'prev'
+            ? `/articles/${prevSlug}`
+            : `/articles/${nextSlug}`
+        )
+      } else {
+        touching = false
+        prevArrow.style.display = 'none'
+        nextArrow.style.display = 'none'
+        prevArrow.style.color = '#000'
+        nextArrow.style.color = '#000'
+      }
+    })
+  }
+</script>
 
 <style is:global>
   article > * + * {

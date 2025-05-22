@@ -440,9 +440,9 @@ type ExactArgNames<GenericType, Constraint> = GenericType extends never
         : never
     }
 
-type $Atomic = ArticleOrderByInput | AssetOrderByInput | AssetUploadStatus | DocumentFileTypes | EntityTypeName | ImageFit | Locale | ScheduledOperationOrderByInput | ScheduledOperationStatus | ScheduledReleaseOrderByInput | ScheduledReleaseStatus | Stage | SystemDateTimeFieldVariation | UserKind | UserOrderByInput | _FilterKind | _MutationInputFieldKind | _MutationKind | _OrderDirection | _RelationInputCardinality | _RelationInputKind | _RelationKind | _SystemDateTimeFieldVariation | number | string | boolean | null | undefined
+type $Atomic = ArticleOrderByInput | AssetOrderByInput | AssetUploadStatus | DocumentFileTypes | EntityTypeName | ImageFit | Locale | PitchOrderByInput | ScheduledOperationOrderByInput | ScheduledOperationStatus | ScheduledReleaseOrderByInput | ScheduledReleaseStatus | Stage | SystemDateTimeFieldVariation | UserKind | UserOrderByInput | _FilterKind | _MutationInputFieldKind | _MutationKind | _OrderDirection | _RelationInputCardinality | _RelationInputKind | _RelationKind | _SystemDateTimeFieldVariation | number | string | boolean | null | undefined
 
-let $Enums = new Set<string>(["ArticleOrderByInput","AssetOrderByInput","AssetUploadStatus","DocumentFileTypes","EntityTypeName","ImageFit","Locale","ScheduledOperationOrderByInput","ScheduledOperationStatus","ScheduledReleaseOrderByInput","ScheduledReleaseStatus","Stage","SystemDateTimeFieldVariation","UserKind","UserOrderByInput","_FilterKind","_MutationInputFieldKind","_MutationKind","_OrderDirection","_RelationInputCardinality","_RelationInputKind","_RelationKind","_SystemDateTimeFieldVariation"])
+let $Enums = new Set<string>(["ArticleOrderByInput","AssetOrderByInput","AssetUploadStatus","DocumentFileTypes","EntityTypeName","ImageFit","Locale","PitchOrderByInput","ScheduledOperationOrderByInput","ScheduledOperationStatus","ScheduledReleaseOrderByInput","ScheduledReleaseStatus","Stage","SystemDateTimeFieldVariation","UserKind","UserOrderByInput","_FilterKind","_MutationInputFieldKind","_MutationKind","_OrderDirection","_RelationInputCardinality","_RelationInputKind","_RelationKind","_SystemDateTimeFieldVariation"])
 
 
 
@@ -2415,9 +2415,9 @@ export class DocumentVersion extends $Base<"DocumentVersion"> {
 /**
  * An object with an ID
  */
-export class Entity extends $Interface<{Article: Article,Asset: Asset,ScheduledOperation: ScheduledOperation,ScheduledRelease: ScheduledRelease,User: User}, "Entity"> {
+export class Entity extends $Interface<{Article: Article,Asset: Asset,Pitch: Pitch,ScheduledOperation: ScheduledOperation,ScheduledRelease: ScheduledRelease,User: User}, "Entity"> {
   constructor() {
-    super({Article: Article,Asset: Asset,ScheduledOperation: ScheduledOperation,ScheduledRelease: ScheduledRelease,User: User}, "Entity")
+    super({Article: Article,Asset: Asset,Pitch: Pitch,ScheduledOperation: ScheduledOperation,ScheduledRelease: ScheduledRelease,User: User}, "Entity")
   }
   
       
@@ -2449,6 +2449,8 @@ export enum EntityTypeName {
  * Asset system model
  */
   Asset = "Asset",
+
+  Pitch = "Pitch",
 
 /**
  * Scheduled Operation system model
@@ -2711,6 +2713,28 @@ export class Mutation extends $Base<"Mutation"> {
 
       
 /**
+ * Create one pitch
+ */
+      createPitch<Args extends VariabledInput<{
+        data: PitchCreateInput,
+      }>,Sel extends Selection<Pitch>>(args: ExactArgNames<Args, {
+        data: PitchCreateInput,
+      }>, selectorFn: (s: Pitch) => [...Sel]):$Field<"createPitch", GetOutput<Sel> | null , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              data: "PitchCreateInput!"
+            },
+        args,
+
+        selection: selectorFn(new Pitch)
+      };
+      return this.$_select("createPitch", options as any) as any
+    }
+  
+
+      
+/**
  * Create one scheduledRelease
  */
       createScheduledRelease<Args extends VariabledInput<{
@@ -2902,6 +2926,93 @@ where: "AssetManyWhereInput"
         selection: selectorFn(new AssetConnection)
       };
       return this.$_select("deleteManyAssetsConnection", options as any) as any
+    }
+  
+
+      
+/**
+ * Delete many Pitch documents
+ */
+      deleteManyPitches<Args extends VariabledInput<{
+        where?: PitchManyWhereInput | null,
+      }>,Sel extends Selection<BatchPayload>>(args: ExactArgNames<Args, {
+        where?: PitchManyWhereInput | null,
+      }>, selectorFn: (s: BatchPayload) => [...Sel]):$Field<"deleteManyPitches", GetOutput<Sel> , GetVariables<Sel, Args>>
+deleteManyPitches<Sel extends Selection<BatchPayload>>(selectorFn: (s: BatchPayload) => [...Sel]):$Field<"deleteManyPitches", GetOutput<Sel> , GetVariables<Sel>>
+deleteManyPitches(arg1: any, arg2?: any) {
+      const { args, selectorFn } = !arg2 ? { args: {}, selectorFn: arg1 } : { args: arg1, selectorFn: arg2 };
+
+      const options = {
+        argTypes: {
+              where: "PitchManyWhereInput"
+            },
+        args,
+
+        selection: selectorFn(new BatchPayload)
+      };
+      return this.$_select("deleteManyPitches", options as any) as any
+    }
+  
+
+      
+/**
+ * Delete many Pitch documents, return deleted documents
+ */
+      deleteManyPitchesConnection<Args extends VariabledInput<{
+        after?: string | null
+before?: string | null
+first?: number | null
+last?: number | null
+skip?: number | null
+where?: PitchManyWhereInput | null,
+      }>,Sel extends Selection<PitchConnection>>(args: ExactArgNames<Args, {
+        after?: string | null
+before?: string | null
+first?: number | null
+last?: number | null
+skip?: number | null
+where?: PitchManyWhereInput | null,
+      }>, selectorFn: (s: PitchConnection) => [...Sel]):$Field<"deleteManyPitchesConnection", GetOutput<Sel> , GetVariables<Sel, Args>>
+deleteManyPitchesConnection<Sel extends Selection<PitchConnection>>(selectorFn: (s: PitchConnection) => [...Sel]):$Field<"deleteManyPitchesConnection", GetOutput<Sel> , GetVariables<Sel>>
+deleteManyPitchesConnection(arg1: any, arg2?: any) {
+      const { args, selectorFn } = !arg2 ? { args: {}, selectorFn: arg1 } : { args: arg1, selectorFn: arg2 };
+
+      const options = {
+        argTypes: {
+              after: "ID",
+before: "ID",
+first: "Int",
+last: "Int",
+skip: "Int",
+where: "PitchManyWhereInput"
+            },
+        args,
+
+        selection: selectorFn(new PitchConnection)
+      };
+      return this.$_select("deleteManyPitchesConnection", options as any) as any
+    }
+  
+
+      
+/**
+ * Delete one pitch from _all_ existing stages. Returns deleted document.
+ */
+      deletePitch<Args extends VariabledInput<{
+        where: PitchWhereUniqueInput,
+      }>,Sel extends Selection<Pitch>>(args: ExactArgNames<Args, {
+        where: PitchWhereUniqueInput,
+      }>, selectorFn: (s: Pitch) => [...Sel]):$Field<"deletePitch", GetOutput<Sel> | null , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              where: "PitchWhereUniqueInput!"
+            },
+        args,
+
+        selection: selectorFn(new Pitch)
+      };
+      return this.$_select("deletePitch", options as any) as any
     }
   
 
@@ -3164,6 +3275,99 @@ withDefaultLocale: "Boolean"
 
       
 /**
+ * Publish many Pitch documents
+ */
+      publishManyPitches<Args extends VariabledInput<{
+        to?: Readonly<Array<Stage>>
+where?: PitchManyWhereInput | null,
+      }>,Sel extends Selection<BatchPayload>>(args: ExactArgNames<Args, {
+        to?: Readonly<Array<Stage>>
+where?: PitchManyWhereInput | null,
+      }>, selectorFn: (s: BatchPayload) => [...Sel]):$Field<"publishManyPitches", GetOutput<Sel> , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              to: "[Stage!]!",
+where: "PitchManyWhereInput"
+            },
+        args,
+
+        selection: selectorFn(new BatchPayload)
+      };
+      return this.$_select("publishManyPitches", options as any) as any
+    }
+  
+
+      
+/**
+ * Publish many Pitch documents
+ */
+      publishManyPitchesConnection<Args extends VariabledInput<{
+        after?: string | null
+before?: string | null
+first?: number | null
+from?: Stage | null
+last?: number | null
+skip?: number | null
+to?: Readonly<Array<Stage>>
+where?: PitchManyWhereInput | null,
+      }>,Sel extends Selection<PitchConnection>>(args: ExactArgNames<Args, {
+        after?: string | null
+before?: string | null
+first?: number | null
+from?: Stage | null
+last?: number | null
+skip?: number | null
+to?: Readonly<Array<Stage>>
+where?: PitchManyWhereInput | null,
+      }>, selectorFn: (s: PitchConnection) => [...Sel]):$Field<"publishManyPitchesConnection", GetOutput<Sel> , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              after: "ID",
+before: "ID",
+first: "Int",
+from: "Stage",
+last: "Int",
+skip: "Int",
+to: "[Stage!]!",
+where: "PitchManyWhereInput"
+            },
+        args,
+
+        selection: selectorFn(new PitchConnection)
+      };
+      return this.$_select("publishManyPitchesConnection", options as any) as any
+    }
+  
+
+      
+/**
+ * Publish one pitch
+ */
+      publishPitch<Args extends VariabledInput<{
+        to?: Readonly<Array<Stage>>
+where: PitchWhereUniqueInput,
+      }>,Sel extends Selection<Pitch>>(args: ExactArgNames<Args, {
+        to?: Readonly<Array<Stage>>
+where: PitchWhereUniqueInput,
+      }>, selectorFn: (s: Pitch) => [...Sel]):$Field<"publishPitch", GetOutput<Sel> | null , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              to: "[Stage!]!",
+where: "PitchWhereUniqueInput!"
+            },
+        args,
+
+        selection: selectorFn(new Pitch)
+      };
+      return this.$_select("publishPitch", options as any) as any
+    }
+  
+
+      
+/**
  * Schedule to publish one article
  */
       schedulePublishArticle<Args extends VariabledInput<{
@@ -3235,6 +3439,37 @@ withDefaultLocale: "Boolean"
 
       
 /**
+ * Schedule to publish one pitch
+ */
+      schedulePublishPitch<Args extends VariabledInput<{
+        releaseAt?: DateTime | null
+releaseId?: string | null
+to?: Readonly<Array<Stage>>
+where: PitchWhereUniqueInput,
+      }>,Sel extends Selection<Pitch>>(args: ExactArgNames<Args, {
+        releaseAt?: DateTime | null
+releaseId?: string | null
+to?: Readonly<Array<Stage>>
+where: PitchWhereUniqueInput,
+      }>, selectorFn: (s: Pitch) => [...Sel]):$Field<"schedulePublishPitch", GetOutput<Sel> | null , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              releaseAt: "DateTime",
+releaseId: "String",
+to: "[Stage!]!",
+where: "PitchWhereUniqueInput!"
+            },
+        args,
+
+        selection: selectorFn(new Pitch)
+      };
+      return this.$_select("schedulePublishPitch", options as any) as any
+    }
+  
+
+      
+/**
  * Unpublish one article from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only.
  */
       scheduleUnpublishArticle<Args extends VariabledInput<{
@@ -3298,6 +3533,37 @@ where: "AssetWhereUniqueInput!"
         selection: selectorFn(new Asset)
       };
       return this.$_select("scheduleUnpublishAsset", options as any) as any
+    }
+  
+
+      
+/**
+ * Unpublish one pitch from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only.
+ */
+      scheduleUnpublishPitch<Args extends VariabledInput<{
+        from?: Readonly<Array<Stage>>
+releaseAt?: DateTime | null
+releaseId?: string | null
+where: PitchWhereUniqueInput,
+      }>,Sel extends Selection<Pitch>>(args: ExactArgNames<Args, {
+        from?: Readonly<Array<Stage>>
+releaseAt?: DateTime | null
+releaseId?: string | null
+where: PitchWhereUniqueInput,
+      }>, selectorFn: (s: Pitch) => [...Sel]):$Field<"scheduleUnpublishPitch", GetOutput<Sel> | null , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              from: "[Stage!]!",
+releaseAt: "DateTime",
+releaseId: "String",
+where: "PitchWhereUniqueInput!"
+            },
+        args,
+
+        selection: selectorFn(new Pitch)
+      };
+      return this.$_select("scheduleUnpublishPitch", options as any) as any
     }
   
 
@@ -3507,6 +3773,99 @@ where: "AssetManyWhereInput"
 
       
 /**
+ * Unpublish many Pitch documents
+ */
+      unpublishManyPitches<Args extends VariabledInput<{
+        from?: Readonly<Array<Stage>>
+where?: PitchManyWhereInput | null,
+      }>,Sel extends Selection<BatchPayload>>(args: ExactArgNames<Args, {
+        from?: Readonly<Array<Stage>>
+where?: PitchManyWhereInput | null,
+      }>, selectorFn: (s: BatchPayload) => [...Sel]):$Field<"unpublishManyPitches", GetOutput<Sel> , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              from: "[Stage!]!",
+where: "PitchManyWhereInput"
+            },
+        args,
+
+        selection: selectorFn(new BatchPayload)
+      };
+      return this.$_select("unpublishManyPitches", options as any) as any
+    }
+  
+
+      
+/**
+ * Find many Pitch documents that match criteria in specified stage and unpublish from target stages
+ */
+      unpublishManyPitchesConnection<Args extends VariabledInput<{
+        after?: string | null
+before?: string | null
+first?: number | null
+from?: Readonly<Array<Stage>>
+last?: number | null
+skip?: number | null
+stage?: Stage | null
+where?: PitchManyWhereInput | null,
+      }>,Sel extends Selection<PitchConnection>>(args: ExactArgNames<Args, {
+        after?: string | null
+before?: string | null
+first?: number | null
+from?: Readonly<Array<Stage>>
+last?: number | null
+skip?: number | null
+stage?: Stage | null
+where?: PitchManyWhereInput | null,
+      }>, selectorFn: (s: PitchConnection) => [...Sel]):$Field<"unpublishManyPitchesConnection", GetOutput<Sel> , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              after: "ID",
+before: "ID",
+first: "Int",
+from: "[Stage!]!",
+last: "Int",
+skip: "Int",
+stage: "Stage",
+where: "PitchManyWhereInput"
+            },
+        args,
+
+        selection: selectorFn(new PitchConnection)
+      };
+      return this.$_select("unpublishManyPitchesConnection", options as any) as any
+    }
+  
+
+      
+/**
+ * Unpublish one pitch from selected stages. Unpublish either the complete document with its relations, localizations and base data or specific localizations only.
+ */
+      unpublishPitch<Args extends VariabledInput<{
+        from?: Readonly<Array<Stage>>
+where: PitchWhereUniqueInput,
+      }>,Sel extends Selection<Pitch>>(args: ExactArgNames<Args, {
+        from?: Readonly<Array<Stage>>
+where: PitchWhereUniqueInput,
+      }>, selectorFn: (s: Pitch) => [...Sel]):$Field<"unpublishPitch", GetOutput<Sel> | null , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              from: "[Stage!]!",
+where: "PitchWhereUniqueInput!"
+            },
+        args,
+
+        selection: selectorFn(new Pitch)
+      };
+      return this.$_select("unpublishPitch", options as any) as any
+    }
+  
+
+      
+/**
  * Update one article
  */
       updateArticle<Args extends VariabledInput<{
@@ -3687,6 +4046,96 @@ where: "AssetManyWhereInput"
 
       
 /**
+ * Update many pitches
+ */
+      updateManyPitches<Args extends VariabledInput<{
+        data: PitchUpdateManyInput
+where?: PitchManyWhereInput | null,
+      }>,Sel extends Selection<BatchPayload>>(args: ExactArgNames<Args, {
+        data: PitchUpdateManyInput
+where?: PitchManyWhereInput | null,
+      }>, selectorFn: (s: BatchPayload) => [...Sel]):$Field<"updateManyPitches", GetOutput<Sel> , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              data: "PitchUpdateManyInput!",
+where: "PitchManyWhereInput"
+            },
+        args,
+
+        selection: selectorFn(new BatchPayload)
+      };
+      return this.$_select("updateManyPitches", options as any) as any
+    }
+  
+
+      
+/**
+ * Update many Pitch documents
+ */
+      updateManyPitchesConnection<Args extends VariabledInput<{
+        after?: string | null
+before?: string | null
+data: PitchUpdateManyInput
+first?: number | null
+last?: number | null
+skip?: number | null
+where?: PitchManyWhereInput | null,
+      }>,Sel extends Selection<PitchConnection>>(args: ExactArgNames<Args, {
+        after?: string | null
+before?: string | null
+data: PitchUpdateManyInput
+first?: number | null
+last?: number | null
+skip?: number | null
+where?: PitchManyWhereInput | null,
+      }>, selectorFn: (s: PitchConnection) => [...Sel]):$Field<"updateManyPitchesConnection", GetOutput<Sel> , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              after: "ID",
+before: "ID",
+data: "PitchUpdateManyInput!",
+first: "Int",
+last: "Int",
+skip: "Int",
+where: "PitchManyWhereInput"
+            },
+        args,
+
+        selection: selectorFn(new PitchConnection)
+      };
+      return this.$_select("updateManyPitchesConnection", options as any) as any
+    }
+  
+
+      
+/**
+ * Update one pitch
+ */
+      updatePitch<Args extends VariabledInput<{
+        data: PitchUpdateInput
+where: PitchWhereUniqueInput,
+      }>,Sel extends Selection<Pitch>>(args: ExactArgNames<Args, {
+        data: PitchUpdateInput
+where: PitchWhereUniqueInput,
+      }>, selectorFn: (s: Pitch) => [...Sel]):$Field<"updatePitch", GetOutput<Sel> | null , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              data: "PitchUpdateInput!",
+where: "PitchWhereUniqueInput!"
+            },
+        args,
+
+        selection: selectorFn(new Pitch)
+      };
+      return this.$_select("updatePitch", options as any) as any
+    }
+  
+
+      
+/**
  * Update one scheduledRelease
  */
       updateScheduledRelease<Args extends VariabledInput<{
@@ -3759,15 +4208,40 @@ where: "AssetWhereUniqueInput!"
       return this.$_select("upsertAsset", options as any) as any
     }
   
+
+      
+/**
+ * Upsert one pitch
+ */
+      upsertPitch<Args extends VariabledInput<{
+        upsert: PitchUpsertInput
+where: PitchWhereUniqueInput,
+      }>,Sel extends Selection<Pitch>>(args: ExactArgNames<Args, {
+        upsert: PitchUpsertInput
+where: PitchWhereUniqueInput,
+      }>, selectorFn: (s: Pitch) => [...Sel]):$Field<"upsertPitch", GetOutput<Sel> | null , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              upsert: "PitchUpsertInput!",
+where: "PitchWhereUniqueInput!"
+            },
+        args,
+
+        selection: selectorFn(new Pitch)
+      };
+      return this.$_select("upsertPitch", options as any) as any
+    }
+  
 }
 
 
 /**
  * An object with an ID
  */
-export class Node extends $Interface<{Article: Article,Asset: Asset,ScheduledOperation: ScheduledOperation,ScheduledRelease: ScheduledRelease,User: User}, "Node"> {
+export class Node extends $Interface<{Article: Article,Asset: Asset,Pitch: Pitch,ScheduledOperation: ScheduledOperation,ScheduledRelease: ScheduledRelease,User: User}, "Node"> {
   constructor() {
-    super({Article: Article,Asset: Asset,ScheduledOperation: ScheduledOperation,ScheduledRelease: ScheduledRelease,User: User}, "Node")
+    super({Article: Article,Asset: Asset,Pitch: Pitch,ScheduledOperation: ScheduledOperation,ScheduledRelease: ScheduledRelease,User: User}, "Node")
   }
   
       
@@ -3837,6 +4311,627 @@ export class PageInfo extends $Base<"PageInfo"> {
        return this.$_select("startCursor") as any
       }
 }
+
+
+export class Pitch extends $Base<"Pitch"> {
+  constructor() {
+    super("Pitch")
+  }
+
+  
+      
+      content<Sel extends Selection<RichText>>(selectorFn: (s: RichText) => [...Sel]):$Field<"content", GetOutput<Sel> , GetVariables<Sel>> {
+      
+      const options = {
+        
+        
+
+        selection: selectorFn(new RichText)
+      };
+      return this.$_select("content", options as any) as any
+    }
+  
+
+      
+/**
+ * The time the document was created
+ */
+      get createdAt(): $Field<"createdAt", DateTime>  {
+       return this.$_select("createdAt") as any
+      }
+
+      
+/**
+ * User that created this document
+ */
+      createdBy<Args extends VariabledInput<{
+        forceParentLocale?: boolean | null
+locales?: Readonly<Array<Locale>> | null,
+      }>,Sel extends Selection<User>>(args: ExactArgNames<Args, {
+        forceParentLocale?: boolean | null
+locales?: Readonly<Array<Locale>> | null,
+      }>, selectorFn: (s: User) => [...Sel]):$Field<"createdBy", GetOutput<Sel> | null , GetVariables<Sel, Args>>
+createdBy<Sel extends Selection<User>>(selectorFn: (s: User) => [...Sel]):$Field<"createdBy", GetOutput<Sel> | null , GetVariables<Sel>>
+createdBy(arg1: any, arg2?: any) {
+      const { args, selectorFn } = !arg2 ? { args: {}, selectorFn: arg1 } : { args: arg1, selectorFn: arg2 };
+
+      const options = {
+        argTypes: {
+              forceParentLocale: "Boolean",
+locales: "[Locale!]"
+            },
+        args,
+
+        selection: selectorFn(new User)
+      };
+      return this.$_select("createdBy", options as any) as any
+    }
+  
+
+      
+/**
+ * Get the document in other stages
+ */
+      documentInStages<Args extends VariabledInput<{
+        includeCurrent?: boolean
+inheritLocale?: boolean
+stages?: Readonly<Array<Stage>>,
+      }>,Sel extends Selection<Pitch>>(args: ExactArgNames<Args, {
+        includeCurrent?: boolean
+inheritLocale?: boolean
+stages?: Readonly<Array<Stage>>,
+      }>, selectorFn: (s: Pitch) => [...Sel]):$Field<"documentInStages", Array<GetOutput<Sel>> , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              includeCurrent: "Boolean!",
+inheritLocale: "Boolean!",
+stages: "[Stage!]!"
+            },
+        args,
+
+        selection: selectorFn(new Pitch)
+      };
+      return this.$_select("documentInStages", options as any) as any
+    }
+  
+
+      
+/**
+ * List of Pitch versions
+ */
+      history<Args extends VariabledInput<{
+        limit?: number
+skip?: number
+stageOverride?: Stage | null,
+      }>,Sel extends Selection<Version>>(args: ExactArgNames<Args, {
+        limit?: number
+skip?: number
+stageOverride?: Stage | null,
+      }>, selectorFn: (s: Version) => [...Sel]):$Field<"history", Array<GetOutput<Sel>> , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              limit: "Int!",
+skip: "Int!",
+stageOverride: "Stage"
+            },
+        args,
+
+        selection: selectorFn(new Version)
+      };
+      return this.$_select("history", options as any) as any
+    }
+  
+
+      
+/**
+ * The unique identifier
+ */
+      get id(): $Field<"id", string>  {
+       return this.$_select("id") as any
+      }
+
+      
+/**
+ * The time the document was published. Null on documents in draft stage.
+ */
+      get publishedAt(): $Field<"publishedAt", DateTime | null>  {
+       return this.$_select("publishedAt") as any
+      }
+
+      
+/**
+ * User that last published this document
+ */
+      publishedBy<Args extends VariabledInput<{
+        forceParentLocale?: boolean | null
+locales?: Readonly<Array<Locale>> | null,
+      }>,Sel extends Selection<User>>(args: ExactArgNames<Args, {
+        forceParentLocale?: boolean | null
+locales?: Readonly<Array<Locale>> | null,
+      }>, selectorFn: (s: User) => [...Sel]):$Field<"publishedBy", GetOutput<Sel> | null , GetVariables<Sel, Args>>
+publishedBy<Sel extends Selection<User>>(selectorFn: (s: User) => [...Sel]):$Field<"publishedBy", GetOutput<Sel> | null , GetVariables<Sel>>
+publishedBy(arg1: any, arg2?: any) {
+      const { args, selectorFn } = !arg2 ? { args: {}, selectorFn: arg1 } : { args: arg1, selectorFn: arg2 };
+
+      const options = {
+        argTypes: {
+              forceParentLocale: "Boolean",
+locales: "[Locale!]"
+            },
+        args,
+
+        selection: selectorFn(new User)
+      };
+      return this.$_select("publishedBy", options as any) as any
+    }
+  
+
+      
+      scheduledIn<Args extends VariabledInput<{
+        after?: string | null
+before?: string | null
+first?: number | null
+forceParentLocale?: boolean | null
+last?: number | null
+locales?: Readonly<Array<Locale>> | null
+skip?: number | null
+where?: ScheduledOperationWhereInput | null,
+      }>,Sel extends Selection<ScheduledOperation>>(args: ExactArgNames<Args, {
+        after?: string | null
+before?: string | null
+first?: number | null
+forceParentLocale?: boolean | null
+last?: number | null
+locales?: Readonly<Array<Locale>> | null
+skip?: number | null
+where?: ScheduledOperationWhereInput | null,
+      }>, selectorFn: (s: ScheduledOperation) => [...Sel]):$Field<"scheduledIn", Array<GetOutput<Sel>> , GetVariables<Sel, Args>>
+scheduledIn<Sel extends Selection<ScheduledOperation>>(selectorFn: (s: ScheduledOperation) => [...Sel]):$Field<"scheduledIn", Array<GetOutput<Sel>> , GetVariables<Sel>>
+scheduledIn(arg1: any, arg2?: any) {
+      const { args, selectorFn } = !arg2 ? { args: {}, selectorFn: arg1 } : { args: arg1, selectorFn: arg2 };
+
+      const options = {
+        argTypes: {
+              after: "String",
+before: "String",
+first: "Int",
+forceParentLocale: "Boolean",
+last: "Int",
+locales: "[Locale!]",
+skip: "Int",
+where: "ScheduledOperationWhereInput"
+            },
+        args,
+
+        selection: selectorFn(new ScheduledOperation)
+      };
+      return this.$_select("scheduledIn", options as any) as any
+    }
+  
+
+      
+/**
+ * System stage field
+ */
+      get stage(): $Field<"stage", Stage>  {
+       return this.$_select("stage") as any
+      }
+
+      
+      get title(): $Field<"title", string>  {
+       return this.$_select("title") as any
+      }
+
+      
+/**
+ * The time the document was updated
+ */
+      get updatedAt(): $Field<"updatedAt", DateTime>  {
+       return this.$_select("updatedAt") as any
+      }
+
+      
+/**
+ * User that last updated this document
+ */
+      updatedBy<Args extends VariabledInput<{
+        forceParentLocale?: boolean | null
+locales?: Readonly<Array<Locale>> | null,
+      }>,Sel extends Selection<User>>(args: ExactArgNames<Args, {
+        forceParentLocale?: boolean | null
+locales?: Readonly<Array<Locale>> | null,
+      }>, selectorFn: (s: User) => [...Sel]):$Field<"updatedBy", GetOutput<Sel> | null , GetVariables<Sel, Args>>
+updatedBy<Sel extends Selection<User>>(selectorFn: (s: User) => [...Sel]):$Field<"updatedBy", GetOutput<Sel> | null , GetVariables<Sel>>
+updatedBy(arg1: any, arg2?: any) {
+      const { args, selectorFn } = !arg2 ? { args: {}, selectorFn: arg1 } : { args: arg1, selectorFn: arg2 };
+
+      const options = {
+        argTypes: {
+              forceParentLocale: "Boolean",
+locales: "[Locale!]"
+            },
+        args,
+
+        selection: selectorFn(new User)
+      };
+      return this.$_select("updatedBy", options as any) as any
+    }
+  
+}
+
+
+export type PitchConnectInput = {
+  position?: ConnectPositionInput | null,
+where: PitchWhereUniqueInput
+}
+    
+
+
+/**
+ * A connection to a list of items.
+ */
+export class PitchConnection extends $Base<"PitchConnection"> {
+  constructor() {
+    super("PitchConnection")
+  }
+
+  
+      
+      aggregate<Sel extends Selection<Aggregate>>(selectorFn: (s: Aggregate) => [...Sel]):$Field<"aggregate", GetOutput<Sel> , GetVariables<Sel>> {
+      
+      const options = {
+        
+        
+
+        selection: selectorFn(new Aggregate)
+      };
+      return this.$_select("aggregate", options as any) as any
+    }
+  
+
+      
+/**
+ * A list of edges.
+ */
+      edges<Sel extends Selection<PitchEdge>>(selectorFn: (s: PitchEdge) => [...Sel]):$Field<"edges", Array<GetOutput<Sel>> , GetVariables<Sel>> {
+      
+      const options = {
+        
+        
+
+        selection: selectorFn(new PitchEdge)
+      };
+      return this.$_select("edges", options as any) as any
+    }
+  
+
+      
+/**
+ * Information to aid in pagination.
+ */
+      pageInfo<Sel extends Selection<PageInfo>>(selectorFn: (s: PageInfo) => [...Sel]):$Field<"pageInfo", GetOutput<Sel> , GetVariables<Sel>> {
+      
+      const options = {
+        
+        
+
+        selection: selectorFn(new PageInfo)
+      };
+      return this.$_select("pageInfo", options as any) as any
+    }
+  
+}
+
+
+export type PitchCreateInput = {
+  content: RichTextAST,
+createdAt?: DateTime | null,
+title: string,
+updatedAt?: DateTime | null
+}
+    
+
+
+export type PitchCreateManyInlineInput = {
+  connect?: Readonly<Array<PitchWhereUniqueInput>> | null,
+create?: Readonly<Array<PitchCreateInput>> | null
+}
+    
+
+
+export type PitchCreateOneInlineInput = {
+  connect?: PitchWhereUniqueInput | null,
+create?: PitchCreateInput | null
+}
+    
+
+
+/**
+ * An edge in a connection.
+ */
+export class PitchEdge extends $Base<"PitchEdge"> {
+  constructor() {
+    super("PitchEdge")
+  }
+
+  
+      
+/**
+ * A cursor for use in pagination.
+ */
+      get cursor(): $Field<"cursor", string>  {
+       return this.$_select("cursor") as any
+      }
+
+      
+/**
+ * The item at the end of the edge.
+ */
+      node<Sel extends Selection<Pitch>>(selectorFn: (s: Pitch) => [...Sel]):$Field<"node", GetOutput<Sel> , GetVariables<Sel>> {
+      
+      const options = {
+        
+        
+
+        selection: selectorFn(new Pitch)
+      };
+      return this.$_select("node", options as any) as any
+    }
+  
+}
+
+
+/**
+ * Identifies documents
+ */
+export type PitchManyWhereInput = {
+  AND?: Readonly<Array<PitchWhereInput>> | null,
+NOT?: Readonly<Array<PitchWhereInput>> | null,
+OR?: Readonly<Array<PitchWhereInput>> | null,
+_search?: string | null,
+createdAt?: DateTime | null,
+createdAt_gt?: DateTime | null,
+createdAt_gte?: DateTime | null,
+createdAt_in?: Readonly<Array<DateTime | null>> | null,
+createdAt_lt?: DateTime | null,
+createdAt_lte?: DateTime | null,
+createdAt_not?: DateTime | null,
+createdAt_not_in?: Readonly<Array<DateTime | null>> | null,
+createdBy?: UserWhereInput | null,
+documentInStages_every?: PitchWhereStageInput | null,
+documentInStages_none?: PitchWhereStageInput | null,
+documentInStages_some?: PitchWhereStageInput | null,
+id?: string | null,
+id_contains?: string | null,
+id_ends_with?: string | null,
+id_in?: Readonly<Array<string | null>> | null,
+id_not?: string | null,
+id_not_contains?: string | null,
+id_not_ends_with?: string | null,
+id_not_in?: Readonly<Array<string | null>> | null,
+id_not_starts_with?: string | null,
+id_starts_with?: string | null,
+publishedAt?: DateTime | null,
+publishedAt_gt?: DateTime | null,
+publishedAt_gte?: DateTime | null,
+publishedAt_in?: Readonly<Array<DateTime | null>> | null,
+publishedAt_lt?: DateTime | null,
+publishedAt_lte?: DateTime | null,
+publishedAt_not?: DateTime | null,
+publishedAt_not_in?: Readonly<Array<DateTime | null>> | null,
+publishedBy?: UserWhereInput | null,
+scheduledIn_every?: ScheduledOperationWhereInput | null,
+scheduledIn_none?: ScheduledOperationWhereInput | null,
+scheduledIn_some?: ScheduledOperationWhereInput | null,
+title?: string | null,
+title_contains?: string | null,
+title_ends_with?: string | null,
+title_in?: Readonly<Array<string | null>> | null,
+title_not?: string | null,
+title_not_contains?: string | null,
+title_not_ends_with?: string | null,
+title_not_in?: Readonly<Array<string | null>> | null,
+title_not_starts_with?: string | null,
+title_starts_with?: string | null,
+updatedAt?: DateTime | null,
+updatedAt_gt?: DateTime | null,
+updatedAt_gte?: DateTime | null,
+updatedAt_in?: Readonly<Array<DateTime | null>> | null,
+updatedAt_lt?: DateTime | null,
+updatedAt_lte?: DateTime | null,
+updatedAt_not?: DateTime | null,
+updatedAt_not_in?: Readonly<Array<DateTime | null>> | null,
+updatedBy?: UserWhereInput | null
+}
+    
+
+  
+export enum PitchOrderByInput {
+  
+  createdAt_ASC = "createdAt_ASC",
+
+  createdAt_DESC = "createdAt_DESC",
+
+  id_ASC = "id_ASC",
+
+  id_DESC = "id_DESC",
+
+  publishedAt_ASC = "publishedAt_ASC",
+
+  publishedAt_DESC = "publishedAt_DESC",
+
+  title_ASC = "title_ASC",
+
+  title_DESC = "title_DESC",
+
+  updatedAt_ASC = "updatedAt_ASC",
+
+  updatedAt_DESC = "updatedAt_DESC"
+}
+  
+
+
+export type PitchUpdateInput = {
+  content?: RichTextAST | null,
+title?: string | null
+}
+    
+
+
+export type PitchUpdateManyInlineInput = {
+  connect?: Readonly<Array<PitchConnectInput>> | null,
+create?: Readonly<Array<PitchCreateInput>> | null,
+delete?: Readonly<Array<PitchWhereUniqueInput>> | null,
+disconnect?: Readonly<Array<PitchWhereUniqueInput>> | null,
+set?: Readonly<Array<PitchWhereUniqueInput>> | null,
+update?: Readonly<Array<PitchUpdateWithNestedWhereUniqueInput>> | null,
+upsert?: Readonly<Array<PitchUpsertWithNestedWhereUniqueInput>> | null
+}
+    
+
+
+export type PitchUpdateManyInput = {
+  content?: RichTextAST | null,
+title?: string | null
+}
+    
+
+
+export type PitchUpdateManyWithNestedWhereInput = {
+  data: PitchUpdateManyInput,
+where: PitchWhereInput
+}
+    
+
+
+export type PitchUpdateOneInlineInput = {
+  connect?: PitchWhereUniqueInput | null,
+create?: PitchCreateInput | null,
+delete?: boolean | null,
+disconnect?: boolean | null,
+update?: PitchUpdateWithNestedWhereUniqueInput | null,
+upsert?: PitchUpsertWithNestedWhereUniqueInput | null
+}
+    
+
+
+export type PitchUpdateWithNestedWhereUniqueInput = {
+  data: PitchUpdateInput,
+where: PitchWhereUniqueInput
+}
+    
+
+
+export type PitchUpsertInput = {
+  create: PitchCreateInput,
+update: PitchUpdateInput
+}
+    
+
+
+export type PitchUpsertWithNestedWhereUniqueInput = {
+  data: PitchUpsertInput,
+where: PitchWhereUniqueInput
+}
+    
+
+
+/**
+ * This contains a set of filters that can be used to compare values internally
+ */
+export type PitchWhereComparatorInput = {
+  outdated_to?: boolean | null
+}
+    
+
+
+/**
+ * Identifies documents
+ */
+export type PitchWhereInput = {
+  AND?: Readonly<Array<PitchWhereInput>> | null,
+NOT?: Readonly<Array<PitchWhereInput>> | null,
+OR?: Readonly<Array<PitchWhereInput>> | null,
+_search?: string | null,
+createdAt?: DateTime | null,
+createdAt_gt?: DateTime | null,
+createdAt_gte?: DateTime | null,
+createdAt_in?: Readonly<Array<DateTime | null>> | null,
+createdAt_lt?: DateTime | null,
+createdAt_lte?: DateTime | null,
+createdAt_not?: DateTime | null,
+createdAt_not_in?: Readonly<Array<DateTime | null>> | null,
+createdBy?: UserWhereInput | null,
+documentInStages_every?: PitchWhereStageInput | null,
+documentInStages_none?: PitchWhereStageInput | null,
+documentInStages_some?: PitchWhereStageInput | null,
+id?: string | null,
+id_contains?: string | null,
+id_ends_with?: string | null,
+id_in?: Readonly<Array<string | null>> | null,
+id_not?: string | null,
+id_not_contains?: string | null,
+id_not_ends_with?: string | null,
+id_not_in?: Readonly<Array<string | null>> | null,
+id_not_starts_with?: string | null,
+id_starts_with?: string | null,
+publishedAt?: DateTime | null,
+publishedAt_gt?: DateTime | null,
+publishedAt_gte?: DateTime | null,
+publishedAt_in?: Readonly<Array<DateTime | null>> | null,
+publishedAt_lt?: DateTime | null,
+publishedAt_lte?: DateTime | null,
+publishedAt_not?: DateTime | null,
+publishedAt_not_in?: Readonly<Array<DateTime | null>> | null,
+publishedBy?: UserWhereInput | null,
+scheduledIn_every?: ScheduledOperationWhereInput | null,
+scheduledIn_none?: ScheduledOperationWhereInput | null,
+scheduledIn_some?: ScheduledOperationWhereInput | null,
+title?: string | null,
+title_contains?: string | null,
+title_ends_with?: string | null,
+title_in?: Readonly<Array<string | null>> | null,
+title_not?: string | null,
+title_not_contains?: string | null,
+title_not_ends_with?: string | null,
+title_not_in?: Readonly<Array<string | null>> | null,
+title_not_starts_with?: string | null,
+title_starts_with?: string | null,
+updatedAt?: DateTime | null,
+updatedAt_gt?: DateTime | null,
+updatedAt_gte?: DateTime | null,
+updatedAt_in?: Readonly<Array<DateTime | null>> | null,
+updatedAt_lt?: DateTime | null,
+updatedAt_lte?: DateTime | null,
+updatedAt_not?: DateTime | null,
+updatedAt_not_in?: Readonly<Array<DateTime | null>> | null,
+updatedBy?: UserWhereInput | null
+}
+    
+
+
+/**
+ * The document in stages filter allows specifying a stage entry to cross compare the same document between different stages
+ */
+export type PitchWhereStageInput = {
+  AND?: Readonly<Array<PitchWhereStageInput>> | null,
+NOT?: Readonly<Array<PitchWhereStageInput>> | null,
+OR?: Readonly<Array<PitchWhereStageInput>> | null,
+compareWithParent?: PitchWhereComparatorInput | null,
+stage?: Stage | null
+}
+    
+
+
+/**
+ * References Pitch record uniquely
+ */
+export type PitchWhereUniqueInput = {
+  id?: string | null
+}
+    
 
 
 export type PublishLocaleInput = {
@@ -4186,6 +5281,148 @@ stage: "Stage!"
         selection: selectorFn(new Node)
       };
       return this.$_select("node", options as any) as any
+    }
+  
+
+      
+/**
+ * Retrieve a single pitch
+ */
+      pitch<Args extends VariabledInput<{
+        locales?: Readonly<Array<Locale>>
+stage?: Stage
+where: PitchWhereUniqueInput,
+      }>,Sel extends Selection<Pitch>>(args: ExactArgNames<Args, {
+        locales?: Readonly<Array<Locale>>
+stage?: Stage
+where: PitchWhereUniqueInput,
+      }>, selectorFn: (s: Pitch) => [...Sel]):$Field<"pitch", GetOutput<Sel> | null , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              locales: "[Locale!]!",
+stage: "Stage!",
+where: "PitchWhereUniqueInput!"
+            },
+        args,
+
+        selection: selectorFn(new Pitch)
+      };
+      return this.$_select("pitch", options as any) as any
+    }
+  
+
+      
+/**
+ * Retrieve document version
+ */
+      pitchVersion<Args extends VariabledInput<{
+        where: VersionWhereInput,
+      }>,Sel extends Selection<DocumentVersion>>(args: ExactArgNames<Args, {
+        where: VersionWhereInput,
+      }>, selectorFn: (s: DocumentVersion) => [...Sel]):$Field<"pitchVersion", GetOutput<Sel> | null , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              where: "VersionWhereInput!"
+            },
+        args,
+
+        selection: selectorFn(new DocumentVersion)
+      };
+      return this.$_select("pitchVersion", options as any) as any
+    }
+  
+
+      
+/**
+ * Retrieve multiple pitches
+ */
+      pitches<Args extends VariabledInput<{
+        after?: string | null
+before?: string | null
+first?: number | null
+last?: number | null
+locales?: Readonly<Array<Locale>>
+orderBy?: PitchOrderByInput | null
+skip?: number | null
+stage?: Stage
+where?: PitchWhereInput | null,
+      }>,Sel extends Selection<Pitch>>(args: ExactArgNames<Args, {
+        after?: string | null
+before?: string | null
+first?: number | null
+last?: number | null
+locales?: Readonly<Array<Locale>>
+orderBy?: PitchOrderByInput | null
+skip?: number | null
+stage?: Stage
+where?: PitchWhereInput | null,
+      }>, selectorFn: (s: Pitch) => [...Sel]):$Field<"pitches", Array<GetOutput<Sel>> , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              after: "String",
+before: "String",
+first: "Int",
+last: "Int",
+locales: "[Locale!]!",
+orderBy: "PitchOrderByInput",
+skip: "Int",
+stage: "Stage!",
+where: "PitchWhereInput"
+            },
+        args,
+
+        selection: selectorFn(new Pitch)
+      };
+      return this.$_select("pitches", options as any) as any
+    }
+  
+
+      
+/**
+ * Retrieve multiple pitches using the Relay connection interface
+ */
+      pitchesConnection<Args extends VariabledInput<{
+        after?: string | null
+before?: string | null
+first?: number | null
+last?: number | null
+locales?: Readonly<Array<Locale>>
+orderBy?: PitchOrderByInput | null
+skip?: number | null
+stage?: Stage
+where?: PitchWhereInput | null,
+      }>,Sel extends Selection<PitchConnection>>(args: ExactArgNames<Args, {
+        after?: string | null
+before?: string | null
+first?: number | null
+last?: number | null
+locales?: Readonly<Array<Locale>>
+orderBy?: PitchOrderByInput | null
+skip?: number | null
+stage?: Stage
+where?: PitchWhereInput | null,
+      }>, selectorFn: (s: PitchConnection) => [...Sel]):$Field<"pitchesConnection", GetOutput<Sel> , GetVariables<Sel, Args>> {
+      
+      const options = {
+        argTypes: {
+              after: "String",
+before: "String",
+first: "Int",
+last: "Int",
+locales: "[Locale!]!",
+orderBy: "PitchOrderByInput",
+skip: "Int",
+stage: "Stage!",
+where: "PitchWhereInput"
+            },
+        args,
+
+        selection: selectorFn(new PitchConnection)
+      };
+      return this.$_select("pitchesConnection", options as any) as any
     }
   
 
@@ -4915,9 +6152,9 @@ locales: "[Locale!]"
 }
 
 
-export class ScheduledOperationAffectedDocument extends $Union<{Article: Article,Asset: Asset,Entity: Entity,Node: Node}, "ScheduledOperationAffectedDocument"> {
+export class ScheduledOperationAffectedDocument extends $Union<{Article: Article,Asset: Asset,Pitch: Pitch,Entity: Entity,Node: Node}, "ScheduledOperationAffectedDocument"> {
   constructor() {
-    super({Article: Article,Asset: Asset,Entity: Entity,Node: Node}, "ScheduledOperationAffectedDocument")
+    super({Article: Article,Asset: Asset,Pitch: Pitch,Entity: Entity,Node: Node}, "ScheduledOperationAffectedDocument")
   }
 }
 
@@ -7347,6 +8584,196 @@ sharpen: "ImageSharpenInput"
   LocationInput: {
     latitude: "Float!",
 longitude: "Float!"
+  },
+  PitchConnectInput: {
+    position: "ConnectPositionInput",
+where: "PitchWhereUniqueInput!"
+  },
+  PitchCreateInput: {
+    content: "RichTextAST!",
+createdAt: "DateTime",
+title: "String!",
+updatedAt: "DateTime"
+  },
+  PitchCreateManyInlineInput: {
+    connect: "[PitchWhereUniqueInput!]",
+create: "[PitchCreateInput!]"
+  },
+  PitchCreateOneInlineInput: {
+    connect: "PitchWhereUniqueInput",
+create: "PitchCreateInput"
+  },
+  PitchManyWhereInput: {
+    AND: "[PitchWhereInput!]",
+NOT: "[PitchWhereInput!]",
+OR: "[PitchWhereInput!]",
+_search: "String",
+createdAt: "DateTime",
+createdAt_gt: "DateTime",
+createdAt_gte: "DateTime",
+createdAt_in: "[DateTime]",
+createdAt_lt: "DateTime",
+createdAt_lte: "DateTime",
+createdAt_not: "DateTime",
+createdAt_not_in: "[DateTime]",
+createdBy: "UserWhereInput",
+documentInStages_every: "PitchWhereStageInput",
+documentInStages_none: "PitchWhereStageInput",
+documentInStages_some: "PitchWhereStageInput",
+id: "ID",
+id_contains: "ID",
+id_ends_with: "ID",
+id_in: "[ID]",
+id_not: "ID",
+id_not_contains: "ID",
+id_not_ends_with: "ID",
+id_not_in: "[ID]",
+id_not_starts_with: "ID",
+id_starts_with: "ID",
+publishedAt: "DateTime",
+publishedAt_gt: "DateTime",
+publishedAt_gte: "DateTime",
+publishedAt_in: "[DateTime]",
+publishedAt_lt: "DateTime",
+publishedAt_lte: "DateTime",
+publishedAt_not: "DateTime",
+publishedAt_not_in: "[DateTime]",
+publishedBy: "UserWhereInput",
+scheduledIn_every: "ScheduledOperationWhereInput",
+scheduledIn_none: "ScheduledOperationWhereInput",
+scheduledIn_some: "ScheduledOperationWhereInput",
+title: "String",
+title_contains: "String",
+title_ends_with: "String",
+title_in: "[String]",
+title_not: "String",
+title_not_contains: "String",
+title_not_ends_with: "String",
+title_not_in: "[String]",
+title_not_starts_with: "String",
+title_starts_with: "String",
+updatedAt: "DateTime",
+updatedAt_gt: "DateTime",
+updatedAt_gte: "DateTime",
+updatedAt_in: "[DateTime]",
+updatedAt_lt: "DateTime",
+updatedAt_lte: "DateTime",
+updatedAt_not: "DateTime",
+updatedAt_not_in: "[DateTime]",
+updatedBy: "UserWhereInput"
+  },
+  PitchUpdateInput: {
+    content: "RichTextAST",
+title: "String"
+  },
+  PitchUpdateManyInlineInput: {
+    connect: "[PitchConnectInput!]",
+create: "[PitchCreateInput!]",
+delete: "[PitchWhereUniqueInput!]",
+disconnect: "[PitchWhereUniqueInput!]",
+set: "[PitchWhereUniqueInput!]",
+update: "[PitchUpdateWithNestedWhereUniqueInput!]",
+upsert: "[PitchUpsertWithNestedWhereUniqueInput!]"
+  },
+  PitchUpdateManyInput: {
+    content: "RichTextAST",
+title: "String"
+  },
+  PitchUpdateManyWithNestedWhereInput: {
+    data: "PitchUpdateManyInput!",
+where: "PitchWhereInput!"
+  },
+  PitchUpdateOneInlineInput: {
+    connect: "PitchWhereUniqueInput",
+create: "PitchCreateInput",
+delete: "Boolean",
+disconnect: "Boolean",
+update: "PitchUpdateWithNestedWhereUniqueInput",
+upsert: "PitchUpsertWithNestedWhereUniqueInput"
+  },
+  PitchUpdateWithNestedWhereUniqueInput: {
+    data: "PitchUpdateInput!",
+where: "PitchWhereUniqueInput!"
+  },
+  PitchUpsertInput: {
+    create: "PitchCreateInput!",
+update: "PitchUpdateInput!"
+  },
+  PitchUpsertWithNestedWhereUniqueInput: {
+    data: "PitchUpsertInput!",
+where: "PitchWhereUniqueInput!"
+  },
+  PitchWhereComparatorInput: {
+    outdated_to: "Boolean"
+  },
+  PitchWhereInput: {
+    AND: "[PitchWhereInput!]",
+NOT: "[PitchWhereInput!]",
+OR: "[PitchWhereInput!]",
+_search: "String",
+createdAt: "DateTime",
+createdAt_gt: "DateTime",
+createdAt_gte: "DateTime",
+createdAt_in: "[DateTime]",
+createdAt_lt: "DateTime",
+createdAt_lte: "DateTime",
+createdAt_not: "DateTime",
+createdAt_not_in: "[DateTime]",
+createdBy: "UserWhereInput",
+documentInStages_every: "PitchWhereStageInput",
+documentInStages_none: "PitchWhereStageInput",
+documentInStages_some: "PitchWhereStageInput",
+id: "ID",
+id_contains: "ID",
+id_ends_with: "ID",
+id_in: "[ID]",
+id_not: "ID",
+id_not_contains: "ID",
+id_not_ends_with: "ID",
+id_not_in: "[ID]",
+id_not_starts_with: "ID",
+id_starts_with: "ID",
+publishedAt: "DateTime",
+publishedAt_gt: "DateTime",
+publishedAt_gte: "DateTime",
+publishedAt_in: "[DateTime]",
+publishedAt_lt: "DateTime",
+publishedAt_lte: "DateTime",
+publishedAt_not: "DateTime",
+publishedAt_not_in: "[DateTime]",
+publishedBy: "UserWhereInput",
+scheduledIn_every: "ScheduledOperationWhereInput",
+scheduledIn_none: "ScheduledOperationWhereInput",
+scheduledIn_some: "ScheduledOperationWhereInput",
+title: "String",
+title_contains: "String",
+title_ends_with: "String",
+title_in: "[String]",
+title_not: "String",
+title_not_contains: "String",
+title_not_ends_with: "String",
+title_not_in: "[String]",
+title_not_starts_with: "String",
+title_starts_with: "String",
+updatedAt: "DateTime",
+updatedAt_gt: "DateTime",
+updatedAt_gte: "DateTime",
+updatedAt_in: "[DateTime]",
+updatedAt_lt: "DateTime",
+updatedAt_lte: "DateTime",
+updatedAt_not: "DateTime",
+updatedAt_not_in: "[DateTime]",
+updatedBy: "UserWhereInput"
+  },
+  PitchWhereStageInput: {
+    AND: "[PitchWhereStageInput!]",
+NOT: "[PitchWhereStageInput!]",
+OR: "[PitchWhereStageInput!]",
+compareWithParent: "PitchWhereComparatorInput",
+stage: "Stage"
+  },
+  PitchWhereUniqueInput: {
+    id: "ID"
   },
   PublishLocaleInput: {
     locale: "Locale!",

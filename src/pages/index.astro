@@ -1,7 +1,20 @@
 ---
-import SignUp from '../components/sign-up/sign-up.tsx'
-import Content from '../components/content/content.astro'
 import MainLayout from '../layouts/MainLayout.astro'
+import Section from '../components/ui/section.astro'
+import { ArticleOrderByInput, query } from '../lib/graphql-api'
+import { hygraph } from '../lib/hygraph-client'
+import SignUp from '../components/sign-up/sign-up'
+
+const latestArticleQuery = query((q) => [
+  q
+    .articles(
+      { first: 1, orderBy: ArticleOrderByInput.publishedAt_DESC },
+      (a) => [a.slug]
+    )
+    .as('latestArticles'),
+])
+const latestArticleData = await hygraph.request(latestArticleQuery)
+const { latestArticles } = latestArticleData
 ---
 
 <MainLayout
@@ -19,21 +32,40 @@ import MainLayout from '../layouts/MainLayout.astro'
       'Bridging technical expertise and human-centred development in the tech industry.',
   }}
 >
-  <section class="sign-up">
-    <h2>Sign up to be notified when we launch our first content!</h2>
+  <Section theme="dark">
+    <div
+      class="max-w-[80ch] mx-auto text-center h-[50vh] flex flex-col justify-center gap-6"
+    >
+      <h1 class="font-bold text-4xl md:6xl text-primary">
+        Let's improve your technical communication skills
+      </h1>
+      <h2 class="text-xl md:text-2xl">
+        Because even the most elegant code is written by humans, for humans.
+        Let's make sure you're fluent in both languages.
+      </h2>
+      {
+        latestArticles[0] !== undefined && (
+          <div>
+            <a
+              class="px-4 py-2 rounded bg-primary hover:bg-accent text-white transition-colors"
+              href={`/articles/${latestArticles[0].slug}`}
+            >
+              Read the latest article
+            </a>
+          </div>
+        )
+      }
+    </div>
+  </Section>
+  <Section
+    title="Get notified of new articles?"
+    theme="light"
+  >
+    <p>
+      If you want to stay updated with my latest articles, signup below. I won't
+      use the newsletter for anything other than notifying you of new content.
+      Promise.
+    </p>
     <SignUp client:visible />
-  </section>
-  <Content />
+  </Section>
 </MainLayout>
-<style>
-  .sign-up {
-    text-align: center;
-    width: fit-content;
-    margin: auto;
-    margin-bottom: 1rem;
-
-    h2 {
-      font-size: 1rem;
-    }
-  }
-</style>
