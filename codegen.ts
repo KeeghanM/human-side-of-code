@@ -1,9 +1,6 @@
 import type { CodegenConfig } from "@graphql-codegen/cli";
 import dotenv from "dotenv";
 
-// fix the "unable to get local issuer certificate" issue
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-
 dotenv.config();
 
 const config: CodegenConfig = {
