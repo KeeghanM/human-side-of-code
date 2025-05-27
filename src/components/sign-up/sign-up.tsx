@@ -51,7 +51,7 @@ const SignUp: React.FC = () => {
       });
       if (!response.ok) {
         const resp = await response.text()
-        const { message, code } = JSON.parse(resp)
+        const { code } = JSON.parse(resp)
 
         if (code === "duplicate_parameter") {
           throw new Error("Email already exists");

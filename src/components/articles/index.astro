@@ -17,39 +17,47 @@ const articlesData = await hygraph.request(articlesQuery)
 const { articles } = articlesData
 ---
 
-<Section
-  theme="light"
-  transition:animate="fade"
+<MainLayout
+  seo={{
+    title: 'Articles - Human Side of Code',
+    description:
+      'Explore our articles on the human side of code, covering topics from technical expertise to human-centred development.',
+  }}
 >
-  <h1 class="text-3xl font-bold">Articles</h1>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-    {
-      articles.map((article) => (
-        <div class="border rounded-lg p-4 bg-slate-50">
-          <h2>
-            <a
-              href={`/articles/${article.slug}`}
-              class="text-primary hover:underline text-xl font-bold"
-            >
-              {article.title}
-            </a>
-          </h2>
-          {article.publishedAt && (
-            <p class="text-sm text-gray-500">
-              Published on{' '}
-              {new Date(article.publishedAt).toLocaleDateString('en-GB')}
-            </p>
-          )}
-          <div class="mt-2">
-            {article.tags.map((tag) => (
-              <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                {tag}
-              </span>
-            ))}
+  <Section
+    theme="light"
+    transition:animate="fade"
+  >
+    <h1 class="text-3xl font-bold">Articles</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+      {
+        articles.map((article) => (
+          <div class="border rounded-lg p-4 bg-slate-50">
+            <h2>
+              <a
+                href={`/articles/${article.slug}`}
+                class="text-primary hover:underline text-xl font-bold"
+              >
+                {article.title}
+              </a>
+            </h2>
+            {article.publishedAt && (
+              <p class="text-sm text-gray-500">
+                Published on{' '}
+                {new Date(article.publishedAt).toLocaleDateString('en-GB')}
+              </p>
+            )}
+            <div class="mt-2">
+              {article.tags.map((tag) => (
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div set:html={article.content.html.substring(0, 150) + '...'} />
           </div>
-          <div set:html={article.content.html.substring(0, 150) + '...'} />
-        </div>
-      ))
-    }
-  </div>
-</Section>
+        ))
+      }
+    </div>
+  </Section>
+</MainLayout>

@@ -9,5 +9,6 @@
     "@cms/*": ["src/hygraph/graphql/*"],
     "@components/*": ["src/components/*"],
     "@lib/*": ["src/lib/*"]
-  }
+  },
+  "exclude": ["node_modules", "src/hygraph", "src/lib/graphql-api.ts"]
 }
