@@ -1,3 +1,5 @@
+export const prerender = false;
+
 import type { APIRoute } from "astro";
 
 export const POST: APIRoute = async ({ request }) => {
@@ -12,14 +14,13 @@ export const POST: APIRoute = async ({ request }) => {
       body: JSON.stringify({ email, listIds: [2] }), // 2 is the ID of the list we want to add the contact to "Registered Interest"
     });
     if (!response.ok) {
-      const message = await response.text();
-      throw new Error(`Failed to register interest: ${message}`);
+      const err = await response.text();
+
+      return new Response(err, { status: 500 });
     }
 
     return new Response(null, { status: 200 });
   } catch (err) {
-    const message =
-      err instanceof Error ? err.message : "An unknown error occurred";
-    return new Response(message, { status: 500 });
+    return new Response(JSON.stringify(err), { status: 500 });
   }
 };
