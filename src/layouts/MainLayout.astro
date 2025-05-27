@@ -6,8 +6,12 @@ import { ClientRouter } from 'astro:transitions'
 import Posthog from '../components/posthog.astro'
 import NavBar from '../components/nav-bar/nav-bar.astro'
 import Footer from '../components/footer/footer.astro'
+import SignUp from "../components/sign-up/sign-up";
+import Section from "../components/ui/section.astro";
 
 import '../styles/global.css'
+
+
 
 interface Props {
   seo: SEOProps
@@ -41,6 +45,18 @@ seo.description =
   <body>
     <NavBar />
     <slot />
+
+    <Section
+      title="Get notified of new articles?"
+      theme="light"
+    >
+      <p>
+        If you want to stay updated with my latest articles, signup below. I won't
+        use the newsletter for anything other than notifying you of new content.
+        Promise.
+      </p>
+      <SignUp client:visible />
+    </Section>
     <Footer />
   </body>
 </html>

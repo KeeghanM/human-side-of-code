@@ -1,6 +1,5 @@
 ---
 import Section from '../ui/section.astro'
-import MainLayout from '../../layouts/MainLayout.astro'
 import { query } from '../../lib/graphql-api'
 import { hygraph } from '../../lib/hygraph-client'
 const articlesQuery = query((q) => [
@@ -17,13 +16,6 @@ const articlesData = await hygraph.request(articlesQuery)
 const { articles } = articlesData
 ---
 
-<MainLayout
-  seo={{
-    title: 'Articles - Human Side of Code',
-    description:
-      'Explore our articles on the human side of code, covering topics from technical expertise to human-centred development.',
-  }}
->
   <Section
     theme="light"
     transition:animate="fade"
@@ -60,4 +52,3 @@ const { articles } = articlesData
       }
     </div>
   </Section>
-</MainLayout>
