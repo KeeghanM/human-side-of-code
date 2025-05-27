@@ -1,78 +1,71 @@
 ---
-import SignUp from "../components/sign-up/sign-up.tsx";
-import Content from "../components/content/content.astro";
-import Posthog from "../components/posthog.astro";
+import MainLayout from '../layouts/MainLayout.astro'
+import Section from '../components/ui/section.astro'
+import { ArticleOrderByInput, query } from '../lib/graphql-api'
+import { hygraph } from '../lib/hygraph-client'
+import SignUp from '../components/sign-up/sign-up'
+
+const latestArticleQuery = query((q) => [
+  q
+    .articles(
+      { first: 1, orderBy: ArticleOrderByInput.publishedAt_DESC },
+      (a) => [a.slug]
+    )
+    .as('latestArticles'),
+])
+const latestArticleData = await hygraph.request(latestArticleQuery)
+const { latestArticles } = latestArticleData
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="Human Side of Code - Bridging technical expertise and human-centred development in the tech industry."
-    />
-    <meta
-      name="keywords"
-      content="tech, development, soft skills, human-centred design"
-    />
-    <meta name="author" content="Human Side of Code" />
-    <title>Human Side of Code</title>
-    <Posthog />
-  </head>
-  <body>
-    <div>
-      <header>
-        <h1>
-          <!-- Accessible text is included in the SVG itself -->
-          <img src="/husoc-logo.svg" alt="" aria-hidden="true" />
-        </h1>
-      </header>
-      <section class="sign-up">
-        <h2>Sign up to be notified when we launch our first content!</h2>
-        <SignUp client:load />
-      </section>
-      <Content />
+<MainLayout
+  seo={{
+    title: 'Human Side of Code',
+    description:
+      'Bridging technical expertise and human-centred development in the tech industry.',
+  }}
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Human Side of Code',
+    url: 'https://humansideofcode.com',
+    description:
+      'Bridging technical expertise and human-centred development in the tech industry.',
+  }}
+>
+  <Section theme="dark">
+    <div
+      class="max-w-[80ch] mx-auto text-center h-[50vh] flex flex-col justify-center gap-6"
+    >
+      <h1 class="font-bold text-4xl md:6xl text-primary">
+        Let's improve your technical communication skills
+      </h1>
+      <h2 class="text-xl md:text-2xl">
+        Because even the most elegant code is written by humans, for humans.
+        Let's make sure you're fluent in both languages.
+      </h2>
+      {
+        latestArticles[0] !== undefined && (
+          <div>
+            <a
+              class="px-4 py-2 rounded bg-primary hover:bg-accent text-white transition-colors"
+              href={`/articles/${latestArticles[0].slug}`}
+            >
+              Read the latest article
+            </a>
+          </div>
+        )
+      }
     </div>
-  </body>
-</html>
-
-<style lang="scss">
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    font-family: "Inter", sans-serif;
-    line-height: 1.6;
-    font-size: 16px;
-    display: grid;
-    place-items: center;
-    min-height: 100dvh;
-  }
-
-  header {
-    h1 {
-      width: 100%;
-      text-align: center;
-    }
-
-    img {
-      width: 100%;
-      max-width: 300px;
-    }
-  }
-
-  .sign-up {
-    text-align: center;
-    width: fit-content;
-    margin: auto;
-    margin-bottom: 1rem;
-
-    h2 {
-      font-size: 1rem;
-    }
-  }
-</style>
+  </Section>
+  <Section
+    title="Get notified of new articles?"
+    theme="light"
+  >
+    <p>
+      If you want to stay updated with my latest articles, signup below. I won't
+      use the newsletter for anything other than notifying you of new content.
+      Promise.
+    </p>
+    <SignUp client:visible />
+  </Section>
+</MainLayout>

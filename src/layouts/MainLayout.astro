@@ -1,0 +1,96 @@
+---
+// import { Head } from 'astro-capo'
+import { SEO, type SEOProps } from 'astro-seo'
+import { Schema, type SchemaProps } from 'astro-seo-schema'
+import { ClientRouter } from 'astro:transitions'
+import Posthog from '../components/posthog.astro'
+import NavBar from '../components/nav-bar/nav-bar.astro'
+import Footer from '../components/footer/footer.astro'
+
+import './src/styles/global.css'
+
+interface Props {
+  seo: SEOProps
+  schema?: SchemaProps<any>['item']
+}
+
+const { seo, schema } = Astro.props
+seo.title = seo.title || 'Human Side of Code'
+seo.description =
+  seo.description ||
+  'Bridging technical expertise and human-centred development in the tech industry.'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+    <SEO {...seo} />
+    {schema && <Schema item={schema} />}
+    <Posthog />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
+    <ClientRouter />
+  </head>
+  <body>
+    <NavBar />
+    <slot />
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  * {
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    --scroll-bar-color: hsl(104, 81%, 40%);
+  }
+
+  /* Custom scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--scroll-bar-color);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    opacity: 0.8;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+</style>
+
+<script is:inline>
+  const changeScrollBarColor = () => {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+    const scrollPercent = scrollTop / maxScroll
+    const startSat = 81
+    const endSat = 0
+    const startLight = 40
+    const endLight = 0
+
+    const sat = Math.round(startSat + (endSat - startSat) * scrollPercent)
+    const light = Math.round(
+      startLight + (endLight - startLight) * scrollPercent
+    )
+
+    document.documentElement.style.setProperty(
+      '--scroll-bar-color',
+      `hsl(104, ${sat}%, ${light}%)`
+    )
+  }
+
+  window.addEventListener('scroll', changeScrollBarColor)
+  window.addEventListener('load', changeScrollBarColor)
+</script>

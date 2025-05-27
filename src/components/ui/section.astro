@@ -1,0 +1,16 @@
+---
+interface Props {
+  title?: string
+  theme: 'light' | 'dark'
+}
+const { title, theme } = Astro.props
+---
+
+<section
+  class={`py-8 px-4 ${theme === 'dark' ? 'bg-gray-800 text-white' : 'bg-white text-black'}`}
+>
+  <div class="mx-auto max-w-screen-lg">
+    {title && <h2 class="text-2xl font-bold mb-4">{title}</h2>}
+    <slot />
+  </div>
+</section>

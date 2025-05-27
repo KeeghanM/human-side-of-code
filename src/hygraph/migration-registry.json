@@ -1,0 +1,6 @@
+{
+  "appliedMigrations": [
+    "001_add_article.ts",
+    "002_add_pitch_model.ts"
+  ]
+}

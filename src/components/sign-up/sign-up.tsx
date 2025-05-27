@@ -50,14 +50,24 @@ const SignUp: React.FC = () => {
         body: JSON.stringify({ email: formData.email }),
       });
       if (!response.ok) {
-        const message = await response.text();
-        throw new Error(`Failed to sign up: ${message}`);
+        const resp = await response.text()
+        const { message, code } = JSON.parse(resp)
+
+        if (code === "duplicate_parameter") {
+          throw new Error("Email already exists");
+        }
+
+        throw new Error("An error occurred while signing up. Please try again.");
       }
       setStatus("signed-up");
       setError(null);
     } catch (err) {
-      console.error(err);
-      setError("An error occurred during sign up. Please try again.");
+      const message = err instanceof Error ?
+        err.message.includes("Email already exists") ?
+          "This email is already registered." :
+          "An error occurred while signing up. Please try again." :
+        "An error occurred while signing up. Please try again.";
+      setError(message);
     }
   };
 
