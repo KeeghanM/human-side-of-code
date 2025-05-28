@@ -24,7 +24,7 @@ export default function PitchDialog({ tabs }: PitchProps) {
       </button>
       <dialog
         ref={ref}
-        className="bg-white p-8 max-w-4xl mx-auto my-8 rounded shadow-lg text-center"
+        className="bg-white p-8 max-w-screen md:max-w-4xl mx-auto m-8 rounded shadow-lg text-center"
       >
         <button onClick={() => ref.current?.close()} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 cursor-pointer">
           <svg

@@ -1,5 +1,5 @@
 ---
-// import { Head } from 'astro-capo'
+import { Head } from 'astro-capo'
 import { SEO, type SEOProps } from 'astro-seo'
 import { Schema, type SchemaProps } from 'astro-seo-schema'
 import { ClientRouter } from 'astro:transitions'
@@ -26,12 +26,13 @@ seo.description =
 ---
 
 <html lang="en">
-  <head>
+  <Head>
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width"
     />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <SEO {...seo} />
     {schema && <Schema item={schema} />}
     <Posthog />
@@ -41,11 +42,10 @@ seo.description =
       href="/favicon.svg"
     />
     <ClientRouter />
-  </head>
+  </Head>
   <body>
     <NavBar />
     <slot />
-
     <Section
       title="Get notified of new articles?"
       theme="light"
