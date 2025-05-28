@@ -13,7 +13,7 @@ export default function PitchDialog({ tabs }: PitchProps) {
   return (
     <>
       <button
-      className="cursor-pointer text-black hover:text-primary uppercase font-bold text-xl"
+      className="cursor-pointer text-text-800 hover:text-primary uppercase font-bold text-xl"
         onClick={() => {
           if (ref.current) {
             ref.current.showModal();
@@ -24,7 +24,7 @@ export default function PitchDialog({ tabs }: PitchProps) {
       </button>
       <dialog
         ref={ref}
-        className="bg-white p-8 max-w-screen md:max-w-4xl mx-auto m-8 rounded shadow-lg text-center"
+        className="bg-background-50 text-text-800 p-4 md:p-6 rounded-lg shadow w-[calc(100vw_-_2rem)] max-w-3xl my-auto mx-auto relative"
       >
         <button onClick={() => ref.current?.close()} className="absolute top-2 right-2 text-gray-500 hover:text-gray-700 cursor-pointer">
           <svg
@@ -38,12 +38,12 @@ export default function PitchDialog({ tabs }: PitchProps) {
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <div className="options flex justify-center gap-2 mb-4">
+        <div className="options flex flex-wrap justify-center gap-2 mb-4">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               id={`btn-${tab.id}`}
-              className={`tab-btn px-4 py-2 rounded hover:bg-primary cursor-pointer ${activeTab === tab.id ? 'bg-primary' : 'bg-gray-300'}`}
+              className={`tab-btn px-4 py-2 rounded hover:bg-primary-500 cursor-pointer transition-colors duration-200 ${activeTab === tab.id ? 'bg-primary-500' : 'bg-gray-300'}`}
               onClick={() => handleTabClick(tab.id)}
             >
               {tab.title}

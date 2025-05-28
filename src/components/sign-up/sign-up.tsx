@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import type { ChangeEvent } from "react";
-import "./sign-up.scss";
 
 interface FormData {
   email: string;
@@ -99,22 +98,27 @@ const SignUp: React.FC = () => {
   };
 
   if (error) {
-    return <div className="message error">{error}</div>;
+    return <div className="text-center italic text-red-600">{error}</div>;
   }
 
   if (status === "finished") {
-    return <div className="message success">Thank you for signing up!</div>;
+    return <div className="text-center italic text-green-600">Thank you for signing up!</div>;
   }
 
   return (
     <>
       {status === "signed-up" && (
-        <p>
+        <p className="text-center">
           Thank you for signing up! Would you like to add any additional
           information?
         </p>
       )}
-      <div className="signup-form">
+      <div
+        className="
+          flex flex-col items-center w-full max-w-[400px] mx-auto gap-2.5
+          sm:flex-row
+        "
+      >
         {status === "waiting" && (
           <>
             <input
@@ -124,8 +128,18 @@ const SignUp: React.FC = () => {
               value={formData.email}
               onChange={handleInputChange}
               aria-label="Email address"
+              className="w-4/5 p-2.5 border border-gray-300 rounded bg-background-50"
             />
-            <button onClick={handleSignUp}>Sign Up</button>
+            <button
+              onClick={handleSignUp}
+              className="
+                px-5 py-2.5 bg-primary-500 text-white rounded
+                hover:bg-primary-600 transition-colors
+                min-w-fit w-fit cursor-pointer
+              "
+            >
+              Sign Up
+            </button>
           </>
         )}
         {status === "signed-up" && (
@@ -137,6 +151,7 @@ const SignUp: React.FC = () => {
               value={formData.firstName}
               onChange={handleInputChange}
               aria-label="First name"
+              className="w-4/5 p-2.5 border border-gray-300 rounded bg-background-50"
             />
             <input
               type="text"
@@ -145,12 +160,22 @@ const SignUp: React.FC = () => {
               value={formData.lastName}
               onChange={handleInputChange}
               aria-label="Last name"
+              className="w-4/5 p-2.5 border border-gray-300 rounded bg-background-50"
             />
-            <button onClick={handleAdditionalInfo}>Submit</button>
+            <button
+              onClick={handleAdditionalInfo}
+              className="
+                px-5 py-2.5 bg-primary-500 text-white rounded
+                hover:bg-primary-600 transition-colors
+                min-w-fit w-fit cursor-pointer
+              "
+            >
+              Submit
+            </button>
           </>
         )}
       </div>
-      {message && <div className="message">{message}</div>}
+      {message && <div className="text-center italic text-red-500">{message}</div>}
     </>
   );
 };

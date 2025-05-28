@@ -86,20 +86,20 @@ const { title, content, publishedAt } = article
     data-next-slug={nextArticle?.slug}
     data-prev-slug={prevArticle?.slug}
   >
-    <h1 class="text-3xl font-bold">{title}</h1>
+    <h1 class="text-3xl font-bold text-primary-500">{title}</h1>
     {
       publishedAt && (
-        <p class="text-sm text-gray-500">
+        <p class="text-sm text-accent-700 italic">
           Published on {new Date(publishedAt).toLocaleDateString('en-GB')}
         </p>
       )
     }
     <article
       set:html={content.html}
-      class="mt-4 mb-24"
+      class="mt-4 mb-24 leading-relaxed"
     />
   </main>
-  <div class="fixed right-0 top-0 bottom-0 flex items-center text-black">
+  <div class="fixed right-0 top-0 bottom-0 flex items-center text-text-800">
     <svg
       class="rotate-90 hidden"
       id="next-arrow"
@@ -113,7 +113,7 @@ const { title, content, publishedAt } = article
       ></path></svg
     >
   </div>
-  <div class="fixed left-0 top-0 bottom-0 flex items-center text-black">
+  <div class="fixed left-0 top-0 bottom-0 flex items-center text-text-800">
     <svg
       class="-rotate-90 hidden"
       id="prev-arrow"
@@ -212,7 +212,7 @@ const { title, content, publishedAt } = article
 
 <style is:global>
   article > * + * {
-    margin-top: 1em;
+    margin-top: 1.2em;
   }
 
   article {
@@ -232,7 +232,7 @@ const { title, content, publishedAt } = article
     }
 
     a {
-      color: #44bf19;
+      color: var(--color-primary-500);
     }
 
     ul {

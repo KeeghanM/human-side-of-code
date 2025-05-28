@@ -35,7 +35,7 @@ const { latestArticles } = latestArticleData
     <div
       class="max-w-[80ch] mx-auto text-center h-[50vh] flex flex-col justify-center gap-6"
     >
-      <h1 class="font-bold text-4xl md:6xl text-primary">
+      <h1 class="font-bold text-4xl md:6xl text-primary-500">
         Let's improve your technical communication skills
       </h1>
       <h2 class="text-xl md:text-2xl">
@@ -46,7 +46,7 @@ const { latestArticles } = latestArticleData
         latestArticles[0] !== undefined && (
           <div>
             <a
-              class="px-4 py-2 rounded bg-primary hover:bg-accent text-white transition-colors"
+              class="px-4 py-2 rounded bg-primary-500 hover:bg-primary-600 text-white transition-colors"
               href={`/articles/${latestArticles[0].slug}`}
             >
               Read the latest article
