@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import node from "@astrojs/node";
-import purgecss from "astro-purgecss";
 import compress from "astro-compress";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from '@astrojs/sitemap';
@@ -9,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.humansideofcode.org",
-  integrations: [react(), sitemap(), purgecss(), compress()],
+  integrations: [react(), sitemap(), compress()],
   output: "static",
   prefetch: {
     prefetchAll: true,
