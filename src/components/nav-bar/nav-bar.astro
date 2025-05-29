@@ -1,11 +1,11 @@
 ---
-import { Image } from 'astro:assets'
-import PitchDialog from '../pitch-dialog/index.astro'
+import { Image } from "astro:assets";
+import PitchDialog from "../pitch-dialog/index.astro";
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/articles', label: 'Articles' },
-  { href: '/about', label: 'About' },
-]
+  { href: "/", label: "Home" },
+  { href: "/articles", label: "Articles" },
+  { href: "/about", label: "About" },
+];
 ---
 
 <header
@@ -27,7 +27,7 @@ const links = [
         {
           links.map((link) => (
             <li>
-              {link.label === 'About' ? (
+              {link.label === "About" ? (
                 <PitchDialog />
               ) : (
                 <a
@@ -46,17 +46,17 @@ const links = [
   </div>
 
   <script>
-    const navBar = document.querySelector('.nav-bar') as HTMLHeadingElement
-    const logo = navBar.querySelector('img') as HTMLImageElement
-    const logoWidth = logo.width
-    const logoHeight = logo.height
+    const navBar = document.querySelector(".nav-bar") as HTMLHeadingElement;
+    const logo = navBar.querySelector("img") as HTMLImageElement;
+    const logoWidth = logo.width;
+    const logoHeight = logo.height;
 
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY
-      const newHeight = Math.max(80, logoHeight - scrollY / 2)
-      const newWidth = (newHeight / logoHeight) * logoWidth
-      logo.width = newWidth
-      logo.height = newHeight
-    })
+    window.addEventListener("scroll", () => {
+      const scrollY = window.scrollY;
+      const newHeight = Math.max(80, logoHeight - scrollY / 2);
+      const newWidth = (newHeight / logoHeight) * logoWidth;
+      logo.width = newWidth;
+      logo.height = newHeight;
+    });
   </script>
 </header>

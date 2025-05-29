@@ -1,59 +1,51 @@
 ---
-import { Head } from 'astro-capo'
-import { SEO, type SEOProps } from 'astro-seo'
-import { Schema, type SchemaProps } from 'astro-seo-schema'
-import { ClientRouter } from 'astro:transitions'
-import Posthog from '../components/posthog.astro'
-import NavBar from '../components/nav-bar/nav-bar.astro'
-import Footer from '../components/footer/footer.astro'
+import { Head } from "astro-capo";
+import { SEO, type SEOProps } from "astro-seo";
+import { Schema, type SchemaProps } from "astro-seo-schema";
+import { ClientRouter } from "astro:transitions";
+import Posthog from "../components/posthog.astro";
+import NavBar from "../components/nav-bar/nav-bar.astro";
+import Footer from "../components/footer/footer.astro";
 import SignUp from "../components/sign-up/sign-up";
 import Section from "../components/ui/section.astro";
 
-import '../styles/global.css'
-
-
+import "../styles/global.css";
 
 interface Props {
-  seo: SEOProps
-  schema?: SchemaProps<any>['item']
+  seo: SEOProps;
+  schema?: SchemaProps<any>["item"];
 }
 
-const { seo, schema } = Astro.props
-seo.title = seo.title || 'Human Side of Code'
+const { seo, schema } = Astro.props;
+seo.title = seo.title || "Human Side of Code";
 seo.description =
   seo.description ||
-  'Bridging technical expertise and human-centred development in the tech industry.'
+  "Bridging technical expertise and human-centred development in the tech industry.";
 ---
 
 <html lang="en">
   <Head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width"
-    />
+    <meta name="viewport" content="width=device-width" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <SEO {...seo} />
     {schema && <Schema item={schema} />}
     <Posthog />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="/favicon.svg"
-    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <ClientRouter />
+    <script
+      src="https://analytics.ahrefs.com/analytics.js"
+      data-key="PY61kqfFZwGdho828J8M8Q"
+      async></script>
   </Head>
   <body class="bg-background-50 text-text-800">
     <NavBar />
     <slot />
-    <Section
-      title="Get notified of new articles?"
-      theme="accent"
-    >
+    <Section title="Get notified of new articles?" theme="accent">
       <p>
-        If you want to stay updated with my latest articles, signup below. I won't
-        use the newsletter for anything other than notifying you of new content.
-        Promise.
+        If you want to stay updated with my latest articles, signup below. I
+        won't use the newsletter for anything other than notifying you of new
+        content. Promise.
       </p>
       <SignUp client:visible />
     </Section>
@@ -88,25 +80,26 @@ seo.description =
 
 <script is:inline>
   const changeScrollBarColor = () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop
-    const maxScroll = document.documentElement.scrollHeight - window.innerHeight
-    const scrollPercent = scrollTop / maxScroll
-    const startSat = 81
-    const endSat = 0
-    const startLight = 40
-    const endLight = 0
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const maxScroll =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = scrollTop / maxScroll;
+    const startSat = 81;
+    const endSat = 0;
+    const startLight = 40;
+    const endLight = 0;
 
-    const sat = Math.round(startSat + (endSat - startSat) * scrollPercent)
+    const sat = Math.round(startSat + (endSat - startSat) * scrollPercent);
     const light = Math.round(
-      startLight + (endLight - startLight) * scrollPercent
-    )
+      startLight + (endLight - startLight) * scrollPercent,
+    );
 
     document.documentElement.style.setProperty(
-      '--scroll-bar-color',
-      `hsl(104, ${sat}%, ${light}%)`
-    )
-  }
+      "--scroll-bar-color",
+      `hsl(104, ${sat}%, ${light}%)`,
+    );
+  };
 
-  window.addEventListener('scroll', changeScrollBarColor)
-  window.addEventListener('load', changeScrollBarColor)
+  window.addEventListener("scroll", changeScrollBarColor);
+  window.addEventListener("load", changeScrollBarColor);
 </script>

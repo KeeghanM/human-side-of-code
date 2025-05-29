@@ -1,24 +1,21 @@
 ---
-import Section from '../ui/section.astro'
-import { ArticleOrderByInput, query } from '../../lib/graphql-api'
-import { hygraphRequest } from '../../lib/hygraph-client'
+import Section from "../ui/section.astro";
+import { ArticleOrderByInput, query } from "../../lib/graphql-api";
+import { hygraphRequest } from "../../lib/hygraph-client";
 const articlesQuery = query((q) => [
   q.articles(
     {
       orderBy: ArticleOrderByInput.publishedAt_DESC,
     },
-    (a) => [a.slug, a.title, a.publishedAt, a.content((c) => [c.html]), a.tags]
+    (a) => [a.slug, a.title, a.publishedAt, a.content((c) => [c.html]), a.tags],
   ),
-])
-const articlesData = await hygraphRequest(articlesQuery)
+]);
+const articlesData = await hygraphRequest(articlesQuery);
 
-const { articles } = articlesData
+const { articles } = articlesData;
 ---
 
-<Section
-  theme="light"
-  transition:animate="fade"
->
+<Section theme="light" transition:animate="fade">
   <h1 class="text-3xl font-bold">Articles</h1>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
     {
@@ -34,8 +31,8 @@ const { articles } = articlesData
           </h2>
           {article.publishedAt && (
             <p class="text-sm text-accent-700 italic">
-              Published on{' '}
-              {new Date(article.publishedAt).toLocaleDateString('en-GB')}
+              Published on{" "}
+              {new Date(article.publishedAt).toLocaleDateString("en-GB")}
             </p>
           )}
           <div class="mt-2">
@@ -45,7 +42,7 @@ const { articles } = articlesData
               </span>
             ))}
           </div>
-          <div set:html={article.content.html.substring(0, 150) + '...'} />
+          <div set:html={article.content.html.substring(0, 150) + "..."} />
         </div>
       ))
     }

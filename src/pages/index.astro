@@ -1,34 +1,34 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro'
-import Section from '../components/ui/section.astro'
-import { ArticleOrderByInput, query } from '../lib/graphql-api'
-import { hygraphRequest } from '../lib/hygraph-client'
+import MainLayout from "../layouts/MainLayout.astro";
+import Section from "../components/ui/section.astro";
+import { ArticleOrderByInput, query } from "../lib/graphql-api";
+import { hygraphRequest } from "../lib/hygraph-client";
 
 const latestArticleQuery = query((q) => [
   q
     .articles(
       { first: 1, orderBy: ArticleOrderByInput.publishedAt_DESC },
-      (a) => [a.slug]
+      (a) => [a.slug],
     )
-    .as('latestArticles'),
-])
-const latestArticleData = await hygraphRequest(latestArticleQuery)
-const { latestArticles } = latestArticleData
+    .as("latestArticles"),
+]);
+const latestArticleData = await hygraphRequest(latestArticleQuery);
+const { latestArticles } = latestArticleData;
 ---
 
 <MainLayout
   seo={{
-    title: 'Human Side of Code',
+    title: "Human Side of Code",
     description:
-      'Bridging technical expertise and human-centred development in the tech industry.',
+      "Bridging technical expertise and human-centred development in the tech industry.",
   }}
   schema={{
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'Human Side of Code',
-    url: 'https://humansideofcode.com',
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Human Side of Code",
+    url: "https://humansideofcode.com",
     description:
-      'Bridging technical expertise and human-centred development in the tech industry.',
+      "Bridging technical expertise and human-centred development in the tech industry.",
   }}
 >
   <Section theme="dark">
