@@ -25,7 +25,6 @@
     "astro": "^5.7.9",
     "astro-capo": "^0.0.1",
     "astro-compress": "^2.3.8",
-    "astro-purgecss": "^5.2.2",
     "astro-seo": "^0.8.4",
     "astro-seo-schema": "^5.0.0",
     "graphql-request": "^7.1.2",
