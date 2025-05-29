@@ -131,7 +131,7 @@ const { title, content, publishedAt } = article
 
 <script>
   import { navigate } from 'astro:transitions/client'
-  
+
   const prevSlug = document.querySelector('main')?.dataset.prevSlug
   const nextSlug = document.querySelector('main')?.dataset.nextSlug
 
@@ -175,7 +175,7 @@ const { title, content, publishedAt } = article
         prevArrow.style.opacity = opacity.toString()
 
         if (willNav) {
-          prevArrow.style.color = 'var(--color-primary)'
+          prevArrow.style.color = 'var(--color-primary-500)'
         } else {
           prevArrow.style.color = '#000'
         }
@@ -185,7 +185,7 @@ const { title, content, publishedAt } = article
         nextArrow.style.height = `${arrowSize}px`
         nextArrow.style.opacity = opacity.toString()
         if (willNav) {
-          nextArrow.style.color = 'var(--color-primary)'
+          nextArrow.style.color = 'var(--color-primary-500)'
         } else {
           nextArrow.style.color = '#000'
         }
@@ -216,34 +216,32 @@ const { title, content, publishedAt } = article
     margin-top: 1.2em;
   }
 
-  article {
-    h2 {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
+  article h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
 
-    h3 {
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
+  article h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
 
-    h4 {
-      font-size: 1.125rem;
-      font-weight: bold;
-    }
+  article h4 {
+    font-size: 1.125rem;
+    font-weight: bold;
+  }
 
-    a {
-      color: var(--color-primary-500);
-    }
+  article a {
+    color: var(--color-primary-500);
+  }
 
-    ul {
-      list-style: disc;
-      padding-left: 1.5rem;
-    }
+  article ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+  }
 
-    ol {
-      list-style: decimal;
-      padding-left: 1.5rem;
-    }
+  article ol {
+    list-style: decimal;
+    padding-left: 1.5rem;
   }
 </style>
