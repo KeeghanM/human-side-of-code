@@ -132,83 +132,96 @@ const { title, content, publishedAt } = article
 <script>
   import { navigate } from 'astro:transitions/client'
 
-  const prevSlug = document.querySelector('main')?.dataset.prevSlug
-  const nextSlug = document.querySelector('main')?.dataset.nextSlug
+  function initSwipeNavigation() {
+    const config = {
+      minMove: 150,
+      prevSlug: document.querySelector('main')?.dataset.prevSlug,
+      nextSlug: document.querySelector('main')?.dataset.nextSlug,
+      prevArrow: document.getElementById('prev-arrow'),
+      nextArrow: document.getElementById('next-arrow'),
+    }
 
-  const prevArrow = document.getElementById('prev-arrow')
-  const nextArrow = document.getElementById('next-arrow')
+    if (
+      !config.prevArrow ||
+      !config.nextArrow ||
+      (!config.prevSlug && !config.nextSlug)
+    ) {
+      return
+    }
 
-  if ((prevSlug || nextSlug) && prevArrow && nextArrow) {
-    const minMoveRequirement = 150
-    let touching = false
-    let willNav = false
-    let startX = 0
-    let direction = 'prev'
+    let state = { touching: false, startX: 0 }
 
-    prevArrow.style.display = 'none'
-    nextArrow.style.display = 'none'
-    prevArrow.style.color = '#000'
-    nextArrow.style.color = '#000'
+    const updateArrow = (
+      arrow: HTMLElement,
+      distance: number,
+      canNav: boolean
+    ) => {
+      const size = Math.min(distance, config.minMove)
+      const opacity = distance / config.minMove
+      const active = distance > config.minMove && canNav
 
+      Object.assign(arrow.style, {
+        display: 'block',
+        width: `${size}px`,
+        height: `${size}px`,
+        opacity: opacity.toString(),
+        color: active ? 'var(--color-primary-500)' : '#000',
+      })
+    }
+
+    const resetArrows = () => {
+      ;[config.prevArrow, config.nextArrow].forEach((arrow) => {
+        Object.assign(arrow!.style, {
+          display: 'none',
+          color: '#000',
+        })
+      })
+    }
+
+    // Initialize
+    resetArrows()
+
+    // Event listeners
     window.addEventListener('pointerdown', (e) => {
-      touching = true
-      startX = e.clientX
+      state = { touching: true, startX: e.clientX }
     })
+
     window.addEventListener('pointermove', (e) => {
-      if (!touching) return
+      if (!state.touching) return
 
-      const deltaX = startX - e.clientX
-      direction = deltaX > 0 ? 'next' : 'prev'
-      willNav =
-        Math.abs(deltaX) > minMoveRequirement
-          ? direction === 'next'
-            ? nextSlug !== undefined
-            : prevSlug !== undefined
-          : false
+      const deltaX = state.startX - e.clientX
+      const direction = deltaX > 0 ? 'next' : 'prev'
+      const distance = Math.abs(deltaX)
 
-      const arrowSize = Math.min(Math.abs(deltaX), minMoveRequirement)
-      const opacity = Math.abs(deltaX) / minMoveRequirement
-      if (direction === 'prev' && prevSlug !== undefined) {
-        prevArrow.style.display = 'block'
-        prevArrow.style.width = `${arrowSize}px`
-        prevArrow.style.height = `${arrowSize}px`
-        prevArrow.style.opacity = opacity.toString()
+      // Hide both first
+      resetArrows()
 
-        if (willNav) {
-          prevArrow.style.color = 'var(--color-primary-500)'
-        } else {
-          prevArrow.style.color = '#000'
-        }
-      } else if (direction === 'next' && nextSlug !== undefined) {
-        nextArrow.style.display = 'block'
-        nextArrow.style.width = `${arrowSize}px`
-        nextArrow.style.height = `${arrowSize}px`
-        nextArrow.style.opacity = opacity.toString()
-        if (willNav) {
-          nextArrow.style.color = 'var(--color-primary-500)'
-        } else {
-          nextArrow.style.color = '#000'
-        }
+      // Show appropriate arrow
+      if (direction === 'prev' && config.prevSlug) {
+        updateArrow(config.prevArrow!, distance, true)
+      } else if (direction === 'next' && config.nextSlug) {
+        updateArrow(config.nextArrow!, distance, true)
       }
     })
 
-    window.addEventListener('pointerup', () => {
-      console.log(willNav)
+    window.addEventListener('pointerup', (e) => {
+      if (!state.touching) return
+
+      const deltaX = state.startX - e.clientX
+      const direction = deltaX > 0 ? 'next' : 'prev'
+      const willNav = Math.abs(deltaX) > config.minMove
+
       if (willNav) {
-        navigate(
-          direction === 'prev'
-            ? `/articles/${prevSlug}`
-            : `/articles/${nextSlug}`
-        )
-      } else {
-        touching = false
-        prevArrow.style.display = 'none'
-        nextArrow.style.display = 'none'
-        prevArrow.style.color = '#000'
-        nextArrow.style.color = '#000'
+        const slug = direction === 'next' ? config.nextSlug : config.prevSlug
+        if (slug) navigate(`/articles/${slug}`)
       }
+
+      state.touching = false
+      resetArrows()
     })
   }
+
+  initSwipeNavigation()
 </script>
 
 <style is:inline>
