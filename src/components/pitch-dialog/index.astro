@@ -1,13 +1,13 @@
 ---
 import { query } from '../../lib/graphql-api'
-import { hygraph } from '../../lib/hygraph-client'
+import { hygraphRequest } from '../../lib/hygraph-client'
 import PitchDialog from './pitch-dialog'
 
 export const pitchQuery = query((q) => [
   q.pitches({}, (p) => [p.id, p.title, p.content((c) => [c.html])]),
 ])
 
-const pitchData = await hygraph.request(pitchQuery)
+const pitchData = await hygraphRequest(pitchQuery)
 const { pitches } = pitchData
 ---
 

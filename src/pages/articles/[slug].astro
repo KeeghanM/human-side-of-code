@@ -1,12 +1,12 @@
 ---
-import { hygraph } from '../../lib/hygraph-client.ts'
+import { hygraphRequest } from '../../lib/hygraph-client.ts'
 import { query } from '../../lib/graphql-api.ts'
 import MainLayout from '../../layouts/MainLayout.astro'
 export async function getStaticPaths() {
   // Fetch all articles to generate static paths
   // This is a simple query to get all articles with their slugs
   const articlesQuery = query((q) => [q.articles({}, (a) => [a.slug])])
-  const articles = await hygraph.request(articlesQuery)
+  const articles = await hygraphRequest(articlesQuery)
 
   // This will return an array of objects with the slug of each article
   // This is used to generate static paths for each article
@@ -27,7 +27,7 @@ const articleQuery = query((q) => [
   ]),
 ])
 
-const articleResponse = await hygraph.request(articleQuery)
+const articleResponse = await hygraphRequest(articleQuery)
 
 // Check if the article exists, if not redirect to 404 page
 if (!articleResponse.article) {
@@ -60,7 +60,7 @@ const articleNavQuery = query((q) => [
     .as('prevArticles'),
 ])
 
-const articleNavResponse = await hygraph.request(articleNavQuery)
+const articleNavResponse = await hygraphRequest(articleNavQuery)
 const { nextArticles, prevArticles } = articleNavResponse
 const nextArticle = nextArticles[0]
 const prevArticle = prevArticles[0]

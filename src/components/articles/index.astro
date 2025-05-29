@@ -1,7 +1,7 @@
 ---
 import Section from '../ui/section.astro'
 import { ArticleOrderByInput, query } from '../../lib/graphql-api'
-import { hygraph } from '../../lib/hygraph-client'
+import { hygraphRequest } from '../../lib/hygraph-client'
 const articlesQuery = query((q) => [
   q.articles(
     {
@@ -10,7 +10,7 @@ const articlesQuery = query((q) => [
     (a) => [a.slug, a.title, a.publishedAt, a.content((c) => [c.html]), a.tags]
   ),
 ])
-const articlesData = await hygraph.request(articlesQuery)
+const articlesData = await hygraphRequest(articlesQuery)
 
 const { articles } = articlesData
 ---

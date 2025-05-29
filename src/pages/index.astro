@@ -2,7 +2,7 @@
 import MainLayout from '../layouts/MainLayout.astro'
 import Section from '../components/ui/section.astro'
 import { ArticleOrderByInput, query } from '../lib/graphql-api'
-import { hygraph } from '../lib/hygraph-client'
+import { hygraphRequest } from '../lib/hygraph-client'
 
 const latestArticleQuery = query((q) => [
   q
@@ -12,7 +12,7 @@ const latestArticleQuery = query((q) => [
     )
     .as('latestArticles'),
 ])
-const latestArticleData = await hygraph.request(latestArticleQuery)
+const latestArticleData = await hygraphRequest(latestArticleQuery)
 const { latestArticles } = latestArticleData
 ---
 
