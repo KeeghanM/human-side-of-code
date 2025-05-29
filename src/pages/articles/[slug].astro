@@ -130,13 +130,14 @@ const { title, content, publishedAt } = article
 </MainLayout>
 
 <script>
+  import { navigate } from 'astro:transitions/client'
+  
   const prevSlug = document.querySelector('main')?.dataset.prevSlug
   const nextSlug = document.querySelector('main')?.dataset.nextSlug
 
   const prevArrow = document.getElementById('prev-arrow')
   const nextArrow = document.getElementById('next-arrow')
 
-  import { navigate } from 'astro:transitions/client'
   if ((prevSlug || nextSlug) && prevArrow && nextArrow) {
     const minMoveRequirement = 150
     let touching = false
@@ -210,7 +211,7 @@ const { title, content, publishedAt } = article
   }
 </script>
 
-<style is:global>
+<style is:inline>
   article > * + * {
     margin-top: 1.2em;
   }

@@ -28,14 +28,7 @@ const links = [
           links.map((link) => (
             <li>
               {link.label === 'About' ? (
-                <PitchDialog server:defer>
-                  <p
-                    class="text-text-800 hover:text-primary uppercase font-bold text-xl"
-                    slot="fallback"
-                  >
-                    ABOUT
-                  </p>
-                </PitchDialog>
+                <PitchDialog />
               ) : (
                 <a
                   class="text-text-800 hover:text-primary uppercase font-bold text-xl"

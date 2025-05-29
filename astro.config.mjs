@@ -1,14 +1,17 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import node from "@astrojs/node";
+import purgecss from "astro-purgecss";
 import compress from "astro-compress";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
+//Fix the unable to get local issuer certificate error
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = process.env.NODE_ENV === "development" ? "0" : "1";
+
 export default defineConfig({
   site: "https://www.humansideofcode.org",
-  integrations: [react(), sitemap(), compress()],
+  integrations: [react(), sitemap(), purgecss(), compress()],
   output: "static",
   prefetch: {
     prefetchAll: true,
