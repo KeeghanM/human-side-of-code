@@ -1,12 +1,12 @@
 ---
-import { hygraphRequest } from "../../lib/hygraph-client.ts";
-import { query } from "../../lib/graphql-api.ts";
-import MainLayout from "../../layouts/MainLayout.astro";
+import { hygraphRequest } from '../../lib/hygraph-client.ts'
+import { query } from '../../lib/graphql-api.ts'
+import MainLayout from '../../layouts/MainLayout.astro'
 export async function getStaticPaths() {
   // Fetch all articles to generate static paths
   // This is a simple query to get all articles with their slugs
-  const articlesQuery = query((q) => [q.articles({}, (a) => [a.slug])]);
-  const articles = await hygraphRequest(articlesQuery);
+  const articlesQuery = query((q) => [q.articles({}, (a) => [a.slug])])
+  const articles = await hygraphRequest(articlesQuery)
 
   // This will return an array of objects with the slug of each article
   // This is used to generate static paths for each article
@@ -14,26 +14,26 @@ export async function getStaticPaths() {
     ...articles.articles.map((article) => ({
       params: { slug: article.slug },
     })),
-  ];
+  ]
 }
 
 // This function will run at build time to generate the static page for each article
-const { slug } = Astro.params;
+const { slug } = Astro.params
 const articleQuery = query((q) => [
   q.article({ where: { slug } }, (a) => [
     a.title,
     a.content((c) => [c.html, c.text]),
     a.publishedAt,
   ]),
-]);
+])
 
-const articleResponse = await hygraphRequest(articleQuery);
+const articleResponse = await hygraphRequest(articleQuery)
 
 // Check if the article exists, if not redirect to 404 page
 if (!articleResponse.article) {
-  return Astro.redirect("/404");
+  return Astro.redirect('/404')
 }
-const { article } = articleResponse;
+const { article } = articleResponse
 
 const articleNavQuery = query((q) => [
   q
@@ -44,9 +44,9 @@ const articleNavQuery = query((q) => [
           publishedAt_gt: article.publishedAt,
         },
       },
-      (a) => [a.slug],
+      (a) => [a.slug]
     )
-    .as("nextArticles"),
+    .as('nextArticles'),
   q
     .articles(
       {
@@ -55,26 +55,27 @@ const articleNavQuery = query((q) => [
           publishedAt_lt: article.publishedAt,
         },
       },
-      (a) => [a.slug],
+      (a) => [a.slug]
     )
-    .as("prevArticles"),
-]);
+    .as('prevArticles'),
+])
 
-const articleNavResponse = await hygraphRequest(articleNavQuery);
-const { nextArticles, prevArticles } = articleNavResponse;
-const nextArticle = nextArticles[0];
-const prevArticle = prevArticles[0];
-const { title, content, publishedAt } = article;
+const articleNavResponse = await hygraphRequest(articleNavQuery)
+const { nextArticles, prevArticles } = articleNavResponse
+const nextArticle = nextArticles[0]
+const prevArticle = prevArticles[0]
+const { title, content, publishedAt } = article
 ---
 
 <MainLayout
   seo={{
     title: title,
-    description: content.text.substring(0, 150) + "...",
+    description: content.text.substring(0, 150) + '...',
+    canonical: `/articles/${slug}`,
   }}
   schema={{
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
     headline: title,
     datePublished: publishedAt,
     articleBody: content.text,
@@ -90,11 +91,14 @@ const { title, content, publishedAt } = article;
     {
       publishedAt && (
         <p class="text-sm text-accent-700 italic">
-          Published on {new Date(publishedAt).toLocaleDateString("en-GB")}
+          Published on {new Date(publishedAt).toLocaleDateString('en-GB')}
         </p>
       )
     }
-    <article set:html={content.html} class="mt-4 mb-24 leading-relaxed" />
+    <article
+      set:html={content.html}
+      class="mt-4 mb-24 leading-relaxed"
+    />
   </main>
   <div class="fixed right-0 top-0 bottom-0 flex items-center text-text-800">
     <svg
@@ -127,98 +131,98 @@ const { title, content, publishedAt } = article;
 </MainLayout>
 
 <script>
-  import { navigate } from "astro:transitions/client";
+  import { navigate } from 'astro:transitions/client'
 
   function initSwipeNavigation() {
     const config = {
       minMove: 150,
-      prevSlug: document.querySelector("main")?.dataset.prevSlug,
-      nextSlug: document.querySelector("main")?.dataset.nextSlug,
-      prevArrow: document.getElementById("prev-arrow"),
-      nextArrow: document.getElementById("next-arrow"),
-    };
+      prevSlug: document.querySelector('main')?.dataset.prevSlug,
+      nextSlug: document.querySelector('main')?.dataset.nextSlug,
+      prevArrow: document.getElementById('prev-arrow'),
+      nextArrow: document.getElementById('next-arrow'),
+    }
 
     if (
       !config.prevArrow ||
       !config.nextArrow ||
       (!config.prevSlug && !config.nextSlug)
     ) {
-      return;
+      return
     }
 
-    let state = { touching: false, startX: 0 };
+    let state = { touching: false, startX: 0 }
 
     const updateArrow = (
       arrow: HTMLElement,
       distance: number,
-      canNav: boolean,
+      canNav: boolean
     ) => {
-      const size = Math.min(distance, config.minMove);
-      const opacity = distance / config.minMove;
-      const active = distance > config.minMove && canNav;
+      const size = Math.min(distance, config.minMove)
+      const opacity = distance / config.minMove
+      const active = distance > config.minMove && canNav
 
       Object.assign(arrow.style, {
-        display: "block",
+        display: 'block',
         width: `${size}px`,
         height: `${size}px`,
         opacity: opacity.toString(),
-        color: active ? "var(--color-primary-500)" : "#000",
-      });
-    };
+        color: active ? 'var(--color-primary-500)' : '#000',
+      })
+    }
 
     const resetArrows = () => {
-      [config.prevArrow, config.nextArrow].forEach((arrow) => {
+      ;[config.prevArrow, config.nextArrow].forEach((arrow) => {
         Object.assign(arrow!.style, {
-          display: "none",
-          color: "#000",
-        });
-      });
-    };
+          display: 'none',
+          color: '#000',
+        })
+      })
+    }
 
     // Initialize
-    resetArrows();
+    resetArrows()
 
     // Event listeners
-    window.addEventListener("pointerdown", (e) => {
-      state = { touching: true, startX: e.clientX };
-    });
+    window.addEventListener('pointerdown', (e) => {
+      state = { touching: true, startX: e.clientX }
+    })
 
-    window.addEventListener("pointermove", (e) => {
-      if (!state.touching) return;
+    window.addEventListener('pointermove', (e) => {
+      if (!state.touching) return
 
-      const deltaX = state.startX - e.clientX;
-      const direction = deltaX > 0 ? "next" : "prev";
-      const distance = Math.abs(deltaX);
+      const deltaX = state.startX - e.clientX
+      const direction = deltaX > 0 ? 'next' : 'prev'
+      const distance = Math.abs(deltaX)
 
       // Hide both first
-      resetArrows();
+      resetArrows()
 
       // Show appropriate arrow
-      if (direction === "prev" && config.prevSlug) {
-        updateArrow(config.prevArrow!, distance, true);
-      } else if (direction === "next" && config.nextSlug) {
-        updateArrow(config.nextArrow!, distance, true);
+      if (direction === 'prev' && config.prevSlug) {
+        updateArrow(config.prevArrow!, distance, true)
+      } else if (direction === 'next' && config.nextSlug) {
+        updateArrow(config.nextArrow!, distance, true)
       }
-    });
+    })
 
-    window.addEventListener("pointerup", (e) => {
-      if (!state.touching) return;
+    window.addEventListener('pointerup', (e) => {
+      if (!state.touching) return
 
-      const deltaX = state.startX - e.clientX;
-      const direction = deltaX > 0 ? "next" : "prev";
-      const willNav = Math.abs(deltaX) > config.minMove;
+      const deltaX = state.startX - e.clientX
+      const direction = deltaX > 0 ? 'next' : 'prev'
+      const willNav = Math.abs(deltaX) > config.minMove
 
       if (willNav) {
-        const slug = direction === "next" ? config.nextSlug : config.prevSlug;
-        if (slug) navigate(`/articles/${slug}`);
+        const slug = direction === 'next' ? config.nextSlug : config.prevSlug
+        if (slug) navigate(`/articles/${slug}`)
       }
 
-      state.touching = false;
-      resetArrows();
-    });
+      state.touching = false
+      resetArrows()
+    })
   }
 
-  initSwipeNavigation();
+  initSwipeNavigation()
 </script>
 
 <style is:inline>
