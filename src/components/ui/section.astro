@@ -1,16 +1,23 @@
 ---
+import tc from "tailcomp";
+
 interface Props {
-  title?: string;
-  theme: "light" | "dark" | "accent";
+  bg?: "accent" | "secondary";
 }
-const { title, theme } = Astro.props;
+const { bg } = Astro.props;
+const classes = tc({
+  base: {
+    static: {
+      "p-4 md:p-6": true,
+      "bg-accent/10": bg === "accent",
+      "bg-secondary/10": bg === "secondary",
+    },
+  },
+});
 ---
 
-<section
-  class={`py-8 px-4 ${theme === "dark" ? "bg-gray-800 text-white" : theme === "accent" ? "bg-background-100 text-text-800" : "bg-background-50 text-text-800"}`}
->
-  <div class="mx-auto max-w-screen-lg">
-    {title && <h2 class="text-2xl font-bold mb-4">{title}</h2>}
+<section class={classes}>
+  <div class="lg:max-w-screen-lg">
     <slot />
   </div>
 </section>

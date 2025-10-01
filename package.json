@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "nodemon --watch \"src/**/*.*\" --ignore \"src/styles/tailcomp.js\" --exec \"npm run prebuild && astro dev\"",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
@@ -11,7 +11,8 @@
     "generate:graphql-schema": "npx graphql-codegen --config codegen.ts",
     "generate:typed-graphql": "npx typed-graphql-builder --schema ./src/hygraph/graphql/schema.graphql --output ./src/lib/graphql-api.ts",
     "generate:migration": "node --loader ts-node/esm src/hygraph/create-migration.ts",
-    "migrate:hygraph": "node --loader ts-node/esm src/hygraph/migration-runner.ts && npm run generate:graphql-schema && npm run generate:typed-graphql"
+    "migrate:hygraph": "node --loader ts-node/esm src/hygraph/migration-runner.ts && npm run generate:graphql-schema && npm run generate:typed-graphql",
+    "prebuild": "node ./node_modules/tailcomp/dist/cjs/generate-classes.js"
   },
   "dependencies": {
     "@astrojs/node": "^9.2.1",
@@ -19,6 +20,8 @@
     "@astrojs/sitemap": "^3.4.1",
     "@graphql-typed-document-node/core": "^3.1.1",
     "@hygraph/management-sdk": "^1.3.0",
+    "@lucide/astro": "^0.544.0",
+    "@sglara/cn": "^1.0.0",
     "@tailwindcss/vite": "^4.1.10",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
@@ -35,6 +38,7 @@
     "react-dom": "^19.1.0",
     "sass": "^1.89.2",
     "schema-dts": "^1.1.5",
+    "tailcomp": "^1.1.0",
     "tailwindcss": "^4.1.10",
     "typescript": "^5.8.3"
   },
@@ -43,6 +47,7 @@
     "@graphql-codegen/schema-ast": "^4.1.0",
     "@graphql-tools/url-loader": "^8.0.31",
     "dotenv": "^16.5.0",
+    "nodemon": "^3.1.10",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "ts-node": "^10.9.2",

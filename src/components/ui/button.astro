@@ -1,0 +1,59 @@
+---
+import tc from "tailcomp";
+
+interface Props {
+  theme: "primary" | "secondary" | "accent";
+  type: "solid" | "outline" | "ghost";
+  href?: string;
+  classList?: string;
+}
+
+const { theme, type, href, classList } = Astro.props;
+
+const classes = tc({
+  base: {
+    static: {
+      "flex items-center cursor-pointer px-4 py-2 rounded-full transition-all duration-300": true,
+      // Primary theme variants
+      "bg-primary": theme === "primary" && type === "solid",
+      "bg-none border-2 border-primary":
+        theme === "primary" && type === "outline",
+      "bg-none border-none text-primary p-0":
+        theme === "primary" && type === "ghost",
+
+      // Secondary theme variants
+      "bg-secondary": theme === "secondary" && type === "solid",
+      "bg-none border-2 border-secondary":
+        theme === "secondary" && type === "outline",
+      "bg-none border-none text-secondary p-0":
+        theme === "secondary" && type === "ghost",
+
+      // Accent theme variants
+      "bg-accent": theme === "accent" && type === "solid",
+      "bg-none border-2 border-accent":
+        theme === "accent" && type === "outline",
+      "bg-none border-none text-accent p-0":
+        theme === "accent" && type === "ghost",
+    },
+    hover: {
+      "shadow-lg": true,
+      "scale-102": type === "solid",
+      "bg-primary text-black": theme === "primary" && type !== "solid",
+      "bg-secondary text-black": theme === "secondary" && type !== "solid",
+      "bg-accent text-black": theme === "accent" && type !== "solid",
+    },
+  },
+});
+---
+
+{
+  href ? (
+    <a class={`${classes} ${classList}`} href={href}>
+      <slot />
+    </a>
+  ) : (
+    <button class={`${classes} ${classList}`}>
+      <slot />
+    </button>
+  )
+}

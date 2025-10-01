@@ -1,59 +1,32 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro'
-import Section from '../components/ui/section.astro'
-import { ArticleOrderByInput, query } from '../lib/graphql-api'
-import { hygraphRequest } from '../lib/hygraph-client'
+import MainLayout from "../layouts/MainLayout.astro";
+import { ArticleOrderByInput, query } from "../lib/graphql-api";
+import { hygraphRequest } from "../lib/hygraph-client";
 
 const latestArticleQuery = query((q) => [
   q
     .articles(
       { first: 1, orderBy: ArticleOrderByInput.publishedAt_DESC },
-      (a) => [a.slug]
+      (a) => [a.slug],
     )
-    .as('latestArticles'),
-])
-const latestArticleData = await hygraphRequest(latestArticleQuery)
-const { latestArticles } = latestArticleData
+    .as("latestArticles"),
+]);
+const latestArticleData = await hygraphRequest(latestArticleQuery);
+const { latestArticles } = latestArticleData;
 ---
 
 <MainLayout
   seo={{
-    title: 'Human Side of Code',
+    title: "Human Side of Code",
     description:
-      'Even the most elegant code is written by humans, for humans. Practical communication skills and career advice to help software engineers excel beyond just coding proficiency.',
+      "Even the most elegant code is written by humans, for humans. Practical communication skills and career advice to help software engineers excel beyond just coding proficiency.",
   }}
   schema={{
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'Human Side of Code',
-    url: 'https://www.humansideofcode.com',
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Human Side of Code",
+    url: "https://www.humansideofcode.com",
     description:
-      'Even the most elegant code is written by humans, for humans. Practical communication skills and career advice to help software engineers excel beyond just coding proficiency.',
+      "Even the most elegant code is written by humans, for humans. Practical communication skills and career advice to help software engineers excel beyond just coding proficiency.",
   }}
->
-  <Section theme="dark">
-    <div
-      class="max-w-[80ch] mx-auto text-center h-[50vh] flex flex-col justify-center gap-6"
-    >
-      <h1 class="font-bold text-4xl md:6xl text-primary-500">
-        Let's improve your technical communication skills
-      </h1>
-      <h2 class="text-xl md:text-2xl">
-        Because even the most elegant code is written by humans, for humans.
-        Let's make sure you're fluent in both languages.
-      </h2>
-      {
-        latestArticles[0] !== undefined && (
-          <div>
-            <a
-              class="px-4 py-2 rounded bg-primary-500 hover:bg-primary-600 text-white transition-colors"
-              href={`/articles/${latestArticles[0].slug}`}
-            >
-              Read the latest article
-            </a>
-          </div>
-        )
-      }
-    </div>
-  </Section>
-</MainLayout>
+/>

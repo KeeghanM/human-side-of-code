@@ -1,5 +1,4 @@
 ---
-import Section from "../ui/section.astro";
 import { ArticleOrderByInput, query } from "../../lib/graphql-api";
 import { hygraphRequest } from "../../lib/hygraph-client";
 const articlesQuery = query((q) => [
@@ -15,36 +14,34 @@ const articlesData = await hygraphRequest(articlesQuery);
 const { articles } = articlesData;
 ---
 
-<Section theme="light" transition:animate="fade">
-  <h1 class="text-3xl font-bold">Articles</h1>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-    {
-      articles.map((article) => (
-        <div class="border border-accent-500 rounded-lg p-4 bg-secondary-50">
-          <h2>
-            <a
-              href={`/articles/${article.slug}`}
-              class="text-primary-500 hover:underline text-xl font-bold"
-            >
-              {article.title}
-            </a>
-          </h2>
-          {article.publishedAt && (
-            <p class="text-sm text-accent-700 italic">
-              Published on{" "}
-              {new Date(article.publishedAt).toLocaleDateString("en-GB")}
-            </p>
-          )}
-          <div class="mt-2">
-            {article.tags.map((tag) => (
-              <span class="inline-block bg-accent-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                {tag}
-              </span>
-            ))}
-          </div>
-          <div set:html={article.content.html.substring(0, 150) + "..."} />
+<h1 class="text-3xl font-bold">Articles</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+  {
+    articles.map((article) => (
+      <div class="border border-accent-500 rounded-lg p-4 bg-secondary-50">
+        <h2>
+          <a
+            href={`/articles/${article.slug}`}
+            class="text-primary-500 hover:underline text-xl font-bold"
+          >
+            {article.title}
+          </a>
+        </h2>
+        {article.publishedAt && (
+          <p class="text-sm text-accent-700 italic">
+            Published on{" "}
+            {new Date(article.publishedAt).toLocaleDateString("en-GB")}
+          </p>
+        )}
+        <div class="mt-2">
+          {article.tags.map((tag) => (
+            <span class="inline-block bg-accent-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+              {tag}
+            </span>
+          ))}
         </div>
-      ))
-    }
-  </div>
-</Section>
+        <div set:html={article.content.html.substring(0, 150) + "..."} />
+      </div>
+    ))
+  }
+</div>

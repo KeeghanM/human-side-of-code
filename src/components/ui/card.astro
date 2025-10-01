@@ -1,0 +1,48 @@
+---
+import { ArrowRight, type Icon as IconType } from "@lucide/astro";
+import Heading from "./heading.astro";
+import Button from "./button.astro";
+import tc from "tailcomp";
+interface Props {
+  icon?: { icon: typeof IconType };
+  title: string;
+  link?: { text: string; href: string };
+  theme: "primary" | "secondary" | "accent";
+}
+const { icon, title, link, theme } = Astro.props;
+
+const iconClasses = tc({
+  base: {
+    static: {
+      "w-12 h-12 rounded-lg p-2": true,
+      "bg-primary/10 text-primary": theme === "primary",
+      "bg-secondary/10 text-secondary": theme === "secondary",
+      "bg-accent/10 text-accent": theme === "accent",
+    },
+    hover: {
+      "bg-primary text-white": theme === "primary",
+      "bg-secondary text-white": theme === "secondary",
+      "bg-accent text-white": theme === "accent",
+    },
+  },
+});
+---
+
+<div class="border-2 bg-white border-secondary/10 rounded-lg p-4 space-y-4">
+  {icon && <icon.icon class={iconClasses} />}
+  <slot name="pill-slot" />
+  <Heading level={3} text={title} />
+  <slot />
+  {
+    link && (
+      <Button
+        type="ghost"
+        theme="primary"
+        href={link.href}
+        classList="flex items-center"
+      >
+        {link.text} <ArrowRight class="ml-auto" />
+      </Button>
+    )
+  }
+</div>

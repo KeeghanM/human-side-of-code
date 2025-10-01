@@ -1,0 +1,146 @@
+---
+import Button from "../components/ui/button.astro";
+import Card from "../components/ui/card.astro";
+import Heading from "../components/ui/heading.astro";
+import List from "../components/ui/list.astro";
+import Pill from "../components/ui/pill.astro";
+import Section from "../components/ui/section.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+
+import {
+  BookOpen,
+  Check,
+  GraduationCap,
+  Heart,
+  Target,
+  TrendingUp,
+} from "@lucide/astro";
+---
+
+<MainLayout seo={{}}
+  ><Section>
+    <Heading
+      text="Welcome to the Style Guide"
+      highlight="Style"
+      level={1}
+    /></Section
+  >
+  <Section bg="secondary">
+    <Heading text="Here are some buttons" highlight="buttons" level={2} />
+    <div class="flex flex-wrap gap-4 p-4">
+      <Button theme="primary" type="solid">Start your Journey</Button><Button
+        theme="secondary"
+        type="solid"
+        href="#start-journey">Start your Journey</Button
+      ><Button theme="accent" type="solid" href="#start-journey"
+        >Start your Journey</Button
+      ><Button theme="primary" type="outline" href="#start-journey"
+        >Start your Journey</Button
+      ><Button theme="secondary" type="outline" href="#start-journey"
+        >Start your Journey</Button
+      ><Button theme="accent" type="outline" href="#start-journey"
+        >Start your Journey</Button
+      ><Button theme="primary" type="ghost" href="#start-journey"
+        >Start your Journey</Button
+      ><Button theme="secondary" type="ghost" href="#start-journey"
+        >Start your Journey</Button
+      ><Button theme="accent" type="ghost" href="#start-journey"
+        >Start your Journey</Button
+      >
+    </div></Section
+  >
+  <Section>
+    <Heading text="Pills go here" highlight="Pills" level={2} />
+
+    <div class="flex flex-wrap gap-4 p-4">
+      <Pill theme="primary">Free</Pill>
+      <Pill theme="secondary">Free</Pill>
+      <Pill theme="accent">Free</Pill>
+    </div>
+  </Section>
+  <Section bg="accent">
+    <Heading text="Lists are useful too" level={2} />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div>
+        <Heading text="With the same icon" highlight="same" level={3} />
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Full-stack web development" },
+            { icon: Check, text: "Real-world project experience" },
+            { icon: Check, text: "Mentorship & career support" },
+            { icon: Check, text: "Free for underprivileged youth" },
+          ]}
+        />
+      </div>
+      <div>
+        <Heading text="With different icons" highlight="different" level={3} />
+        <List
+          theme="secondary"
+          items={[
+            { icon: Heart, text: "People First" },
+            { icon: BookOpen, text: "Accessible Education" },
+            { icon: TrendingUp, text: "Continuous Growth" },
+            { icon: Target, text: "Real Impact" },
+          ]}
+        />
+      </div>
+    </div>
+  </Section>
+  <Section>
+    <Heading text="Some different cards" level={2} />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <Card
+        title="Coaching & Mentoring"
+        link={{
+          text: "Learn More",
+          href: "#",
+        }}
+        theme="primary"
+      >
+        <p>
+          Personalized 1-on-1 coaching for mid to senior level engineers looking
+          to level up their technical skills, leadership abilities, and career
+          growth.
+        </p>
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Full-stack web development" },
+            { icon: Check, text: "Real-world project experience" },
+            { icon: Check, text: "Mentorship & career support" },
+            { icon: Check, text: "Free for underprivileged youth" },
+          ]}
+        />
+      </Card><Card
+        title="Youth Bootcamps"
+        link={{
+          text: "Learn More",
+          href: "#",
+        }}
+        icon={{
+          icon: GraduationCap,
+        }}
+        ,
+        theme="primary"
+        ,
+      >
+        <Pill slot="pill-slot" theme="primary">Free for Underpriviledged</Pill>
+        <p>
+          Personalized 1-on-1 coaching for mid to senior level engineers looking
+          to level up their technical skills, leadership abilities, and career
+          growth.
+        </p>
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Full-stack web development" },
+            { icon: Check, text: "Real-world project experience" },
+            { icon: Check, text: "Mentorship & career support" },
+            { icon: Check, text: "Free for underprivileged youth" },
+          ]}
+        />
+      </Card>
+    </div>
+  </Section>
+</MainLayout>
