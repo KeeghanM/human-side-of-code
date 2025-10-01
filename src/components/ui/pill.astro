@@ -2,8 +2,9 @@
 import tc from "tailcomp";
 interface Props {
   theme: "primary" | "secondary" | "accent";
+  classList?: string;
 }
-const { theme } = Astro.props;
+const { theme, classList } = Astro.props;
 
 const classes = tc({
   base: {
@@ -17,4 +18,4 @@ const classes = tc({
 });
 ---
 
-<span class={classes}><slot /></span>
+<span class={`${classes} ${classList}`}><slot /></span>

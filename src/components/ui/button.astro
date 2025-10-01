@@ -13,9 +13,9 @@ const { theme, type, href, classList } = Astro.props;
 const classes = tc({
   base: {
     static: {
-      "flex items-center cursor-pointer px-4 py-2 rounded-full transition-all duration-300": true,
+      "flex gap-2 items-center cursor-pointer px-4 py-2 rounded-full transition-all duration-300": true,
       // Primary theme variants
-      "bg-primary": theme === "primary" && type === "solid",
+      "bg-primary text-white": theme === "primary" && type === "solid",
       "bg-none border-2 border-primary":
         theme === "primary" && type === "outline",
       "bg-none border-none text-primary p-0":

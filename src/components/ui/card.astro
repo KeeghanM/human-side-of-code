@@ -5,11 +5,12 @@ import Button from "./button.astro";
 import tc from "tailcomp";
 interface Props {
   icon?: { icon: typeof IconType };
-  title: string;
+  title?: string;
   link?: { text: string; href: string };
   theme: "primary" | "secondary" | "accent";
+  inline?: boolean;
 }
-const { icon, title, link, theme } = Astro.props;
+const { icon, title, link, theme, inline } = Astro.props;
 
 const iconClasses = tc({
   base: {
@@ -28,21 +29,29 @@ const iconClasses = tc({
 });
 ---
 
-<div class="border-2 bg-white border-secondary/10 rounded-lg p-4 space-y-4">
-  {icon && <icon.icon class={iconClasses} />}
-  <slot name="pill-slot" />
-  <Heading level={3} text={title} />
-  <slot />
-  {
-    link && (
-      <Button
-        type="ghost"
-        theme="primary"
-        href={link.href}
-        classList="flex items-center"
-      >
-        {link.text} <ArrowRight class="ml-auto" />
-      </Button>
-    )
-  }
+<div
+  class={`border-2 bg-white border-secondary/10 rounded-lg p-4 space-y-4 ${inline && "flex gap-4"}`}
+>
+  <div class="flex items-center">
+    {icon && <icon.icon class={iconClasses} />}
+    <div class="ml-auto">
+      <slot name="pill-slot" />
+    </div>
+  </div>
+  <div>
+    {title && <Heading level={3} text={title} />}
+    <slot />
+    {
+      link && (
+        <Button
+          type="ghost"
+          theme="primary"
+          href={link.href}
+          classList="flex items-center mt-auto"
+        >
+          {link.text} <ArrowRight class="ml-auto" />
+        </Button>
+      )
+    }
+  </div>
 </div>

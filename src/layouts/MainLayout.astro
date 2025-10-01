@@ -5,6 +5,8 @@ import { Schema, type SchemaProps } from "astro-seo-schema";
 import { ClientRouter } from "astro:transitions";
 import Posthog from "../components/posthog.astro";
 import "../styles/global.css";
+import NavBar from "../components/nav-bar/nav-bar.astro";
+import Footer from "../components/footer/footer.astro";
 
 interface Props {
   seo: SEOProps;
@@ -41,7 +43,9 @@ seo.description =
     />
   </Head>
   <body>
+    <NavBar />
     <slot />
+    <Footer />
   </body>
 </html>
 
