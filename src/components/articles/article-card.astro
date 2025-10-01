@@ -1,0 +1,48 @@
+---
+import { Article, fragment, type GetOutput } from "../../lib/graphql-api";
+import Card from "../ui/card.astro";
+
+export const ARTICLE_FRAGMENT = fragment(Article, (a) => [
+  a.slug,
+  a.title,
+  a.publishedAt,
+  a.content((c) => [c.html]),
+  a.tags,
+]);
+
+export type TArticle = GetOutput<typeof ARTICLE_FRAGMENT>;
+
+interface Props {
+  article: TArticle;
+}
+
+const { article } = Astro.props;
+---
+
+<Card
+  title={article.title}
+  theme="primary"
+  link={{
+    text: "Read More",
+    href: `/articles/${article.slug}`,
+  }}
+  >{
+    article.publishedAt && (
+      <p class="text-sm text-accent-700 italic">
+        Published on {new Date(article.publishedAt).toLocaleDateString("en-GB")}
+      </p>
+    )
+  }
+  {
+    article.tags.length > 0 && (
+      <div class="mt-2">
+        {article.tags.map((tag) => (
+          <span class="inline-block bg-accent-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )
+  }
+  <div set:html={article.content.html.substring(0, 150) + "..."} />
+</Card>

@@ -1,0 +1,40 @@
+---
+import tc from "tailcomp";
+
+interface Props {
+  level: 1 | 2 | 3 | 4 | 5;
+  text: string;
+  highlight?: string;
+  classList?: string;
+}
+const { level, highlight, text, classList } = Astro.props;
+const classes = `${tc({
+  base: {
+    static: {
+      "font-bold": true,
+      "text-6xl": level === 1,
+      "text-4xl": level === 2,
+      "text-2xl": level === 3,
+      "text-xl": level === 4,
+      "text-lg": level === 5,
+    },
+  },
+})} ${classList}`;
+
+const content = highlight
+  ? text.replace(highlight, `<span class="highlight">${highlight}</span>`)
+  : text;
+---
+
+{level === 1 && <h1 class={classes} set:html={content} />}
+{level === 2 && <h2 class={classes} set:html={content} />}
+{level === 3 && <h3 class={classes} set:html={content} />}
+{level === 4 && <h4 class={classes} set:html={content} />}
+{level === 5 && <h5 class={classes} set:html={content} />}
+
+<style is:global>
+  .highlight {
+    color: var(--color-primary);
+    font-family: "Brush Script MT", cursive;
+  }
+</style>

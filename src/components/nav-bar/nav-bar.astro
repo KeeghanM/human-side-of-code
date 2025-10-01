@@ -1,62 +1,149 @@
 ---
 import { Image } from "astro:assets";
-import PitchDialog from "../pitch-dialog/index.astro";
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/articles", label: "Articles" },
-  { href: "/about", label: "About" },
-];
+import Button from "../ui/button.astro";
 ---
 
 <header
-  class="nav-bar bg-background-50 sticky top-0 z-50 flex items-center justify-between px-4 py-2 shadow-md"
+  class="nav-bar sticky top-0 z-50 shadow-md bg-secondary/10 backdrop-blur-lg"
 >
-  <div class="flex max-w-7xl mx-auto w-full px-4">
-    <a href="/">
-      <Image
-        src="/husoc-logo.svg"
-        alt="HuSOC: Human Side of Code"
-        aria-hidden="true"
-        width="200"
-        height="200"
-        loading="eager"
-      />
-    </a>
-    <nav class="flex-grow flex justify-center items-center">
-      <ul class="flex space-x-4">
-        {
-          links.map((link) => (
-            <li>
-              {link.label === "About" ? (
-                <PitchDialog />
-              ) : (
-                <a
-                  class="text-text-800 hover:text-primary uppercase font-bold text-xl"
-                  href={link.href}
-                  aria-label={link.label}
-                >
-                  {link.label}
-                </a>
-              )}
-            </li>
-          ))
-        }
+  <div class="max-w-7xl mx-auto w-full">
+    <!-- Main nav bar -->
+    <div
+      id="nav-main"
+      class="flex items-center justify-between py-2 transition-colors duration-300 px-6"
+    >
+      <a href="/">
+        <Image
+          src="/husoc-logo.svg"
+          alt="HuSOC: Human Side of Code"
+          aria-hidden="true"
+          width="100"
+          height="100"
+          loading="eager"
+        />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex flex-grow justify-center items-center">
+        <ul class="flex space-x-4">
+          <Button href="/#services" theme="primary" type="ghost">
+            Services
+          </Button>
+          <Button href="/about" theme="primary" type="ghost"> About </Button>
+          <Button href="/bootcamps" theme="primary" type="ghost">
+            Bootcamps
+          </Button>
+          <Button href="/articles" theme="primary" type="ghost">
+            Articles
+          </Button>
+          <Button href="/contact" theme="primary" type="ghost">
+            Contact
+          </Button>
+          <Button href="/#get-started" theme="primary" type="solid">
+            Get Started
+          </Button>
+        </ul>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-toggle"
+        class="lg:hidden p-2 rounded-md hover:bg-secondary/20 transition-colors"
+        aria-label="Toggle menu"
+      >
+        <svg
+          id="menu-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+        <svg
+          id="close-icon"
+          class="hidden"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <nav
+      id="mobile-menu"
+      class="lg:hidden bg-white hidden overflow-hidden transition-all duration-300 py-4 px-6"
+    >
+      <ul class="flex flex-col space-y-2">
+        <li class="w-full">
+          <Button href="/#services" theme="primary" type="ghost">
+            Services
+          </Button>
+        </li>
+        <li class="w-full">
+          <Button href="/about" theme="primary" type="ghost"> About </Button>
+        </li>
+        <li class="w-full">
+          <Button href="/bootcamps" theme="primary" type="ghost">
+            Bootcamps
+          </Button>
+        </li>
+        <li class="w-full">
+          <Button href="/articles" theme="primary" type="ghost">
+            Articles
+          </Button>
+        </li>
+        <li class="w-full">
+          <Button href="/contact" theme="primary" type="ghost">
+            Contact
+          </Button>
+        </li>
+        <li class="w-full">
+          <Button href="/#get-started" theme="primary" type="solid">
+            Get Started
+          </Button>
+        </li>
       </ul>
     </nav>
   </div>
-
-  <script>
-    const navBar = document.querySelector(".nav-bar") as HTMLHeadingElement;
-    const logo = navBar.querySelector("img") as HTMLImageElement;
-    const logoWidth = logo.width;
-    const logoHeight = logo.height;
-
-    window.addEventListener("scroll", () => {
-      const scrollY = window.scrollY;
-      const newHeight = Math.max(80, logoHeight - scrollY / 2);
-      const newWidth = (newHeight / logoHeight) * logoWidth;
-      logo.width = newWidth;
-      logo.height = newHeight;
-    });
-  </script>
 </header>
+
+<script>
+  const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
+
+  mobileMenuToggle?.addEventListener("click", () => {
+    const isOpen = !mobileMenu?.classList.contains("hidden");
+
+    if (isOpen) {
+      // Close menu
+      mobileMenu?.classList.add("hidden");
+      menuIcon?.classList.remove("hidden");
+      closeIcon?.classList.add("hidden");
+    } else {
+      // Open menu
+      mobileMenu?.classList.remove("hidden");
+      menuIcon?.classList.add("hidden");
+      closeIcon?.classList.remove("hidden");
+    }
+  });
+</script>

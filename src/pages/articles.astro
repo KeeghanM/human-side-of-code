@@ -1,14 +1,37 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro'
-import ArticlesGrid from '../components/articles/index.astro'
+import ArticleCard from "../components/articles/article-card.astro";
+import Newsletter from "../components/sign-up/newsletter.astro";
+import Heading from "../components/ui/heading.astro";
+import Section from "../components/ui/section.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import { ArticleOrderByInput, query } from "../lib/graphql-api";
+import { hygraphRequest } from "../lib/hygraph-client";
+
+const articlesQuery = query((q) => [
+  q.articles(
+    {
+      orderBy: ArticleOrderByInput.publishedAt_DESC,
+    },
+    (a) => [a.slug, a.title, a.publishedAt, a.content((c) => [c.html]), a.tags],
+  ),
+]);
+const articlesData = await hygraphRequest(articlesQuery);
+
+const { articles } = articlesData;
 ---
 
 <MainLayout
   seo={{
-    title: 'Articles on Tech Communication & Career Growth',
+    title: "Articles on Tech Communication & Career Growth",
     description:
-      'Explore our articles on the human side of code, bridging technical expertise and human-centred development in the tech industry.',
+      "Explore our articles on the human side of code, bridging technical expertise and human-centred development in the tech industry.",
   }}
 >
-  <ArticlesGrid />
+  <Section>
+    <Heading level={1} text="Articles" />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {articles.map((article) => <ArticleCard article={article} />)}
+    </div>
+  </Section>
+  <Newsletter />
 </MainLayout>

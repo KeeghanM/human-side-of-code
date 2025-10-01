@@ -4,6 +4,8 @@ export default {
   overrides: [
     {
       semi: false,
+    },
+    {
       files: ["*.astro", "*.tsx"],
       options: {
         parser: "astro",

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import type { ChangeEvent } from "react";
+import React, { useState } from "react";
 
 interface FormData {
   email: string;
@@ -102,7 +102,7 @@ const SignUp: React.FC = () => {
   }
 
   if (status === "finished") {
-    return <div className="text-center italic text-green-600">Thank you for signing up!</div>;
+    return <div className="text-center italic text-primary">Thank you for signing up!</div>;
   }
 
   return (
@@ -128,13 +128,13 @@ const SignUp: React.FC = () => {
               value={formData.email}
               onChange={handleInputChange}
               aria-label="Email address"
-              className="w-4/5 p-2.5 border border-gray-300 rounded bg-background-50"
+              className="w-4/5 p-2.5 border border-secondary rounded bg-background-50"
             />
             <button
               onClick={handleSignUp}
               className="
-                px-5 py-2.5 bg-primary-500 text-white rounded
-                hover:bg-primary-600 transition-colors
+                px-5 py-2.5 bg-primary text-white rounded-full
+                hover:scale-105 transition-all duration-300
                 min-w-fit w-fit cursor-pointer
               "
             >
@@ -151,7 +151,7 @@ const SignUp: React.FC = () => {
               value={formData.firstName}
               onChange={handleInputChange}
               aria-label="First name"
-              className="w-4/5 p-2.5 border border-gray-300 rounded bg-background-50"
+              className="w-4/5 p-2.5 border border-secondary rounded bg-background-50"
             />
             <input
               type="text"
@@ -160,13 +160,13 @@ const SignUp: React.FC = () => {
               value={formData.lastName}
               onChange={handleInputChange}
               aria-label="Last name"
-              className="w-4/5 p-2.5 border border-gray-300 rounded bg-background-50"
+              className="w-4/5 p-2.5 border border-secondary rounded bg-background-50"
             />
             <button
               onClick={handleAdditionalInfo}
               className="
-                px-5 py-2.5 bg-primary-500 text-white rounded
-                hover:bg-primary-600 transition-colors
+                px-5 py-2.5 bg-primary text-white rounded-full
+                hover:scale-105 transition-all duration-300
                 min-w-fit w-fit cursor-pointer
               "
             >

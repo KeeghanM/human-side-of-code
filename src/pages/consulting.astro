@@ -1,0 +1,582 @@
+---
+import Section from "../components/ui/section.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import Heading from "../components/ui/heading.astro";
+import Button from "../components/ui/button.astro";
+import {
+  ArrowRight,
+  BarChart3,
+  Briefcase,
+  Check,
+  Code,
+  Database,
+  Lightbulb,
+  MessageCircle,
+  TrendingUp,
+  Users,
+  Zap,
+} from "@lucide/astro";
+import List from "../components/ui/list.astro";
+import Card from "../components/ui/card.astro";
+import Pill from "../components/ui/pill.astro";
+---
+
+<MainLayout
+  seo={{
+    title: "Technical Consulting | Human Side of Code",
+    description:
+      "Expert technical leadership for growing companies. Strategic advisory, team transformation, and unlocking the hidden value in your existing technology.",
+  }}
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "HuSOC Technical Consulting",
+    description:
+      "Expert technical leadership for growing companies. Strategic advisory, team transformation, and unlocking the hidden value in your existing technology.",
+    provider: {
+      "@type": "Organization",
+      name: "Human Side of Code",
+      url: "https://www.humansideofcode.com",
+    },
+  }}
+>
+  <Section
+    classList="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-8"
+  >
+    <Pill theme="accent" classList="mb-4">Technical Consulting</Pill>
+    <Heading
+      level={1}
+      text="Technical Leadership for Growing Companies"
+      highlight="Growing"
+      classList="max-w-[70ch]"
+    />
+    <p class="text-xl max-w-[70ch]">
+      Most businesses aren't tech companies - but they all use technology. The
+      question is: are you getting the value you could be?
+    </p>
+    <p class="text-lg max-w-[70ch]">
+      I help scale-ups and SMEs unlock their technical potential, build
+      high-performing engineering teams, and turn technology from a cost centre
+      into a competitive advantage.
+    </p>
+    <div class="flex gap-4 items-center flex-wrap justify-center">
+      <Button href="#services" theme="primary" type="solid"
+        >Explore Services <ArrowRight class="ml-auto" /></Button
+      >
+      <Button href="#contact" theme="secondary" type="outline"
+        >Let's Discuss Your Needs</Button
+      >
+    </div>
+  </Section>
+
+  <Section theme="secondary" classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="The Problem" highlight="Problem" />
+    </div>
+    <div class="text-lg max-w-[70ch] mx-auto space-y-4">
+      <p>
+        You're not a tech company. You're in logistics, utilities, local
+        government, automotive, hospitality, or any number of industries where
+        technology is critical but not your core business.
+      </p>
+      <p>And somewhere along the way, things aren't quite right:</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+        <div class="bg-white p-6 rounded-lg">
+          <p class="font-semibold">
+            Your development team isn't delivering the value you expected
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-lg">
+          <p class="font-semibold">
+            You're paying for technology but can't see the ROI
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-lg">
+          <p class="font-semibold">
+            You suspect there's untapped potential in your existing systems
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-lg">
+          <p class="font-semibold">
+            Your technical team and business stakeholders don't speak the same
+            language
+          </p>
+        </div>
+      </div>
+      <p>
+        Here's the thing: <strong
+          >tech-first companies already know how to handle this.</strong
+        > But if you're a traditional business that happens to use technology? You
+        need someone who understands both worlds.
+      </p>
+      <p class="text-xl font-semibold">That's where I come in.</p>
+    </div>
+  </Section>
+
+  <Section classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading
+        level={2}
+        text="What Makes This Different"
+        highlight="Different"
+      />
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <Card
+        inline={true}
+        title="I've Done It At Scale"
+        theme="primary"
+        icon={{ icon: TrendingUp }}
+      >
+        <p>
+          Nearly 15 years leading technical teams for companies from startups to
+          £4.7B enterprises. I've been the sole technologist during rapid
+          scale-up and Head of Development for multi-billion pound operations.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="I Speak Both Languages"
+        theme="primary"
+        icon={{ icon: MessageCircle }}
+      >
+        <p>
+          I translate between developers and boardrooms. I can explain technical
+          concepts to non-technical stakeholders and business needs to
+          engineering teams. That's my superpower.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="It's Not Just About Code"
+        theme="primary"
+        icon={{ icon: Users }}
+      >
+        <p>
+          Most technical problems are actually people problems. I fix team
+          dynamics, communication breakdowns, and cultural issues that hold
+          technical delivery back.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="I Find Hidden Value"
+        theme="primary"
+        icon={{ icon: Lightbulb }}
+      >
+        <p>
+          You're probably sitting on data and systems that could drive real
+          business value. I've built reporting suites, customer analytics
+          platforms, and strategic models from "data we already had."
+        </p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section theme="secondary" classList="space-y-12">
+    <div class="text-center space-y-6">
+      <a id="services"></a>
+      <Heading level={2} text="How I Can Help" highlight="Help" />
+      <p class="text-xl max-w-[70ch] mx-auto">
+        Three core services, tailored to what you actually need.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <Card
+        title="Strategic Advisory"
+        icon={{
+          icon: Lightbulb,
+        }}
+        theme="primary"
+      >
+        <Pill slot="pill-slot" theme="primary">Most Popular</Pill>
+        <p>
+          Assess your current technical capability, identify quick wins and
+          strategic opportunities, provide actionable recommendations.
+        </p>
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Technical capability assessment" },
+            { icon: Check, text: "Architecture & system design review" },
+            { icon: Check, text: "Technology strategy & roadmapping" },
+            { icon: Check, text: "Technical due diligence" },
+            { icon: Check, text: "Vendor & tool evaluation" },
+          ]}
+        />
+        <p class="text-sm mt-4">
+          <strong>Typical engagement:</strong> 4-6 weeks for full assessment and
+          recommendations
+        </p>
+      </Card>
+      <Card
+        title="Team Transformation"
+        icon={{
+          icon: Users,
+        }}
+        theme="primary"
+      >
+        <p>
+          Work directly with your development team to improve performance,
+          velocity, and morale. Fix the people problems holding your tech back.
+        </p>
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Team process optimization" },
+            { icon: Check, text: "Engineering culture building" },
+            { icon: Check, text: "Performance issue diagnosis" },
+            { icon: Check, text: "Communication & collaboration coaching" },
+            { icon: Check, text: "Developer mentoring & growth plans" },
+          ]}
+        />
+        <p class="text-sm mt-4">
+          <strong>Typical engagement:</strong> 3-6 months for sustainable cultural
+          change
+        </p>
+      </Card>
+      <Card
+        title="Hands-On Projects"
+        icon={{
+          icon: Code,
+        }}
+        theme="primary"
+      >
+        <p>
+          Defined-scope technical projects to unlock immediate value. Build what
+          you need, set up your team for success, then hand it over.
+        </p>
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Data & analytics infrastructure" },
+            { icon: Check, text: "Reporting & business intelligence" },
+            { icon: Check, text: "Technical process implementation" },
+            { icon: Check, text: "Code & architecture review" },
+            { icon: Check, text: "CI/CD & DevOps setup" },
+          ]}
+        />
+        <p class="text-sm mt-4">
+          <strong>Typical engagement:</strong> 6-12 weeks depending on scope
+        </p>
+      </Card>
+    </div>
+    <div class="text-center">
+      <p class="text-lg mb-4">
+        Plus: <strong>Fractional Technical Leadership</strong> available for companies
+        needing ongoing strategic input without a full-time hire.
+      </p>
+    </div>
+  </Section>
+
+  <Section classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="Who Is This For?" highlight="Who" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <Card
+        inline={true}
+        title="Scale-Ups & SMEs"
+        theme="primary"
+        icon={{ icon: TrendingUp }}
+      >
+        <p>
+          Growing quickly but your tech isn't keeping up. Need technical
+          leadership without the full-time hire commitment.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Non-Tech Businesses"
+        theme="primary"
+        icon={{ icon: Briefcase }}
+      >
+        <p>
+          You're in logistics, utilities, government, automotive, hospitality -
+          tech supports your business but isn't your core competency.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Underperforming Dev Teams"
+        theme="primary"
+        icon={{ icon: Users }}
+      >
+        <p>
+          You've got developers but they're not delivering. The team is
+          frustrated, velocity is low, and you're not sure why.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Hidden Tech Potential"
+        theme="primary"
+        icon={{ icon: Database }}
+      >
+        <p>
+          You know you're sitting on valuable data and systems but don't know
+          how to leverage them for business advantage.
+        </p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section theme="secondary" classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="Real Results" highlight="Results" />
+      <p class="text-xl max-w-[70ch] mx-auto">
+        Examples of value delivered for growing companies.
+      </p>
+    </div>
+    <div class="max-w-[70ch] mx-auto space-y-8">
+      <div class="bg-white p-6 rounded-lg space-y-4">
+        <div class="flex items-start gap-3">
+          <BarChart3 class="w-8 h-8 text-accent flex-shrink-0" />
+          <div>
+            <h3 class="font-semibold text-xl">
+              Built Entire Analytics Infrastructure From Scratch
+            </h3>
+            <p class="text-gray-600 text-sm mb-2">
+              Multi-site hospitality business during scale-up
+            </p>
+            <p>
+              Company had on-premises databases but no reporting capability.
+              Built comprehensive Customer Data Platform, LTV calculation
+              models, and property suitability models that directly informed
+              £8M+ expansion decisions.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg space-y-4">
+        <div class="flex items-start gap-3">
+          <TrendingUp class="w-8 h-8 text-accent flex-shrink-0" />
+          <div>
+            <h3 class="font-semibold text-xl">
+              Turned Around Underperforming Team
+            </h3>
+            <p class="text-gray-600 text-sm mb-2">
+              £4.7B enterprise with 8,500+ employees
+            </p>
+            <p>
+              Development team wasn't delivering value on critical
+              re-platforming project. Implemented direct feedback, structured
+              development plans, and "manager as coach" approach. Team velocity
+              increased significantly and successfully delivered enterprise
+              architecture redesign.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg space-y-4">
+        <div class="flex items-start gap-3">
+          <Zap class="w-8 h-8 text-accent flex-shrink-0" />
+          <div>
+            <h3 class="font-semibold text-xl">
+              Secured £242,000 in Cost Savings
+            </h3>
+            <p class="text-gray-600 text-sm mb-2">Vendor negotiations</p>
+            <p>
+              Through strategic vendor negotiations while simultaneously
+              architecting complete overhaul of website search functionality.
+              Improved performance from 30 to 70 (Page Speed Insights) resulting
+              in increased organic traffic.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg space-y-4">
+        <div class="flex items-start gap-3">
+          <Database class="w-8 h-8 text-accent flex-shrink-0" />
+          <div>
+            <h3 class="font-semibold text-xl">
+              Modernised Legacy Infrastructure
+            </h3>
+            <p class="text-gray-600 text-sm mb-2">
+              Multi-site operations company
+            </p>
+            <p>
+              Led complete infrastructure modernisation, migrating legacy
+              on-premises servers and databases to cloud architecture.
+              Implemented cloud-based business intelligence using PowerBI that
+              fundamentally transformed how leadership measured performance and
+              made decisions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="How It Works" highlight="Works" />
+    </div>
+    <div class="max-w-[70ch] mx-auto space-y-6">
+      <div class="flex gap-4 items-start">
+        <div
+          class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center flex-shrink-0 font-bold"
+        >
+          1
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">
+            Initial Discussion (No Pressure, Free)
+          </h3>
+          <p>
+            We'll talk about your challenges, what you've tried, and what you're
+            hoping to achieve. I'll be honest about whether I can help and what
+            that might look like.
+          </p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div
+          class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center flex-shrink-0 font-bold"
+        >
+          2
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Scoping & Proposal</h3>
+          <p>
+            Based on our discussion, I'll propose an engagement structure -
+            whether that's strategic advisory, team transformation, a hands-on
+            project, or a combination. Clear scope, clear timeline, clear
+            outcomes.
+          </p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div
+          class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center flex-shrink-0 font-bold"
+        >
+          3
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Engagement</h3>
+          <p>
+            I work with you and your team to deliver the agreed outcomes.
+            Regular communication, no surprises, and a focus on sustainable
+            results rather than quick fixes.
+          </p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div
+          class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center flex-shrink-0 font-bold"
+        >
+          4
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Handover & Support</h3>
+          <p>
+            For defined projects, I hand over with full documentation and
+            knowledge transfer. For ongoing relationships, we agree what
+            continued support looks like - whether that's periodic check-ins or
+            fractional leadership.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+  <Section classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading
+        level={2}
+        text="Frequently Asked Questions"
+        highlight="Questions"
+      />
+    </div>
+    <div class="max-w-[70ch] mx-auto space-y-8">
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">What's your pricing model?</h3>
+        <p class="text-lg">
+          I work on day rates for most engagements, with options for retainers
+          for ongoing relationships or project-based pricing for defined scopes.
+          Pricing depends on the nature and complexity of the work - we'll
+          discuss this in our initial conversation.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">Do you work on-site or remotely?</h3>
+        <p class="text-lg">
+          Primarily remote with occasional on-site visits as needed. I'm based
+          in Newcastle but work with companies across the UK.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">How quickly can you start?</h3>
+        <p class="text-lg">
+          It depends on my current commitments and the scope of your project.
+          Typically, I can begin initial discovery within 1-2 weeks, with full
+          engagement starting shortly after.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">Do you write code yourself?</h3>
+        <p class="text-lg">
+          Yes, but that's not the primary value I bring. I can do hands-on
+          technical work for defined projects, but I'm not available for ongoing
+          code-for-hire or staff augmentation. My strength is strategic
+          leadership, architecture, and team transformation.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">
+          What if we're not sure what we need?
+        </h3>
+        <p class="text-lg">
+          That's exactly what the initial discussion is for. Many companies know
+          something isn't working but aren't sure what the root cause is. That's
+          where assessment and advisory work comes in - we diagnose first, then
+          propose solutions.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">Can you provide references?</h3>
+        <p class="text-lg">
+          Yes, I can connect you with previous clients who can speak to the
+          results delivered. I'll provide these during our discussion if we both
+          feel there's a good fit.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section theme="accent">
+    <a id="contact"></a>
+    <div
+      class="w-full bg-primary rounded-xl text-white flex flex-col items-center gap-6 p-12 overflow-hidden relative"
+    >
+      <div
+        class="rounded-full w-64 h-64 -right-32 -top-32 bg-accent/20 absolute"
+      >
+      </div>
+      <div
+        class="rounded-full w-64 h-64 -left-32 -bottom-32 bg-accent/20 absolute"
+      >
+      </div>
+      <Heading classList="z-[1]" level={2} text="Let's Discuss Your Needs" />
+      <p class="text-lg z-[1] text-center max-w-[70ch]">
+        Not every project is a good fit, and that's okay. Let's have a
+        conversation about your challenges and see if working together makes
+        sense.
+      </p>
+      <p class="z-[1] text-center">
+        No pressure. No sales pitch. Just an honest discussion about how I might
+        be able to help.
+      </p>
+      <div class="flex gap-6 mt-6 z-[1] flex-wrap justify-center">
+        <Button href="/contact" theme="secondary" type="solid">
+          <MessageCircle />Get In Touch<ArrowRight />
+        </Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section classList="text-center">
+    <p class="text-lg italic max-w-[70ch] mx-auto">
+      Most technical problems are actually people problems. Let's fix both.
+    </p>
+  </Section>
+</MainLayout>

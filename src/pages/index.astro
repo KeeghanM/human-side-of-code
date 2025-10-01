@@ -1,59 +1,315 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro'
-import Section from '../components/ui/section.astro'
-import { ArticleOrderByInput, query } from '../lib/graphql-api'
-import { hygraphRequest } from '../lib/hygraph-client'
+import { Image } from "astro:assets";
+import Section from "../components/ui/section.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import { ArticleOrderByInput, query } from "../lib/graphql-api";
+import { hygraphRequest } from "../lib/hygraph-client";
+import Heading from "../components/ui/heading.astro";
+import Button from "../components/ui/button.astro";
+import {
+  ArrowRight,
+  BookOpen,
+  Briefcase,
+  Calendar,
+  Check,
+  GraduationCap,
+  Heart,
+  MessageCircle,
+  Target,
+  TrendingUp,
+  Users,
+} from "@lucide/astro";
+import List from "../components/ui/list.astro";
+import Card from "../components/ui/card.astro";
+import Pill from "../components/ui/pill.astro";
+import ArticleCard, {
+  ARTICLE_FRAGMENT,
+} from "../components/articles/article-card.astro";
 
-const latestArticleQuery = query((q) => [
+const latestArticlesQuery = query((q) => [
   q
     .articles(
-      { first: 1, orderBy: ArticleOrderByInput.publishedAt_DESC },
-      (a) => [a.slug]
+      { first: 4, orderBy: ArticleOrderByInput.publishedAt_DESC },
+      (a) => [...ARTICLE_FRAGMENT],
     )
-    .as('latestArticles'),
-])
-const latestArticleData = await hygraphRequest(latestArticleQuery)
-const { latestArticles } = latestArticleData
+    .as("latestArticles"),
+]);
+const latestArticlesData = await hygraphRequest(latestArticlesQuery);
+const { latestArticles } = latestArticlesData;
 ---
 
 <MainLayout
   seo={{
-    title: 'Human Side of Code',
+    title: "Human Side of Code",
     description:
-      'Even the most elegant code is written by humans, for humans. Practical communication skills and career advice to help software engineers excel beyond just coding proficiency.',
+      "From individual coaching to youth education and organisational transformation - we're here to support your journey.",
   }}
   schema={{
-    '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'Human Side of Code',
-    url: 'https://www.humansideofcode.com',
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Human Side of Code",
+    url: "https://www.humansideofcode.com",
     description:
-      'Even the most elegant code is written by humans, for humans. Practical communication skills and career advice to help software engineers excel beyond just coding proficiency.',
+      "From individual coaching to youth education and organisational transformation - we're here to support your journey.",
   }}
 >
-  <Section theme="dark">
+  <Section
+    classList="flex flex-col items-center justify-center min-h-[70vh] text-center space-y-12"
+  >
+    <div>
+      <Image
+        src="/husoc-logo.svg"
+        alt="HuSOC: Human Side of Code"
+        aria-hidden="true"
+        width="200"
+        height="200"
+        loading="eager"
+      />
+    </div>
+    <Heading
+      level={1}
+      text="Putting the People into Technology"
+      highlight="People"
+    />
+    <p class="text-xl">
+      Even the most elegant code is written by humans, for humans.
+      <br />
+      <strong>Let's make sure you're fluent in both languages.</strong>
+    </p>
+    <div class="flex gap-4 items-center">
+      <Button href="#get-started" theme="primary" type="solid"
+        >Start your journey <ArrowRight class="ml-auto" /></Button
+      >
+      <Button href="#services" theme="secondary" type="outline"
+        >Explore Services</Button
+      >
+    </div>
+  </Section>
+  <Section classList="text-center space-y-12">
+    <a id="services"></a>
+    <Pill theme="accent" classList="mb-4 inline-block">Our Services</Pill>
+    <Heading level={2} text="How We Help You Grow" highlight="Grow" />
+    <p class="text-xl max-w-[70ch] mx-auto">
+      From individual coaching to youth education and organisational
+      transformation - we're here to support your journey.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <Card
+        title="Coaching & Mentoring"
+        link={{
+          text: "Learn More",
+          href: "/mentoring",
+        }}
+        icon={{
+          icon: Users,
+        }}
+        theme="primary"
+      >
+        <p>
+          Personalised 1-on-1 coaching for mid to senior level engineers looking
+          to level up their technical skills, leadership abilities, and career
+          growth.
+        </p>
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Career progression guidance" },
+            { icon: Check, text: "Technical leadership development" },
+            { icon: Check, text: "Code review & architecture mentoring" },
+            { icon: Check, text: "Soft skills & communication coaching" },
+          ]}
+        />
+      </Card><Card
+        title="Youth Bootcamps"
+        link={{
+          text: "Learn More",
+          href: "/bootcamps",
+        }}
+        icon={{
+          icon: GraduationCap,
+        }}
+        ,
+        theme="primary"
+      >
+        <Pill slot="pill-slot" theme="primary">Available for Free</Pill>
+        <p>
+          Hands-on coding bootcamps designed for young people. 100% free for
+          underprivileged youth because everyone deserves access to tech
+          education.
+        </p>
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Full-stack web development" },
+            { icon: Check, text: "Real-world project experience" },
+            { icon: Check, text: "Mentorship & career support" },
+            { icon: Check, text: "Free options are available" },
+          ]}
+        />
+      </Card><Card
+        title="Technical Consulting"
+        link={{
+          text: "Learn More",
+          href: "consulting",
+        }}
+        icon={{
+          icon: Briefcase,
+        }}
+        ,
+        theme="primary"
+        ,
+      >
+        <p>
+          Expert consulting services to help your organisation build better
+          software, improve processes, and create people-first engineering
+          cultures.
+        </p>
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Architecture & system design" },
+            { icon: Check, text: "Team process optimization" },
+            { icon: Check, text: "Engineering culture building" },
+            { icon: Check, text: "Technical due diligence" },
+          ]}
+        />
+      </Card>
+    </div>
+    <div class="flex flex-col items-center gap-4">
+      <p>Not sure which service is right for you?</p>
+      <Button href="/contact" theme="secondary" type="outline"
+        >Let's Talk</Button
+      >
+    </div>
+  </Section>
+  <Section theme="secondary" classList="text-center space-y-12">
+    <Heading level={2} text="Read Our Latest Articles" highlight="Articles" />
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {latestArticles.map((article) => <ArticleCard article={article} />)}
+    </div>
+  </Section>
+  <Section classList="text-center space-y-12">
+    <Heading level={2} text="What We Stand For" highlight="Stand For" />
+    <p class="text-xl max-w-[70ch] mx-auto">
+      Our values guide everything we do - from coaching sessions to bootcamp
+      curricula, even how we will interact with your business.
+    </p>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <Card
+        inline={true}
+        title="People First"
+        theme="primary"
+        icon={{
+          icon: Heart,
+        }}
+      >
+        <p>
+          Technology is built by humans, for humans. We put people at the center
+          of everything we do.
+        </p>
+      </Card><Card
+        inline={true}
+        title="Accessible Education"
+        theme="primary"
+        icon={{
+          icon: BookOpen,
+        }}
+      >
+        <p>
+          Quality tech education should be available to everyone, regardless of
+          background or financial situation.
+        </p>
+      </Card><Card
+        inline={true}
+        title="Continuous Growth"
+        theme="primary"
+        icon={{
+          icon: TrendingUp,
+        }}
+      >
+        <p>
+          Learning never stops. We believe in lifelong development and
+          supporting engineers at every stage.
+        </p>
+      </Card><Card
+        inline={true}
+        title="Real Impact"
+        theme="primary"
+        icon={{
+          icon: Target,
+        }}
+      >
+        <p>
+          We measure success by the positive change we create, in people's lives
+          and careers, and businesses objectives.
+        </p>
+      </Card>
+    </div>
+  </Section>
+  <Section classList="text-center space-y-12">
+    <a id="our-services"></a>
+    <Pill theme="accent" classList="mb-4 inline-block">Why Choose HuSOC?</Pill>
+    <Heading level={2} text="What Makes Us Different" highlight="Different" />
+    <div class="text-xl max-w-[70ch] mx-auto space-y-4">
+      <p>
+        HuSOC was founded by Keeghan, a developer-turned-manager who taught
+        himself to code at 9 and spent years wondering why his technical ability
+        wasn't translating into career progression. The breakthrough? The
+        ability to communicate and explain code was more valuable than the code
+        itself.
+      </p>
+      <p>
+        Now having served as Head of Development at everything from
+        multi-billion pound enterprises to small scrappy startups, Keeghan has
+        seen firsthand how soft skills and not just technical prowess create
+        better products, more effective teams, and more fulfilling careers.
+      </p>
+      <p>
+        Keeghan grew up below the poverty line and left school at 15. Tech
+        changed his life completely. That's why HuSOC's youth bootcamps are 100%
+        free for underprivileged young people - because talent and potential
+        aren't limited by circumstance, opportunity is.
+      </p>
+      <Button href="/about" theme="primary" type="solid" classList="mx-auto"
+        >Read more about HuSOC<ArrowRight class="ml-auto" /></Button
+      >
+    </div>
+  </Section>
+  <Section theme="accent">
+    <a id="get-started"></a>
     <div
-      class="max-w-[80ch] mx-auto text-center h-[50vh] flex flex-col justify-center gap-6"
+      class="w-full bg-primary rounded-xl text-white flex flex-col items-center gap-6 p-12 overflow-hidden relative"
     >
-      <h1 class="font-bold text-4xl md:6xl text-primary-500">
-        Let's improve your technical communication skills
-      </h1>
-      <h2 class="text-xl md:text-2xl">
-        Because even the most elegant code is written by humans, for humans.
-        Let's make sure you're fluent in both languages.
-      </h2>
-      {
-        latestArticles[0] !== undefined && (
-          <div>
-            <a
-              class="px-4 py-2 rounded bg-primary-500 hover:bg-primary-600 text-white transition-colors"
-              href={`/articles/${latestArticles[0].slug}`}
-            >
-              Read the latest article
-            </a>
-          </div>
-        )
-      }
+      <div
+        class="rounded-full w-64 h-64 -right-32 -top-32 bg-accent/20 absolute"
+      >
+      </div>
+      <div
+        class="rounded-full w-64 h-64 -left-32 -bottom-32 bg-accent/20 absolute"
+      >
+      </div>
+      <Heading
+        classList="z-[1]"
+        level={2}
+        text="Ready to Start Your Journey?"
+      />
+      <p class="text-lg z-[1]">
+        Whether you're an engineer looking to level up, a young person eager to
+        learn, or a company wanting to build a better culture - we're here to
+        help.
+      </p>
+      <div class="flex gap-6 mt-12 z-[1]">
+        <Button href="/consultation" theme="secondary" type="solid">
+          <Calendar />Book a Free Consultation<ArrowRight />
+        </Button>
+        <Button href="/contact" theme="accent" type="outline">
+          <MessageCircle />Get in Touch
+        </Button>
+      </div>
+      <p class="text-sm z-[1]">
+        No pressure, no sales pitch - just a friendly conversation about how we
+        can help.
+      </p>
     </div>
   </Section>
 </MainLayout>

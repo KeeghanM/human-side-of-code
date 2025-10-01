@@ -1,0 +1,59 @@
+---
+import { ArrowRight, type Icon as IconType } from "@lucide/astro";
+import Heading from "./heading.astro";
+import Button from "./button.astro";
+import tc from "tailcomp";
+interface Props {
+  icon?: { icon: typeof IconType };
+  title?: string;
+  link?: { text: string; href: string };
+  theme: "primary" | "secondary" | "accent";
+  inline?: boolean;
+}
+const { icon, title, link, theme, inline } = Astro.props;
+
+const cardClasses = `border-2 bg-white border-secondary/10 rounded-lg p-4 flex gap-2 ${inline ? "flex-row" : "flex-col"}`;
+
+const iconClasses = tc({
+  base: {
+    static: {
+      "w-12 h-12 rounded-lg p-2": true,
+      "bg-primary/10 text-primary": theme === "primary",
+      "bg-secondary/10 text-secondary": theme === "secondary",
+      "bg-accent/10 text-accent": theme === "accent",
+    },
+    hover: {
+      "bg-primary text-white": theme === "primary",
+      "bg-secondary text-white": theme === "secondary",
+      "bg-accent text-white": theme === "accent",
+    },
+  },
+});
+---
+
+<div class={cardClasses}>
+  <div class="flex items-center">
+    {icon && <icon.icon class={iconClasses} />}
+    <div class="ml-auto">
+      <slot name="pill-slot" />
+    </div>
+  </div>
+  <div class="flex flex-col gap-2 h-full">
+    {title && <Heading level={3} text={title} />}
+    <slot />
+    {
+      link && (
+        <div class="mt-auto">
+          <Button
+            type="ghost"
+            theme="primary"
+            href={link.href}
+            classList="flex items-center"
+          >
+            {link.text} <ArrowRight class="ml-auto" />
+          </Button>
+        </div>
+      )
+    }
+  </div>
+</div>

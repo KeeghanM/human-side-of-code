@@ -1,0 +1,21 @@
+---
+import tc from "tailcomp";
+interface Props {
+  theme: "primary" | "secondary" | "accent";
+  classList?: string;
+}
+const { theme, classList } = Astro.props;
+
+const classes = tc({
+  base: {
+    static: {
+      "rounded-lg text-sm px-2 py-1": true,
+      "bg-primary text-white": theme === "primary",
+      "bg-secondary text-white": theme === "secondary",
+      "bg-accent text-black": theme === "accent",
+    },
+  },
+});
+---
+
+<span class={`${classes} ${classList}`}><slot /></span>
