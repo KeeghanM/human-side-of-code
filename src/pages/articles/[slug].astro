@@ -1,12 +1,13 @@
 ---
-import { hygraphRequest } from '../../lib/hygraph-client.ts'
-import { query } from '../../lib/graphql-api.ts'
-import MainLayout from '../../layouts/MainLayout.astro'
+import { hygraphRequest } from "../../lib/hygraph-client.ts";
+import { query } from "../../lib/graphql-api.ts";
+import MainLayout from "../../layouts/MainLayout.astro";
+import Newsletter from "../../components/sign-up/newsletter.astro";
 export async function getStaticPaths() {
   // Fetch all articles to generate static paths
   // This is a simple query to get all articles with their slugs
-  const articlesQuery = query((q) => [q.articles({}, (a) => [a.slug])])
-  const articles = await hygraphRequest(articlesQuery)
+  const articlesQuery = query((q) => [q.articles({}, (a) => [a.slug])]);
+  const articles = await hygraphRequest(articlesQuery);
 
   // This will return an array of objects with the slug of each article
   // This is used to generate static paths for each article
@@ -14,216 +15,57 @@ export async function getStaticPaths() {
     ...articles.articles.map((article) => ({
       params: { slug: article.slug },
     })),
-  ]
+  ];
 }
 
 // This function will run at build time to generate the static page for each article
-const { slug } = Astro.params
+const { slug } = Astro.params;
 const articleQuery = query((q) => [
   q.article({ where: { slug } }, (a) => [
     a.title,
     a.content((c) => [c.html, c.text]),
     a.publishedAt,
   ]),
-])
+]);
 
-const articleResponse = await hygraphRequest(articleQuery)
+const articleResponse = await hygraphRequest(articleQuery);
 
 // Check if the article exists, if not redirect to 404 page
 if (!articleResponse.article) {
-  return Astro.redirect('/404')
+  return Astro.redirect("/404");
 }
-const { article } = articleResponse
+const { article } = articleResponse;
 
-const articleNavQuery = query((q) => [
-  q
-    .articles(
-      {
-        first: 1,
-        where: {
-          publishedAt_gt: article.publishedAt,
-        },
-      },
-      (a) => [a.slug]
-    )
-    .as('nextArticles'),
-  q
-    .articles(
-      {
-        first: 1,
-        where: {
-          publishedAt_lt: article.publishedAt,
-        },
-      },
-      (a) => [a.slug]
-    )
-    .as('prevArticles'),
-])
-
-const articleNavResponse = await hygraphRequest(articleNavQuery)
-const { nextArticles, prevArticles } = articleNavResponse
-const nextArticle = nextArticles[0]
-const prevArticle = prevArticles[0]
-const { title, content, publishedAt } = article
+const { title, content, publishedAt } = article;
 ---
 
 <MainLayout
   seo={{
     title: title,
-    description: content.text.substring(0, 150) + '...',
+    description: content.text.substring(0, 150) + "...",
     canonical: `/articles/${slug}`,
   }}
   schema={{
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
     headline: title,
     datePublished: publishedAt,
     articleBody: content.text,
   }}
 >
-  <main
-    class="mx-auto max-w-3xl py-8 px-4 select-none"
-    transition:animate="slide"
-    data-next-slug={nextArticle?.slug}
-    data-prev-slug={prevArticle?.slug}
-  >
+  <main class="mx-auto max-w-3xl py-8 px-4 select-none">
     <h1 class="text-3xl font-bold text-primary-500">{title}</h1>
     {
       publishedAt && (
         <p class="text-sm text-accent-700 italic">
-          Published on {new Date(publishedAt).toLocaleDateString('en-GB')}
+          Published on {new Date(publishedAt).toLocaleDateString("en-GB")}
         </p>
       )
     }
-    <article
-      set:html={content.html}
-      class="mt-4 mb-24 leading-relaxed"
-    />
+    <article set:html={content.html} class="mt-4 mb-24 leading-relaxed" />
   </main>
-  <div class="fixed right-0 top-0 bottom-0 flex items-center text-text-800">
-    <svg
-      class="rotate-90 hidden"
-      id="next-arrow"
-      xmlns="http://www.w3.org/2000/svg"
-      width="0"
-      height="0"
-      viewBox="0 0 24 24"
-      ><path
-        fill="currentColor"
-        d="M12 21c-1.654 0-3-1.346-3-3v-4.764c-1.143 1.024-3.025.979-4.121-.115a3 3 0 0 1 0-4.242L12 1.758l7.121 7.121a3 3 0 0 1 0 4.242c-1.094 1.095-2.979 1.14-4.121.115V18c0 1.654-1.346 3-3 3M11 8.414V18a1.001 1.001 0 0 0 2 0V8.414l3.293 3.293a1.023 1.023 0 0 0 1.414 0a1 1 0 0 0 0-1.414L12 4.586l-5.707 5.707a1 1 0 0 0 0 1.414a1.023 1.023 0 0 0 1.414 0z"
-      ></path></svg
-    >
-  </div>
-  <div class="fixed left-0 top-0 bottom-0 flex items-center text-text-800">
-    <svg
-      class="-rotate-90 hidden"
-      id="prev-arrow"
-      xmlns="http://www.w3.org/2000/svg"
-      width="0"
-      height="0"
-      viewBox="0 0 24 24"
-      ><path
-        fill="currentColor"
-        d="M12 21c-1.654 0-3-1.346-3-3v-4.764c-1.143 1.024-3.025.979-4.121-.115a3 3 0 0 1 0-4.242L12 1.758l7.121 7.121a3 3 0 0 1 0 4.242c-1.094 1.095-2.979 1.14-4.121.115V18c0 1.654-1.346 3-3 3M11 8.414V18a1.001 1.001 0 0 0 2 0V8.414l3.293 3.293a1.023 1.023 0 0 0 1.414 0a1 1 0 0 0 0-1.414L12 4.586l-5.707 5.707a1 1 0 0 0 0 1.414a1.023 1.023 0 0 0 1.414 0z"
-      ></path></svg
-    >
-  </div>
+  <Newsletter />
 </MainLayout>
-
-<script>
-  import { navigate } from 'astro:transitions/client'
-
-  function initSwipeNavigation() {
-    const config = {
-      minMove: 150,
-      prevSlug: document.querySelector('main')?.dataset.prevSlug,
-      nextSlug: document.querySelector('main')?.dataset.nextSlug,
-      prevArrow: document.getElementById('prev-arrow'),
-      nextArrow: document.getElementById('next-arrow'),
-    }
-
-    if (
-      !config.prevArrow ||
-      !config.nextArrow ||
-      (!config.prevSlug && !config.nextSlug)
-    ) {
-      return
-    }
-
-    let state = { touching: false, startX: 0 }
-
-    const updateArrow = (
-      arrow: HTMLElement,
-      distance: number,
-      canNav: boolean
-    ) => {
-      const size = Math.min(distance, config.minMove)
-      const opacity = distance / config.minMove
-      const active = distance > config.minMove && canNav
-
-      Object.assign(arrow.style, {
-        display: 'block',
-        width: `${size}px`,
-        height: `${size}px`,
-        opacity: opacity.toString(),
-        color: active ? 'var(--color-primary-500)' : '#000',
-      })
-    }
-
-    const resetArrows = () => {
-      ;[config.prevArrow, config.nextArrow].forEach((arrow) => {
-        Object.assign(arrow!.style, {
-          display: 'none',
-          color: '#000',
-        })
-      })
-    }
-
-    // Initialize
-    resetArrows()
-
-    // Event listeners
-    window.addEventListener('pointerdown', (e) => {
-      state = { touching: true, startX: e.clientX }
-    })
-
-    window.addEventListener('pointermove', (e) => {
-      if (!state.touching) return
-
-      const deltaX = state.startX - e.clientX
-      const direction = deltaX > 0 ? 'next' : 'prev'
-      const distance = Math.abs(deltaX)
-
-      // Hide both first
-      resetArrows()
-
-      // Show appropriate arrow
-      if (direction === 'prev' && config.prevSlug) {
-        updateArrow(config.prevArrow!, distance, true)
-      } else if (direction === 'next' && config.nextSlug) {
-        updateArrow(config.nextArrow!, distance, true)
-      }
-    })
-
-    window.addEventListener('pointerup', (e) => {
-      if (!state.touching) return
-
-      const deltaX = state.startX - e.clientX
-      const direction = deltaX > 0 ? 'next' : 'prev'
-      const willNav = Math.abs(deltaX) > config.minMove
-
-      if (willNav) {
-        const slug = direction === 'next' ? config.nextSlug : config.prevSlug
-        if (slug) navigate(`/articles/${slug}`)
-      }
-
-      state.touching = false
-      resetArrows()
-    })
-  }
-
-  initSwipeNavigation()
-</script>
 
 <style is:inline>
   article > * + * {
@@ -246,7 +88,7 @@ const { title, content, publishedAt } = article
   }
 
   article a {
-    color: var(--color-primary-500);
+    color: var(--color-primary);
   }
 
   article ul {

@@ -1,6 +1,7 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
+import sanitizeHtml from "sanitize-html";
 
 export const POST: APIRoute = async ({ request }) => {
   try {
@@ -26,8 +27,8 @@ export const POST: APIRoute = async ({ request }) => {
           LASTNAME: name.split(" ").slice(1).join(" ") || "", // Takes rest as last name
           CURRENT_ROLE: currentRole,
           AREAS: areas.join(", "), // Comma-separated list of selected modules
-          STRUGGLING_WITH: strugglingWith,
-          AVAILABILITY: availability,
+          STRUGGLING_WITH: sanitizeHtml(strugglingWith),
+          AVAILABILITY: sanitizeHtml(availability),
         },
         listIds: [6],
         updateEnabled: true, // Updates contact if they already exist

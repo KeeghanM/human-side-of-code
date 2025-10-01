@@ -1,5 +1,6 @@
 ---
 import ArticleCard from "../components/articles/article-card.astro";
+import Newsletter from "../components/sign-up/newsletter.astro";
 import Heading from "../components/ui/heading.astro";
 import Section from "../components/ui/section.astro";
 import MainLayout from "../layouts/MainLayout.astro";
@@ -32,4 +33,5 @@ const { articles } = articlesData;
       {articles.map((article) => <ArticleCard article={article} />)}
     </div>
   </Section>
+  <Newsletter />
 </MainLayout>

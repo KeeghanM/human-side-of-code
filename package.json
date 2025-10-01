@@ -1,7 +1,7 @@
 {
   "name": "husoc",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "nodemon --watch \"src/**/*.*\" --ignore \"src/styles/tailcomp.js\" --exec \"npm run prebuild && astro dev\"",
     "start": "astro dev",
@@ -36,6 +36,7 @@
     "purgecss": "^7.0.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "sanitize-html": "^2.17.0",
     "sass": "^1.89.2",
     "schema-dts": "^1.1.5",
     "tailcomp": "^1.1.0",
@@ -46,6 +47,7 @@
     "@graphql-codegen/cli": "^5.0.7",
     "@graphql-codegen/schema-ast": "^4.1.0",
     "@graphql-tools/url-loader": "^8.0.31",
+    "@types/sanitize-html": "^2.16.0",
     "dotenv": "^16.5.0",
     "nodemon": "^3.1.10",
     "prettier": "^3.5.3",
