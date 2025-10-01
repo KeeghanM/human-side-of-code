@@ -1,0 +1,441 @@
+---
+import Section from "../components/ui/section.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import Heading from "../components/ui/heading.astro";
+import Button from "../components/ui/button.astro";
+import {
+  ArrowRight,
+  BookOpen,
+  Briefcase,
+  Calendar,
+  Check,
+  Code2,
+  GraduationCap,
+  Heart,
+  Lightbulb,
+  MessageCircle,
+  Rocket,
+  Target,
+  TrendingUp,
+  Users,
+} from "@lucide/astro";
+import List from "../components/ui/list.astro";
+import Card from "../components/ui/card.astro";
+import Pill from "../components/ui/pill.astro";
+---
+
+<MainLayout
+  seo={{
+    title: "About HuSOC | Human Side of Code",
+    description:
+      "Learn about Keeghan's journey from self-taught developer to Head of Development, and why he created HuSOC to bridge the gap between technical expertise and human-centred skills.",
+  }}
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About Human Side of Code",
+    url: "https://www.humansideofcode.com/about",
+    description:
+      "Learn about Keeghan's journey from self-taught developer to Head of Development, and why he created HuSOC to bridge the gap between technical expertise and human-centred skills.",
+  }}
+>
+  <Section
+    classList="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-8"
+  >
+    <Pill theme="accent" classList="mb-4">About HuSOC</Pill>
+    <Heading
+      level={1}
+      text="I was the socially anxious kid who taught himself to code and thought that would be enough."
+      classList="max-w-[70ch]"
+    />
+    <p class="text-xl max-w-[70ch]">
+      It wasn't. Here's what I learned about the human side of being a
+      developer, and why I'm now teaching it to others - especially those who
+      remind me of that 15-year-old who left school with nothing but a Delphi
+      book.
+    </p>
+    <p class="text-lg max-w-[70ch]">
+      I'm Keeghan, and I created HuSOC because I spent years wondering why my
+      technical ability wasn't translating into career progression. The
+      breakthrough? <strong
+        >The ability to communicate and explain code was more valuable than the
+        code itself.</strong
+      >
+    </p>
+  </Section>
+
+  <Section classList="space-y-16">
+    <div class="space-y-8">
+      <div class="flex items-center gap-4">
+        <Lightbulb class="w-8 h-8 text-accent" />
+        <Heading level={2} text="It Started With a Book" />
+      </div>
+      <div class="text-lg max-w-[70ch] space-y-4">
+        <p>
+          I taught myself to code at 9 years old by reading "Delphi in a
+          Nutshell". By 13, my best friend and I had started a game development
+          "company" with the lofty ambition to build an MMORPG. We built up a
+          team of 8-10 people at its peak.
+        </p>
+        <p>
+          Did it fail? Absolutely. We were 13 and knew close to fuck-all about
+          running a team or managing a business.
+        </p>
+        <p>
+          But here's what we did achieve: we wrote pretty decent code. We
+          learned how to recruit. We discovered what it meant to lead a team.
+          And most importantly, we learned that failure isn't something to fear
+          - it's part of the process.
+        </p>
+        <p>
+          That early experience set me up for a career of constantly trying new
+          things and ideas. I'm not afraid of an idea failing, because I learned
+          at 13 that even "failures" teach you something valuable.
+        </p>
+      </div>
+    </div>
+
+    <div class="space-y-8">
+      <div class="flex items-center gap-4">
+        <Rocket class="w-8 h-8 text-accent" />
+        <Heading level={2} text="The Long Way Round" />
+      </div>
+      <div class="text-lg max-w-[70ch] space-y-4">
+        <p>
+          I grew up below the poverty line in New Zealand and left school at 15.
+          No qualifications. No safety net. Just a knack for writing code and a
+          belief that it would be enough.
+        </p>
+        <p>
+          Tech genuinely changed my life. It gave me opportunities I never would
+          have had otherwise. It took me from New Zealand to Sweden, then
+          Liverpool for seven years, and now Newcastle as of early 2025.
+        </p>
+        <p>
+          <strong
+            >That's why HuSOC's youth bootcamps are 100% free for
+            underprivileged young people.</strong
+          > Because I was that kid. And talent and potential aren't limited by circumstance
+          - opportunity is.
+        </p>
+      </div>
+    </div>
+
+    <div class="space-y-8">
+      <div class="flex items-center gap-4">
+        <Code2 class="w-8 h-8 text-accent" />
+        <Heading level={2} text="The Career Paradox" />
+      </div>
+      <div class="text-lg max-w-[70ch] space-y-4">
+        <p>
+          After teaching myself to code, I worked my way through nearly every
+          role in tech. Database administration. System administration. Android
+          development. iPhone development. Web development. Customer support.
+          Technical sales. Compliance work like PCI-DSS certification. I moved
+          from developer to Business Analyst to Head of Development.
+        </p>
+        <p>
+          I worked for everything from multi-billion-pound enterprises (like
+          Vertu Motors, the UK's fourth-largest automotive dealership group with
+          £4.7B revenue and 8,000+ employees) to scrappy startups like Birl. I
+          built products used by thousands - ChessTraining.app has been running
+          for 4 years with over 5,000 monthly active users, and my Chess Puzzles
+          API serves 3 million requests monthly to hundreds of users.
+        </p>
+        <p>By any measure, I was technically competent. More than competent.</p>
+        <p>
+          But I kept hitting a ceiling. And it took me years to understand why.
+        </p>
+      </div>
+    </div>
+
+    <div class="space-y-8">
+      <div class="flex items-center gap-4">
+        <TrendingUp class="w-8 h-8 text-accent" />
+        <Heading level={2} text="The Breakthrough" />
+      </div>
+      <div class="text-lg max-w-[70ch] space-y-4">
+        <p>
+          My ability to write code wasn't why I got promoted. My ability to
+          communicate and explain those lines of code? That's why.
+        </p>
+        <p>
+          I wish I could say this realisation came easily. It didn't. I'm deeply
+          introverted and have struggled with social anxiety for most of my
+          life. I still script out conversations with cashiers sometimes. I use
+          self-checkout to avoid having to speak to people behind a counter.
+        </p>
+        <p>
+          But I learned something crucial: <strong
+            >improving your communication skills doesn't mean changing who you
+            are. It means expanding your capabilities.</strong
+          > It means building a bridge between your technical expertise and the people
+          who need to understand it.
+        </p>
+        <p>And once I made that shift? Everything changed.</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section theme="secondary" classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="Why This Matters" highlight="Matters" />
+      <p class="text-xl max-w-[70ch] mx-auto">
+        Here's a statistic that should worry us: <strong
+          >80% of developers are unhappy at work.</strong
+        >
+      </p>
+      <p class="text-xl max-w-[70ch] mx-auto">
+        But here's the twist - it's often not the code that's the problem. It's
+        everything else.
+      </p>
+    </div>
+    <div class="text-lg max-w-[70ch] mx-auto space-y-4">
+      <p>
+        The industry has done a brilliant job teaching people to code. We've got
+        bootcamps, university degrees, online courses, and endless tutorials.
+        But we've completely neglected the human side of being a developer.
+      </p>
+      <p>
+        How do you explain technical concepts to non-technical stakeholders? How
+        do you handle being challenged in meetings? How do you give feedback
+        without creating conflict? How do you progress beyond senior developer
+        when that requires leading people, not just writing code?
+      </p>
+      <p>
+        I learned these skills the hard way, through trial and error over 15
+        years. I made every mistake. I had uncomfortable conversations. I got
+        defensive when I shouldn't have. I stayed quiet when I should have
+        spoken up.
+      </p>
+      <p>
+        And I kept notes. I developed techniques. I found frameworks that
+        worked. I discovered that being introverted and socially anxious didn't
+        have to hold me back - I just needed different tools.
+      </p>
+      <p class="text-xl font-semibold">
+        That's what HuSOC is: the resource I wish I'd had when I was starting
+        out.
+      </p>
+    </div>
+  </Section>
+
+  <Section classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="What I Bring" highlight="Bring" />
+      <p class="text-xl max-w-[70ch] mx-auto">
+        I've sat in your seat. Whether you're a junior developer trying to
+        understand how to communicate with your team, a senior engineer
+        wondering why you're not getting promoted, or a manager struggling to
+        bridge the gap between technical and non-technical colleagues - I've
+        been there.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <Card
+        inline={true}
+        title="15+ Years Experience"
+        theme="primary"
+        icon={{ icon: Briefcase }}
+      >
+        <p>
+          Across the full tech stack and every role from DBA to Head of
+          Development
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Enterprise Scale"
+        theme="primary"
+        icon={{ icon: Target }}
+      >
+        <p>
+          Companies like Vertu Motors (£4.7B revenue) and multi-site operations
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Startup Experience"
+        theme="primary"
+        icon={{ icon: Rocket }}
+      >
+        <p>Startup environments where you wear every hat and move fast</p>
+      </Card>
+      <Card
+        inline={true}
+        title="Real Products"
+        theme="primary"
+        icon={{ icon: Users }}
+      >
+        <p>
+          Built products used by thousands daily, serving millions of API
+          requests monthly
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Compliance & Security"
+        theme="primary"
+        icon={{ icon: Check }}
+      >
+        <p>Led PCI-DSS certification and enterprise security frameworks</p>
+      </Card>
+      <Card
+        inline={true}
+        title="Full Stack Skills"
+        theme="primary"
+        icon={{ icon: Code2 }}
+      >
+        <p>
+          Technical sales, customer support, infrastructure, development - I've
+          done it all
+        </p>
+      </Card>
+    </div>
+    <p class="text-xl text-center max-w-[70ch] mx-auto">
+      I speak your language. And I know what it takes to progress, because I've
+      done it whilst battling the same social anxiety and introversion that many
+      developers face.
+    </p>
+  </Section>
+
+  <Section classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="What HuSOC Does" highlight="Does" />
+      <p class="text-xl max-w-[70ch] mx-auto">
+        HuSOC isn't about turning developers into extroverts or teaching you to
+        "fake it till you make it". It's about expanding your technical stack to
+        include human protocols.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <Card
+        title="Coaching & Mentoring"
+        link={{
+          text: "Learn More",
+          href: "/mentoring",
+        }}
+        icon={{
+          icon: Users,
+        }}
+        theme="primary"
+      >
+        <p>
+          For mid to senior engineers who want to level up their communication
+          and leadership skills
+        </p>
+      </Card>
+      <Card
+        title="Youth Bootcamps"
+        link={{
+          text: "Learn More",
+          href: "/bootcamps",
+        }}
+        icon={{
+          icon: GraduationCap,
+        }}
+        theme="primary"
+      >
+        <Pill slot="pill-slot" theme="primary">100% Free Options</Pill>
+        <p>
+          For underprivileged young people, because everyone deserves the chance
+          tech gave me
+        </p>
+      </Card>
+      <Card
+        title="Technical Consulting"
+        link={{
+          text: "Learn More",
+          href: "/consulting",
+        }}
+        icon={{
+          icon: Briefcase,
+        }}
+        theme="primary"
+      >
+        <p>
+          For companies who want to build better engineering cultures and more
+          effective teams
+        </p>
+      </Card>
+    </div>
+    <div class="text-lg max-w-[70ch] mx-auto space-y-4">
+      <p>
+        We also provide <strong>real, actionable advice</strong> through articles
+        and resources that you can implement immediately.
+      </p>
+      <p>
+        This work matters to me personally. I know what it's like to have the
+        technical skills but struggle with the human side. I know what it's like
+        to be overlooked for promotions because you can't articulate your value.
+        I know what it's like to avoid conversations because they make you
+        uncomfortable.
+      </p>
+      <p>
+        And I know what it takes to break through those barriers whilst staying
+        true to who you are.
+      </p>
+    </div>
+  </Section>
+
+  <Section theme="secondary" classList="space-y-8">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="Beyond Work" highlight="Beyond Work" />
+    </div>
+    <div class="text-lg max-w-[70ch] mx-auto space-y-4">
+      <p>
+        When I'm not coding or coaching, you'll find me playing chess (hence
+        ChessTraining.app), climbing, or running D&D campaigns. These hobbies
+        aren't just downtime - they've taught me about strategy,
+        problem-solving, and the importance of building teams that genuinely
+        enjoy working together.
+      </p>
+      <p>
+        Because that's what this is really about: <strong
+          >creating a tech industry where brilliant people can thrive without
+          having to pretend to be someone they're not.</strong
+        >
+      </p>
+    </div>
+  </Section>
+
+  <Section theme="accent">
+    <div
+      class="w-full bg-primary rounded-xl text-white flex flex-col items-center gap-6 p-12 overflow-hidden relative"
+    >
+      <div
+        class="rounded-full w-64 h-64 -right-32 -top-32 bg-accent/20 absolute"
+      >
+      </div>
+      <div
+        class="rounded-full w-64 h-64 -left-32 -bottom-32 bg-accent/20 absolute"
+      >
+      </div>
+      <Heading classList="z-[1]" level={2} text="Let's Talk" />
+      <p class="text-lg z-[1] text-center max-w-[70ch]">
+        Whether you're an engineer looking to level up, a young person eager to
+        learn, or a company wanting to build a better culture - I'm here to
+        help.
+      </p>
+      <p class="z-[1] text-center">
+        No pressure. No sales pitch. Just a friendly conversation about how we
+        can work together.
+      </p>
+      <div class="flex gap-6 mt-6 z-[1] flex-wrap justify-center">
+        <Button href="/consultation" theme="secondary" type="solid">
+          <Calendar />Book a Free Consultation<ArrowRight />
+        </Button>
+        <Button href="/contact" theme="accent" type="outline">
+          <MessageCircle />Get in Touch
+        </Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section classList="text-center">
+    <p class="text-lg italic max-w-[70ch] mx-auto">
+      Remember: Even the most elegant code is written by humans, for humans.
+      Let's make sure you're fluent in both languages.
+    </p>
+  </Section>
+</MainLayout>

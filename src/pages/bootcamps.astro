@@ -1,0 +1,683 @@
+---
+import Section from "../components/ui/section.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import Heading from "../components/ui/heading.astro";
+import Button from "../components/ui/button.astro";
+import {
+  ArrowRight,
+  BookOpen,
+  Calendar,
+  Check,
+  Code,
+  GraduationCap,
+  Heart,
+  Lightbulb,
+  MessageCircle,
+  Rocket,
+  Users,
+  Zap,
+} from "@lucide/astro";
+import List from "../components/ui/list.astro";
+import Card from "../components/ui/card.astro";
+import Pill from "../components/ui/pill.astro";
+---
+
+<MainLayout
+  seo={{
+    title: "Youth Coding Bootcamps | Human Side of Code",
+    description:
+      "Hands-on coding bootcamps for young people in Newcastle. Pay-what-you-can pricing with free places available. No experience needed - just passion to learn.",
+  }}
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: "HuSOC Youth Coding Bootcamps",
+    description:
+      "Hands-on coding bootcamps for young people in Newcastle. Pay-what-you-can pricing with free places available.",
+    provider: {
+      "@type": "Organization",
+      name: "Human Side of Code",
+      url: "https://www.humansideofcode.com",
+    },
+  }}
+>
+  <Section
+    classList="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-8"
+  >
+    <Pill theme="accent" classList="mb-4">Youth Bootcamps</Pill>
+    <Heading
+      level={1}
+      text="Everyone Deserves Access to Tech Education"
+      highlight="Everyone"
+      classList="max-w-[70ch]"
+    />
+    <p class="text-xl max-w-[70ch]">
+      Hands-on coding bootcamps for young (or not-so young) people in Newcastle.
+      No prior experience needed - just curiosity and a willingness to learn.
+    </p>
+    <Pill theme="primary" classList="text-lg font-semibold"
+      >Pay What You Can - Free Places Available</Pill
+    >
+    <div class="flex gap-4 items-center flex-wrap justify-center">
+      <Button href="#register-interest" theme="primary" type="solid"
+        >Register Your Interest <ArrowRight class="ml-auto" /></Button
+      >
+      <Button href="#how-it-works" theme="secondary" type="outline"
+        >Learn More</Button
+      >
+    </div>
+  </Section>
+
+  <Section theme="secondary" classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="Why This Exists" highlight="Why" />
+    </div>
+    <div class="text-lg max-w-[70ch] mx-auto space-y-4">
+      <p>
+        I grew up below the poverty line and left school at 15. No
+        qualifications. No safety net. Just a knack for writing code that I'd
+        taught myself from a library book.
+      </p>
+      <p>
+        Tech changed my life completely. It gave me opportunities I never would
+        have had otherwise. But I got lucky - I had access to books, a computer
+        at home, and time to teach myself.
+      </p>
+      <p>
+        <strong
+          >Not everyone has that access. And that's not fair. Talent and
+          potential aren't limited by circumstance - opportunity is.</strong
+        >
+      </p>
+      <p>
+        That's why these bootcamps exist. That's why they're pay-what-you-can.
+        That's why we're partnering with local youth charities to reach the
+        young people who need it most.
+      </p>
+      <p class="text-xl font-semibold">
+        Because every kid deserves the chance that tech gave me.
+      </p>
+    </div>
+  </Section>
+
+  <Section classList="space-y-12">
+    <div class="text-center space-y-6">
+      <a id="how-it-works"></a>
+      <Heading level={2} text="Our Bootcamp Cohorts" highlight="Cohorts" />
+      <p class="text-xl max-w-[70ch] mx-auto">
+        We group learners by age and maturity level to create the best learning
+        environment - but everyone has access to the same flexible curriculum.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <Card
+        title="Young Learners"
+        icon={{
+          icon: Lightbulb,
+        }}
+        theme="primary"
+      >
+        <Pill slot="pill-slot" theme="primary">Ages 13-16</Pill>
+        <p>
+          Learn alongside peers at a similar life stage. Smaller cohorts with
+          age-appropriate examples and projects you'll find engaging.
+        </p>
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Age-appropriate cohort grouping" },
+            { icon: Check, text: "Hands-on, project-based learning" },
+            { icon: Check, text: "Choose your own learning path" },
+            { icon: Check, text: "Access to all curriculum modules" },
+          ]}
+        />
+      </Card>
+      <Card
+        title="Young Adults"
+        icon={{
+          icon: Code,
+        }}
+        theme="primary"
+      >
+        <Pill slot="pill-slot" theme="primary">Ages 16-21</Pill>
+        <p>
+          Whether you're in sixth form, college, or just getting started in the
+          working world - learn with others navigating similar life transitions.
+        </p>
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Cohort matched to your age group" },
+            { icon: Check, text: "Real-world project experience" },
+            { icon: Check, text: "Career guidance & mentorship" },
+            { icon: Check, text: "Access to all curriculum modules" },
+          ]}
+        />
+      </Card>
+      <Card
+        title="Career Changers"
+        icon={{
+          icon: Rocket,
+        }}
+        theme="primary"
+      >
+        <Pill slot="pill-slot" theme="accent">Coming Soon</Pill>
+        <p>
+          Adults looking to transition into tech. Learn alongside others making
+          the same career pivot, with tailored support for your specific needs.
+        </p>
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Adult learner cohorts" },
+            { icon: Check, text: "Job-ready portfolio projects" },
+            { icon: Check, text: "Interview preparation" },
+            { icon: Check, text: "Access to all curriculum modules" },
+          ]}
+        />
+      </Card>
+    </div>
+    <p class="text-lg text-center max-w-[70ch] mx-auto mt-8">
+      <strong>The age ranges are just for grouping</strong> - you can start at any
+      module regardless of your age. Got a 9-year-old who's already self-taught?
+      Jump into Module 2. A 19-year-old complete beginner? Module 1 is perfect for
+      you.
+    </p>
+  </Section>
+
+  <Section theme="secondary" classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="Flexible Learning Paths" highlight="Flexible" />
+      <p class="text-xl max-w-[70ch] mx-auto">
+        Our curriculum is modular - take it as far as you want, skip what you
+        already know, or focus on specific skills.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <Card
+        inline={true}
+        title="Module 1: Intro to Coding"
+        theme="primary"
+        icon={{
+          icon: BookOpen,
+        }}
+      >
+        <p>
+          Start from scratch. Learn what code is, how it works, and write your
+          first apps. No experience needed.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Module 2: Full-Stack 101"
+        theme="primary"
+        icon={{
+          icon: Code,
+        }}
+      >
+        <p>
+          Build complete web applications. Learn frontend, backend, databases,
+          and how they all work together.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Module 3: Portfolio Prep"
+        theme="primary"
+        icon={{
+          icon: Rocket,
+        }}
+      >
+        <p>
+          Create professional projects that showcase your skills. Get guidance
+          on what employers want to see.
+        </p>
+      </Card>
+    </div>
+    <p class="text-lg text-center max-w-[70ch] mx-auto">
+      <strong>Start where it makes sense for you:</strong> Complete beginners start
+      at Module 1. Already know the basics? Jump into Module 2. Just need help building
+      a portfolio? Module 3 is there for you. Take all three, or just what you need.
+    </p>
+  </Section>
+
+  <Section classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="What You'll Get" highlight="Get" />
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <Card
+        inline={true}
+        title="Hands-On Learning"
+        theme="primary"
+        icon={{ icon: Zap }}
+      >
+        <p>
+          No boring lectures. You'll be writing code from day one, building real
+          projects, and solving real problems.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Small Group Sizes"
+        theme="primary"
+        icon={{ icon: Users }}
+      >
+        <p>
+          Limited cohort sizes mean you get personal attention, support, and
+          guidance tailored to your learning style.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Real Projects"
+        theme="primary"
+        icon={{ icon: Rocket }}
+      >
+        <p>
+          Build things you can show off. Every project is designed to teach you
+          practical skills you'll actually use.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Career Support"
+        theme="primary"
+        icon={{ icon: GraduationCap }}
+      >
+        <p>
+          Beyond just coding - we'll help with CV building, portfolio
+          development, and understanding your career options.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Ongoing Mentorship"
+        theme="primary"
+        icon={{ icon: Heart }}
+      >
+        <p>
+          The bootcamp is just the beginning. Get continued support and guidance
+          as you progress in your tech journey.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Community"
+        theme="primary"
+        icon={{ icon: Users }}
+      >
+        <p>
+          Join a network of learners and mentors. Tech is better when we support
+          each other.
+        </p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section theme="secondary" classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="Practical Details" highlight="Details" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[70ch] mx-auto">
+      <div class="space-y-4">
+        <div class="flex items-start gap-3">
+          <Calendar class="w-6 h-6 text-accent mt-1 flex-shrink-0" />
+          <div>
+            <h3 class="font-semibold text-lg">When & Where</h3>
+            <p>
+              In-person in Newcastle upon Tyne. We're currently finalising our
+              first cohort dates - register your interest to be first to know.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <Heart class="w-6 h-6 text-accent mt-1 flex-shrink-0" />
+          <div>
+            <h3 class="font-semibold text-lg">Cost</h3>
+            <p>
+              <strong>Pay what you can.</strong> Free places available for those
+              who need them. We never want cost to be a barrier.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="flex items-start gap-3">
+          <Users class="w-6 h-6 text-accent mt-1 flex-shrink-0" />
+          <div>
+            <h3 class="font-semibold text-lg">Group Size</h3>
+            <p>
+              Small cohorts of 8-12 students maximum to ensure everyone gets
+              personalised attention and support.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <Lightbulb class="w-6 h-6 text-accent mt-1 flex-shrink-0" />
+          <div>
+            <h3 class="font-semibold text-lg">Requirements</h3>
+            <p>
+              No coding experience needed. Just bring curiosity, willingness to
+              learn, and a laptop (we can help if you don't have one).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading
+        level={2}
+        text="Working With Local Charities"
+        highlight="Local"
+      />
+    </div>
+    <div class="text-lg max-w-[70ch] mx-auto space-y-4">
+      <p>
+        We're currently in partnership discussions with local youth charities in
+        Newcastle to ensure we're reaching the young people who would benefit
+        most from these bootcamps.
+      </p>
+      <p>
+        If you're a youth organisation, school, or charity working with young
+        people in the North East and would like to discuss partnership
+        opportunities, please get in touch.
+      </p>
+      <div class="flex justify-center mt-6">
+        <Button href="/contact" theme="secondary" type="outline">
+          <MessageCircle />Partner With Us
+        </Button>
+      </div>
+    </div>
+  </Section>
+
+  <Section theme="secondary" classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading
+        level={2}
+        text="Frequently Asked Questions"
+        highlight="Questions"
+      />
+    </div>
+    <div class="max-w-[70ch] mx-auto space-y-8">
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">When will bootcamps run?</h3>
+        <p class="text-lg">
+          We're finalising our first cohort now, launching in 2025. Register
+          your interest below to be the first to know when applications open.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">How long is each bootcamp?</h3>
+        <p class="text-lg">
+          We're designing flexible formats to suit different schedules -
+          intensive weeks during school holidays or part-time sessions over
+          several months. Details will be confirmed based on cohort needs.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">
+          What if I can't afford to pay anything?
+        </h3>
+        <p class="text-lg">
+          That's exactly why we have free places available. Pay-what-you-can
+          means just that - if you can't contribute financially, you're still
+          100% welcome. No questions asked.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">Do I need my own laptop/computer?</h3>
+        <p class="text-lg">
+          Ideally yes, but if you don't have access to one, let us know when you
+          register your interest. We're working on solutions to ensure equipment
+          isn't a barrier.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">
+          I'm outside the age ranges - can I still apply?
+        </h3>
+        <p class="text-lg">
+          Absolutely! The age ranges are just for cohort grouping, not
+          gatekeeping. If you're a younger learner who's already self-taught or
+          an older learner who wants to start from scratch, get in touch and
+          we'll find the right cohort for you.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">
+          Will this help me get a job in tech?
+        </h3>
+        <p class="text-lg">
+          Our goal is to give you the skills, portfolio, and confidence to
+          pursue tech opportunities - whether that's further education,
+          apprenticeships, or entry-level roles. We provide career guidance and
+          ongoing mentorship to support your journey.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section theme="accent">
+    <a id="register-interest"></a>
+    <div
+      class="w-full bg-primary rounded-xl text-white flex flex-col items-center gap-6 p-12 overflow-hidden relative"
+    >
+      <div
+        class="rounded-full w-64 h-64 -right-32 -top-32 bg-accent/20 absolute"
+      >
+      </div>
+      <div
+        class="rounded-full w-64 h-64 -left-32 -bottom-32 bg-accent/20 absolute"
+      >
+      </div>
+      <Heading classList="z-[1]" level={2} text="Register Your Interest" />
+      <p class="text-lg z-[1] text-center max-w-[70ch]">
+        Want to be notified when applications open? Register your interest below
+        and we'll keep you updated on bootcamp dates, formats, and how to apply.
+      </p>
+      <div class="w-full max-w-[600px] z-[1] space-y-4">
+        <div
+          id="form-success"
+          class="hidden bg-white text-primary rounded-lg p-6 text-center space-y-4"
+        >
+          <h3 class="text-2xl font-bold flex items-center gap-4">
+            <Check />Thank You!
+          </h3>
+          <p class="text-lg">
+            We've received your interest and will be in touch when applications
+            open.
+          </p>
+        </div>
+        <div
+          id="form-error"
+          class="hidden bg-red-100 text-red-900 rounded-lg p-4 text-center"
+        >
+          <p>
+            Something went wrong. Please try again or email us directly at <a
+              href="mailto:bootcamps@humansideofcode.com"
+              class="underline">bootcamps@humansideofcode.com</a
+            >
+          </p>
+        </div>
+        <form class="space-y-4" id="bootcamp-form">
+          <div class="space-y-2">
+            <label for="name" class="block text-sm font-medium">Name *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full px-4 py-2 rounded-lg text-gray-900 bg-white border-secondary"
+              placeholder="Your name"
+            />
+          </div>
+          <div class="space-y-2">
+            <label for="email" class="block text-sm font-medium">Email *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-2 rounded-lg text-gray-900 bg-white border-secondary"
+              placeholder="your.email@example.com"
+            />
+          </div>
+          <div class="space-y-2">
+            <label for="age-range" class="block text-sm font-medium"
+              >Age Range *</label
+            >
+            <select
+              id="age-range"
+              name="age-range"
+              required
+              class="w-full px-4 py-2 rounded-lg text-gray-900 bg-white border-secondary"
+            >
+              <option value="">Select your age range</option>
+              <option value="<13>">Under 13</option>
+              <option value="13-16">13-16</option>
+              <option value="16-21">16-21</option>
+              <option value="21+">21+ (Career Changers)</option>
+              <option value="parent-guardian"
+                >Parent/Guardian registering on behalf of child</option
+              >
+            </select>
+          </div>
+          <div class="space-y-2">
+            <label class="block text-sm font-medium"
+              >Which modules are you interested in? *</label
+            >
+            <p class="text-sm opacity-80">Select all that apply</p>
+            <div class="space-y-2 bg-white text-gray-900 rounded-lg p-4">
+              <label class="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="modules"
+                  value="intro-to-coding"
+                  class="w-4 h-4"
+                />
+                <span>Module 1: Intro to Coding (complete beginner)</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="modules"
+                  value="full-stack-101"
+                  class="w-4 h-4"
+                />
+                <span>Module 2: Full-Stack 101 (building web apps)</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="modules"
+                  value="portfolio-prep"
+                  class="w-4 h-4"
+                />
+                <span>Module 3: Portfolio Preparation (showcase your work)</span
+                >
+              </label>
+              <label class="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="modules"
+                  value="not-sure"
+                  class="w-4 h-4"
+                />
+                <span>Not sure yet / need guidance</span>
+              </label>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <label for="why" class="block text-sm font-medium"
+              >Why are you interested in learning to code?</label
+            >
+            <textarea
+              id="why"
+              name="why"
+              rows="4"
+              class="w-full px-4 py-2 rounded-lg text-gray-900 bg-white border-secondary"
+              placeholder="Tell us a bit about what you're hoping to learn or achieve..."
+            ></textarea>
+          </div>
+          <div class="space-y-2">
+            <label class="flex items-start gap-2">
+              <input type="checkbox" name="needs-assistance" class="mt-1" />
+              <span class="text-sm"
+                >I would need a free place / financial assistance</span
+              >
+            </label>
+          </div>
+          <div class="space-y-2">
+            <label class="flex items-start gap-2">
+              <input type="checkbox" name="needs-equipment" class="mt-1" />
+              <span class="text-sm"
+                >I don't have access to a laptop/computer</span
+              >
+            </label>
+          </div>
+          <Button id="submit-btn" type="solid" theme="secondary">
+            Register My Interest <ArrowRight />
+          </Button>
+        </form>
+      </div>
+      <p class="text-sm z-[1] text-center mt-4">
+        Questions? Email us at <a
+          href="mailto:bootcamps@humansideofcode.com"
+          class="underline">bootcamps@humansideofcode.com</a
+        >
+      </p>
+    </div>
+  </Section>
+
+  <Section classList="text-center">
+    <p class="text-lg italic max-w-[70ch] mx-auto">
+      Every kid deserves the chance that tech gave me. Let's make it happen.
+    </p>
+  </Section>
+</MainLayout>
+
+<script>
+  const form = document.getElementById("bootcamp-form") as HTMLFormElement;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const successMessage = document.getElementById("form-success") as HTMLElement;
+  const errorMessage = document.getElementById("form-error") as HTMLElement;
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Disable button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "<span>Submitting...</span>";
+
+    // Hide any previous messages
+    successMessage.classList.add("hidden");
+    errorMessage.classList.add("hidden");
+
+    try {
+      const formData = new FormData(form);
+
+      const response = await fetch("/api/bootcamp-interest", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
+
+      // Show success message and hide form
+      form.classList.add("hidden");
+      successMessage.classList.remove("hidden");
+    } catch (error) {
+      // Show error message and re-enable button
+      errorMessage.classList.remove("hidden");
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = "<span>Register My Interest</span>";
+      console.error("Form submission error:", error);
+    }
+  });
+</script>

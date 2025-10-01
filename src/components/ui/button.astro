@@ -6,14 +6,15 @@ interface Props {
   type: "solid" | "outline" | "ghost";
   href?: string;
   classList?: string;
+  id?: string;
 }
 
-const { theme, type, href, classList } = Astro.props;
+const { theme, type, href, classList, id } = Astro.props;
 
 const classes = tc({
   base: {
     static: {
-      "flex gap-2 items-center cursor-pointer px-4 py-2 rounded-full transition-all duration-300": true,
+      "flex gap-2 items-center cursor-pointer px-4 py-2 rounded-full transition-all duration-300 w-fit": true,
       // Primary theme variants
       "bg-primary text-white": theme === "primary" && type === "solid",
       "bg-none border-2 border-primary":
@@ -48,11 +49,11 @@ const classes = tc({
 
 {
   href ? (
-    <a class={`${classes} ${classList}`} href={href}>
+    <a id={id} class={`${classes} ${classList}`} href={href}>
       <slot />
     </a>
   ) : (
-    <button class={`${classes} ${classList}`}>
+    <button id={id} class={`${classes} ${classList}`}>
       <slot />
     </button>
   )
