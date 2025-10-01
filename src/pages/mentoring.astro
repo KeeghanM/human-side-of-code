@@ -1,0 +1,774 @@
+---
+import Section from "../components/ui/section.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import Heading from "../components/ui/heading.astro";
+import Button from "../components/ui/button.astro";
+import {
+  ArrowRight,
+  Award,
+  BookOpen,
+  Calendar,
+  Check,
+  Compass,
+  Heart,
+  Lightbulb,
+  MessageCircle,
+  TrendingUp,
+  Users,
+  Zap,
+} from "@lucide/astro";
+import List from "../components/ui/list.astro";
+import Card from "../components/ui/card.astro";
+import Pill from "../components/ui/pill.astro";
+---
+
+<MainLayout
+  seo={{
+    title: "1-on-1 Mentoring for Engineers | Human Side of Code",
+    description:
+      "Personal mentoring for mid-level engineers wanting to progress, tech leads learning to communicate, and managers bridging the technical gap.",
+  }}
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "HuSOC Engineering Mentoring",
+    description:
+      "Personal mentoring for mid-level engineers wanting to progress, tech leads learning to communicate, and managers bridging the technical gap.",
+    provider: {
+      "@type": "Organization",
+      name: "Human Side of Code",
+      url: "https://www.humansideofcode.com",
+    },
+  }}
+>
+  <Section
+    classList="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-8"
+  >
+    <Pill theme="accent" classList="mb-4">1-on-1 Mentoring</Pill>
+    <Heading
+      level={1}
+      text="You're Technically Strong. That's Not Enough."
+      highlight="Not Enough"
+      classList="max-w-[70ch]"
+    />
+    <p class="text-xl max-w-[70ch]">
+      You write good code. You solve hard problems. But you're stuck at
+      mid-level, struggling to communicate with stakeholders, or drowning in
+      your first leadership role.
+    </p>
+    <p class="text-lg max-w-[70ch]">
+      <strong
+        >The technical skills got you here. The human skills will get you there.</strong
+      >
+    </p>
+    <div class="flex gap-4 items-center flex-wrap justify-center">
+      <Button href="#who-this-is-for" theme="primary" type="solid"
+        >See If This Is For You <ArrowRight class="ml-auto" /></Button
+      >
+      <Button href="#book-intro" theme="secondary" type="outline"
+        >Book a Free Intro Call</Button
+      >
+    </div>
+  </Section>
+
+  <Section theme="secondary" classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="The Problem" highlight="Problem" />
+    </div>
+    <div class="text-lg max-w-[70ch] mx-auto space-y-4">
+      <p>
+        You're good at your job. Maybe better than most. But something's not
+        clicking:
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-8">
+        <div class="bg-white p-6 rounded-lg">
+          <p class="font-semibold">
+            You're stuck at mid-level while less-skilled engineers get promoted
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-lg">
+          <p class="font-semibold">
+            You dread meetings with non-technical stakeholders
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-lg">
+          <p class="font-semibold">
+            You just got promoted to tech lead and you're drowning
+          </p>
+        </div>
+        <div class="bg-white p-6 rounded-lg">
+          <p class="font-semibold">
+            You're a manager who doesn't understand what your developers are
+            actually doing
+          </p>
+        </div>
+      </div>
+      <p>
+        Here's what no one tells you: <strong
+          >being brilliant at code isn't enough.</strong
+        > The promotions, the opportunities, the respect - they go to people who
+        can do the technical work AND communicate it effectively.
+      </p>
+      <p>
+        I learned this the hard way. I taught myself to code at 9, worked every
+        role in tech, and spent years wondering why my technical ability wasn't
+        translating to career progression.
+      </p>
+      <p class="text-xl font-semibold">
+        The breakthrough? Communication was more valuable than code.
+      </p>
+    </div>
+  </Section>
+
+  <Section classList="space-y-12">
+    <div class="text-center space-y-6">
+      <a id="who-this-is-for"></a>
+      <Heading level={2} text="Who This Is For" highlight="For" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <Card
+        title="Mid-Level Engineers"
+        icon={{
+          icon: TrendingUp,
+        }}
+        theme="primary"
+      >
+        <p class="mb-4">
+          You're competent, maybe even strong technically. But you're stuck. You
+          don't know what "senior" actually means or how to get there.
+        </p>
+        <p class="text-sm font-semibold mb-2">We'll work on:</p>
+        <List
+          theme="primary"
+          items={[
+            {
+              icon: Check,
+              text: "Understanding what senior actually requires",
+            },
+            { icon: Check, text: "Identifying your skills gaps" },
+            { icon: Check, text: "Building business acumen" },
+            { icon: Check, text: "Making your work visible" },
+            { icon: Check, text: "Communicating your value" },
+          ]}
+        />
+      </Card>
+      <Card
+        title="Tech Leads & New Managers"
+        icon={{
+          icon: Users,
+        }}
+        theme="primary"
+      >
+        <p class="mb-4">
+          You just got promoted. Congratulations - now you're responsible for
+          people, not just code. And no one taught you how to do this.
+        </p>
+        <p class="text-sm font-semibold mb-2">We'll work on:</p>
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Stakeholder communication" },
+            { icon: Check, text: "Running effective meetings" },
+            { icon: Check, text: "Giving difficult feedback" },
+            { icon: Check, text: "Mentoring your team" },
+            { icon: Check, text: "Managing up effectively" },
+          ]}
+        />
+      </Card>
+      <Card
+        title="Non-Technical Managers"
+        icon={{
+          icon: Compass,
+        }}
+        theme="primary"
+      >
+        <p class="mb-4">
+          You manage developers but don't fully understand what they do. You
+          struggle to assess work, spot issues, or have meaningful technical
+          discussions.
+        </p>
+        <p class="text-sm font-semibold mb-2">We'll work on:</p>
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Understanding technical concepts" },
+            { icon: Check, text: "Asking the right questions" },
+            { icon: Check, text: "Assessing technical work" },
+            { icon: Check, text: "Building credibility with engineers" },
+            { icon: Check, text: "Bridging business and technical needs" },
+          ]}
+        />
+      </Card>
+    </div>
+  </Section>
+
+  <Section theme="secondary" classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="How This Works" highlight="Works" />
+    </div>
+    <div class="max-w-[70ch] mx-auto space-y-6">
+      <div class="flex gap-4 items-start">
+        <div
+          class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center flex-shrink-0 font-bold"
+        >
+          1
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">
+            Book a Free 15-Minute Intro Call
+          </h3>
+          <p>
+            No commitment. Just a quick conversation to understand what you're
+            struggling with and whether I'm the right person to help. If we're
+            not a good fit, I'll tell you honestly.
+          </p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div
+          class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center flex-shrink-0 font-bold"
+        >
+          2
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Assess Where You Are</h3>
+          <p>
+            We'll dig into your current situation - your strengths, your gaps,
+            your goals. I'll be honest about what you need to work on. No
+            sugarcoating, but delivered with empathy.
+          </p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div
+          class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center flex-shrink-0 font-bold"
+        >
+          3
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">
+            Regular Sessions + Ongoing Support
+          </h3>
+          <p>
+            We'll meet regularly (frequency depends on your needs), work through
+            specific challenges, and set actionable goals between sessions.
+            You'll also have email/WhatsApp access for quick questions and
+            support.
+          </p>
+        </div>
+      </div>
+      <div class="flex gap-4 items-start">
+        <div
+          class="w-10 h-10 rounded-full bg-accent text-white flex items-center justify-center flex-shrink-0 font-bold"
+        >
+          4
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-2">Achieve Your Goals</h3>
+          <p>
+            Whether that's a promotion, better stakeholder relationships, or
+            just feeling confident in your role - we keep going until you get
+            there. This isn't a fixed programme; it's ongoing until you don't
+            need me anymore.
+          </p>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="What You'll Get" highlight="Get" />
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <Card
+        inline={true}
+        title="Honest Feedback"
+        theme="primary"
+        icon={{ icon: MessageCircle }}
+      >
+        <p>
+          I won't tell you what you want to hear. I'll tell you what you need to
+          hear, delivered with empathy and respect. Because that's what actually
+          helps.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Practical Strategies"
+        theme="primary"
+        icon={{ icon: Lightbulb }}
+      >
+        <p>
+          Not vague advice - specific, actionable techniques you can implement
+          immediately. Many of which I've used myself to overcome social anxiety
+          and communication challenges.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Someone Who's Done It"
+        theme="primary"
+        icon={{ icon: Award }}
+      >
+        <p>
+          I've been the junior developer, the mid-level engineer, the tech lead,
+          and the Head of Development. I've made the mistakes so you don't have
+          to.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Between-Session Support"
+        theme="primary"
+        icon={{ icon: Zap }}
+      >
+        <p>
+          Got a difficult meeting tomorrow? Struggling with how to phrase some
+          feedback? Email or WhatsApp me. You don't have to wait for the next
+          session.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="Personalized Approach"
+        theme="primary"
+        icon={{ icon: Compass }}
+      >
+        <p>
+          Your career path, your challenges, your goals. Not a cookie-cutter
+          programme. We work on what you actually need, at the pace that works
+          for you.
+        </p>
+      </Card>
+      <Card
+        inline={true}
+        title="A Safe Space to Struggle"
+        theme="primary"
+        icon={{ icon: Heart }}
+      >
+        <p>
+          I'm deeply introverted with social anxiety. I get it. You can be
+          vulnerable here about what you're finding difficult without judgment.
+        </p>
+      </Card>
+    </div>
+  </Section>
+
+  <Section theme="secondary" classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="Real Examples" highlight="Examples" />
+      <p class="text-xl max-w-[70ch] mx-auto">
+        People I've helped progress in their careers.
+      </p>
+    </div>
+    <div class="max-w-[70ch] mx-auto space-y-8">
+      <div class="bg-white p-6 rounded-lg space-y-4">
+        <div class="flex items-start gap-3">
+          <TrendingUp class="w-8 h-8 text-accent flex-shrink-0" />
+          <div>
+            <h3 class="font-semibold text-xl">Junior to Mid-Level Promotion</h3>
+            <p>
+              Worked with a junior developer to assess their current skills and
+              identify gaps preventing promotion. We created a development plan
+              focusing on technical depth and business understanding. I provided
+              tutoring on areas they struggled with and helped them articulate
+              their value. They got promoted within 8 months.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg space-y-4">
+        <div class="flex items-start gap-3">
+          <Award class="w-8 h-8 text-accent flex-shrink-0" />
+          <div>
+            <h3 class="font-semibold text-xl">Mid to Senior Progression</h3>
+            <p>
+              Coached a mid-level engineer who was technically strong but
+              struggling with "senior" responsibilities. We focused on soft
+              skills, meeting facilitation, understanding business value, and
+              mentoring others. They learned to communicate their technical
+              decisions in business terms and started naturally taking on senior
+              work. Promotion followed.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white p-6 rounded-lg space-y-4">
+        <div class="flex items-start gap-3">
+          <Users class="w-8 h-8 text-accent flex-shrink-0" />
+          <div>
+            <h3 class="font-semibold text-xl">
+              Overcoming Fear of Speaking Up
+            </h3>
+            <p>
+              An apprentice who never spoke in meetings because he was
+              absolutely terrified. Over 6 months, we worked on specific
+              techniques and set weekly goals - starting with asking one
+              question per week, building to presenting technical updates. Used
+              strategies I'd developed myself for managing social anxiety. By
+              the end, he was confidently contributing in all meetings and even
+              presented at a company all-hands.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <Section classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="What This Isn't" highlight="Isn't" />
+    </div>
+    <div class="text-lg max-w-[70ch] mx-auto space-y-4">
+      <p>Let's be clear about what I won't do:</p>
+      <div class="space-y-3">
+        <div class="flex gap-3 items-start">
+          <span class="text-2xl">✗</span>
+          <p>
+            <strong>I won't do your job for you.</strong> I'll coach you on how to
+            approach problems, but you need to do the work.
+          </p>
+        </div>
+        <div class="flex gap-3 items-start">
+          <span class="text-2xl">✗</span>
+          <p>
+            <strong>I won't just tell you what you want to hear.</strong> If you're
+            the problem, I'll tell you. Kindly, but honestly.
+          </p>
+        </div>
+        <div class="flex gap-3 items-start">
+          <span class="text-2xl">✗</span>
+          <p>
+            <strong>I won't accept everyone.</strong> If I don't think I can genuinely
+            help you, or if we're not a good fit, I'll tell you in that first call.
+          </p>
+        </div>
+        <div class="flex gap-3 items-start">
+          <span class="text-2xl">✗</span>
+          <p>
+            <strong>This isn't therapy.</strong> I can help with professional challenges
+            and communication anxiety, but if you need mental health support, I'll
+            help you find appropriate resources.
+          </p>
+        </div>
+      </div>
+      <p class="mt-6">
+        <strong>This is about sustainable career growth,</strong> not quick fixes
+        or magic solutions. It takes work. You have to be committed.
+      </p>
+    </div>
+  </Section>
+
+  <Section theme="secondary" classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading
+        level={2}
+        text="Frequently Asked Questions"
+        highlight="Questions"
+      />
+    </div>
+    <div class="max-w-[70ch] mx-auto space-y-8">
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">How much does this cost?</h3>
+        <p class="text-lg">
+          The intro call is free. For ongoing mentoring, we'll discuss your
+          situation and what works for you. I want to help people genuinely
+          committed to growth - we'll figure out the details if we're a good
+          fit.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">How long does mentoring last?</h3>
+        <p class="text-lg">
+          As long as you need it. Some people achieve their goals in a few
+          months, others benefit from ongoing support over a year or more. We
+          continue until you don't need me anymore.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">How often do we meet?</h3>
+        <p class="text-lg">
+          It depends on your needs and what works for both of us. Typically
+          fortnightly or monthly sessions, with email/WhatsApp support between.
+          We can adjust frequency as needed.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">Is this remote or in-person?</h3>
+        <p class="text-lg">
+          Primarily remote via video calls, but I'm based in Newcastle if you
+          want occasional in-person sessions and you're local.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">What if we're not a good fit?</h3>
+        <p class="text-lg">
+          I'll tell you in the intro call. I won't waste your time if I don't
+          think I can help, or if someone else would be better suited to your
+          needs.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">Do you guarantee results?</h3>
+        <p class="text-lg">
+          No. I can't guarantee you'll get promoted or achieve specific outcomes
+          - that depends on you, your company, and circumstances beyond our
+          control. What I can guarantee is honest feedback, practical
+          strategies, and genuine support in your journey.
+        </p>
+      </div>
+      <div class="space-y-2">
+        <h3 class="text-xl font-semibold">How many mentees do you take on?</h3>
+        <p class="text-lg">
+          I keep numbers limited to ensure everyone gets quality attention and
+          support. If I'm at capacity, I'll let you know and potentially add you
+          to a waiting list.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <Section theme="accent">
+    <a id="book-intro"></a>
+    <div
+      class="w-full bg-primary rounded-xl text-white flex flex-col items-center gap-6 p-12 overflow-hidden relative"
+    >
+      <div
+        class="rounded-full w-64 h-64 -right-32 -top-32 bg-accent/20 absolute"
+      >
+      </div>
+      <div
+        class="rounded-full w-64 h-64 -left-32 -bottom-32 bg-accent/20 absolute"
+      >
+      </div>
+      <Heading classList="z-[1]" level={2} text="Book Your Free Intro Call" />
+      <p class="text-lg z-[1] text-center max-w-[70ch]">
+        15 minutes to discuss what you're struggling with and whether I can
+        help. No commitment, no pressure - just an honest conversation.
+      </p>
+      <p class="z-[1] text-center">
+        If we're not a good fit, I'll tell you. If I think someone else would be
+        better suited to help you, I'll say that too.
+      </p>
+      <div class="w-full max-w-[600px] z-[1] space-y-4 mt-8">
+        <div
+          id="form-success"
+          class="hidden bg-white text-primary rounded-lg p-6 text-center space-y-4"
+        >
+          <h3 class="text-2xl font-bold flex items-center justify-center gap-4">
+            <Check />Thank You!
+          </h3>
+          <p class="text-lg">
+            I've received your request and will be in touch within 48 hours to
+            schedule our intro call.
+          </p>
+        </div>
+        <div
+          id="form-error"
+          class="hidden bg-red-100 text-red-900 rounded-lg p-4 text-center"
+        >
+          <p>
+            Something went wrong. Please try again or email me directly at <a
+              href="mailto:mentoring@humansideofcode.com"
+              class="underline">mentoring@humansideofcode.com</a
+            >
+          </p>
+        </div>
+        <form class="space-y-4" id="mentoring-form">
+          <div class="space-y-2">
+            <label for="name" class="block text-sm font-medium">Name *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              class="w-full px-4 py-2 rounded-lg text-gray-900 bg-white"
+              placeholder="Your name"
+            />
+          </div>
+          <div class="space-y-2">
+            <label for="email" class="block text-sm font-medium">Email *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-2 rounded-lg text-gray-900 bg-white"
+              placeholder="your.email@example.com"
+            />
+          </div>
+          <div class="space-y-2">
+            <label for="current-role" class="block text-sm font-medium"
+              >Current Role *</label
+            >
+            <select
+              id="current-role"
+              name="current-role"
+              required
+              class="w-full px-4 py-2 rounded-lg text-gray-900 bg-white"
+            >
+              <option value="">Select your current role</option>
+              <option value="junior">Junior Developer</option>
+              <option value="mid-level">Mid-Level Engineer</option>
+              <option value="senior">Senior Engineer</option>
+              <option value="tech-lead">Tech Lead</option>
+              <option value="manager">Engineering Manager</option>
+              <option value="non-tech-manager"
+                >Non-Technical Manager (managing developers)</option
+              >
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="space-y-2">
+            <label for="struggling-with" class="block text-sm font-medium"
+              >What are you struggling with? *</label
+            >
+            <textarea
+              id="struggling-with"
+              name="struggling-with"
+              required
+              rows="4"
+              class="w-full px-4 py-2 rounded-lg text-gray-900 bg-white"
+              placeholder="Tell me a bit about what's not working and what you're hoping to achieve..."
+            ></textarea>
+          </div>
+          <div class="space-y-2">
+            <label class="block text-sm font-medium"
+              >What areas do you want help with? *</label
+            >
+            <p class="text-sm opacity-80">Select all that apply</p>
+            <div class="space-y-2 bg-white text-gray-900 rounded-lg p-4">
+              <label class="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="areas"
+                  value="career-progression"
+                  class="w-4 h-4"
+                />
+                <span>Career progression / getting promoted</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="areas"
+                  value="stakeholder-communication"
+                  class="w-4 h-4"
+                />
+                <span>Stakeholder communication</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="areas"
+                  value="technical-leadership"
+                  class="w-4 h-4"
+                />
+                <span>Technical leadership</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="areas"
+                  value="team-management"
+                  class="w-4 h-4"
+                />
+                <span>Team management / mentoring others</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="areas"
+                  value="communication-anxiety"
+                  class="w-4 h-4"
+                />
+                <span>Communication anxiety / public speaking</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="areas"
+                  value="technical-understanding"
+                  class="w-4 h-4"
+                />
+                <span>Understanding technical concepts (for managers)</span>
+              </label>
+              <label class="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  name="areas"
+                  value="other"
+                  class="w-4 h-4"
+                />
+                <span>Something else</span>
+              </label>
+            </div>
+          </div>
+          <div class="space-y-2">
+            <label for="availability" class="block text-sm font-medium"
+              >General availability for calls</label
+            >
+            <input
+              type="text"
+              id="availability"
+              name="availability"
+              class="w-full px-4 py-2 rounded-lg text-gray-900 bg-white"
+              placeholder="e.g. Weekday evenings, weekend mornings"
+            />
+          </div>
+          <Button id="submit-btn" type="solid" theme="secondary">
+            Request Intro Call <ArrowRight />
+          </Button>
+        </form>
+      </div>
+    </div>
+  </Section>
+
+  <Section classList="text-center">
+    <p class="text-lg italic max-w-[70ch] mx-auto">
+      The technical skills got you here. The human skills will get you there.
+    </p>
+  </Section>
+</MainLayout>
+
+<script>
+  const form = document.getElementById("mentoring-form") as HTMLFormElement;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const successMessage = document.getElementById("form-success") as HTMLElement;
+  const errorMessage = document.getElementById("form-error") as HTMLElement;
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Disable button and show loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "<span>Requesting...</span>";
+
+    // Hide any previous messages
+    successMessage.classList.add("hidden");
+    errorMessage.classList.add("hidden");
+
+    try {
+      const formData = new FormData(form);
+
+      const response = await fetch("/api/mentoring-interest", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
+
+      // Show success message and hide form
+      form.classList.add("hidden");
+      successMessage.classList.remove("hidden");
+    } catch (error) {
+      // Show error message and re-enable button
+      errorMessage.classList.remove("hidden");
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = "<span>Request Intro Call</span>";
+      console.error("Form submission error:", error);
+    }
+  });
+</script>
