@@ -98,8 +98,73 @@ import Pill from "../components/ui/pill.astro";
         Because every kid deserves the chance that tech gave me.
       </p>
     </div>
+  </Section><Section theme="secondary" classList="space-y-12">
+    <div class="text-center space-y-6">
+      <Heading level={2} text="Flexible Learning Paths" highlight="Flexible" />
+      <p class="text-xl max-w-[70ch] mx-auto">
+        Our curriculum is modular - take it as far as you want, skip what you
+        already know, or focus on specific skills.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <Card
+        title="Module 1: Intro to Coding"
+        theme="primary"
+        icon={{
+          icon: BookOpen,
+        }}
+      >
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Start from scratch" },
+            { icon: Check, text: "Learn what code is, and how it works" },
+            { icon: Check, text: "Write your first apps" },
+            { icon: Check, text: "No experience needed" },
+          ]}
+        />
+      </Card>
+      <Card
+        title="Module 2: Full-Stack 101"
+        theme="primary"
+        icon={{
+          icon: Code,
+        }}
+      >
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Build a complete web application" },
+            { icon: Check, text: "Learn frontend and backend skills" },
+            { icon: Check, text: "Understand data-flows, security, and optimisation" },
+            { icon: Check, text: "Take your code to the next level" },
+          ]}
+        />
+      </Card>
+      <Card
+        title="Module 3: Portfolio Prep"
+        theme="primary"
+        icon={{
+          icon: Rocket,
+        }}
+      >
+        <List
+          theme="primary"
+          items={[
+            { icon: Check, text: "Pick your own landmark project" },
+            { icon: Check, text: "Create an entire professional project" },
+            { icon: Check, text: "Learn to work in a professional setting" },
+            { icon: Check, text: "Get guidance on what employers want to see" },
+          ]}
+        />
+      </Card>
+    </div>
+    <p class="text-lg text-center max-w-[70ch] mx-auto">
+      <strong>Start where it makes sense for you:</strong> Complete beginners start
+      at Module 1. Already know the basics? Jump into Module 2. Just need help building
+      a portfolio? Module 3 is there for you. Take all three, or just what you need.
+    </p>
   </Section>
-
   <Section classList="space-y-12">
     <div class="text-center space-y-6">
       <a id="how-it-works"></a>
@@ -161,7 +226,6 @@ import Pill from "../components/ui/pill.astro";
         }}
         theme="primary"
       >
-        <Pill slot="pill-slot" theme="accent">Coming Soon</Pill>
         <p>
           Adults looking to transition into tech. Learn alongside others making
           the same career pivot, with tailored support for your specific needs.
@@ -184,63 +248,6 @@ import Pill from "../components/ui/pill.astro";
       you.
     </p>
   </Section>
-
-  <Section theme="secondary" classList="space-y-12">
-    <div class="text-center space-y-6">
-      <Heading level={2} text="Flexible Learning Paths" highlight="Flexible" />
-      <p class="text-xl max-w-[70ch] mx-auto">
-        Our curriculum is modular - take it as far as you want, skip what you
-        already know, or focus on specific skills.
-      </p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-      <Card
-        inline={true}
-        title="Module 1: Intro to Coding"
-        theme="primary"
-        icon={{
-          icon: BookOpen,
-        }}
-      >
-        <p>
-          Start from scratch. Learn what code is, how it works, and write your
-          first apps. No experience needed.
-        </p>
-      </Card>
-      <Card
-        inline={true}
-        title="Module 2: Full-Stack 101"
-        theme="primary"
-        icon={{
-          icon: Code,
-        }}
-      >
-        <p>
-          Build complete web applications. Learn frontend, backend, databases,
-          and how they all work together.
-        </p>
-      </Card>
-      <Card
-        inline={true}
-        title="Module 3: Portfolio Prep"
-        theme="primary"
-        icon={{
-          icon: Rocket,
-        }}
-      >
-        <p>
-          Create professional projects that showcase your skills. Get guidance
-          on what employers want to see.
-        </p>
-      </Card>
-    </div>
-    <p class="text-lg text-center max-w-[70ch] mx-auto">
-      <strong>Start where it makes sense for you:</strong> Complete beginners start
-      at Module 1. Already know the basics? Jump into Module 2. Just need help building
-      a portfolio? Module 3 is there for you. Take all three, or just what you need.
-    </p>
-  </Section>
-
   <Section classList="space-y-12">
     <div class="text-center space-y-6">
       <Heading level={2} text="What You'll Get" highlight="Get" />
