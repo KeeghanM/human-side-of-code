@@ -1,19 +1,19 @@
-export const prerender = false;
+export const prerender = false
 
-import type { APIRoute } from "astro";
+import type { APIRoute } from 'astro'
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const { email, firstName, lastName } = await request.json();
+    const { email, firstName, lastName } = await request.json()
     if (!email) {
-      throw new Error("Email is required");
+      throw new Error('Email is required')
     }
 
     const response = await fetch(`https://api.brevo.com/v3/contacts/${email}`, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
-        "api-key": `${import.meta.env.BREVO_API_KEY}`,
+        'Content-Type': 'application/json',
+        'api-key': `${import.meta.env.BREVO_API_KEY}`,
       },
       body: JSON.stringify({
         attributes: {
@@ -21,17 +21,17 @@ export const POST: APIRoute = async ({ request }) => {
           LASTNAME: lastName,
         },
       }),
-    });
+    })
 
     if (!response.ok) {
-      const message = await response.text();
-      throw new Error(`Failed to update details: ${message}`);
+      const message = await response.text()
+      throw new Error(`Failed to update details: ${message}`)
     }
 
-    return new Response(null, { status: 200 });
+    return new Response(null, { status: 200 })
   } catch (err) {
     const message =
-      err instanceof Error ? err.message : "An unknown error occurred";
-    return new Response(message, { status: 500 });
+      err instanceof Error ? err.message : 'An unknown error occurred'
+    return new Response(message, { status: 500 })
   }
-};
+}

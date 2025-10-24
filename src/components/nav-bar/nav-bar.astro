@@ -1,45 +1,71 @@
 ---
-import { Image } from "astro:assets";
-import Button from "../ui/button.astro";
+import { Image } from 'astro:assets'
+import Button from '../ui/button.astro'
 ---
 
 <header
-  class="nav-bar sticky top-0 z-50 shadow-md bg-secondary/10 backdrop-blur-lg"
+  class='nav-bar sticky top-0 z-50 shadow-md bg-secondary/10 backdrop-blur-lg'
 >
-  <div class="max-w-7xl mx-auto w-full">
+  <div class='max-w-7xl mx-auto w-full'>
     <!-- Main nav bar -->
     <div
-      id="nav-main"
-      class="flex items-center justify-between py-2 transition-colors duration-300 px-6"
+      id='nav-main'
+      class='flex items-center justify-between py-2 transition-colors duration-300 px-6'
     >
-      <a href="/">
+      <a href='/'>
         <Image
-          src="/husoc-logo.svg"
-          alt="HuSOC: Human Side of Code"
-          aria-hidden="true"
-          width="100"
-          height="100"
-          loading="eager"
+          src='/husoc-logo.svg'
+          alt='HuSOC: Human Side of Code'
+          aria-hidden='true'
+          width='100'
+          height='100'
+          loading='eager'
         />
       </a>
 
       <!-- Desktop Navigation -->
-      <nav class="hidden lg:flex flex-grow justify-center items-center">
-        <ul class="flex space-x-4">
-          <Button href="/#services" theme="primary" type="ghost">
+      <nav class='hidden lg:flex flex-grow justify-center items-center'>
+        <ul class='flex space-x-4'>
+          <Button
+            href='/#services'
+            theme='primary'
+            type='ghost'
+          >
             Services
           </Button>
-          <Button href="/about" theme="primary" type="ghost"> About </Button>
-          <Button href="/bootcamps" theme="primary" type="ghost">
+          <Button
+            href='/about'
+            theme='primary'
+            type='ghost'
+          >
+            About
+          </Button>
+          <Button
+            href='/bootcamps'
+            theme='primary'
+            type='ghost'
+          >
             Bootcamps
           </Button>
-          <Button href="/articles" theme="primary" type="ghost">
+          <Button
+            href='/articles'
+            theme='primary'
+            type='ghost'
+          >
             Articles
           </Button>
-          <Button href="/contact" theme="primary" type="ghost">
+          <Button
+            href='/contact'
+            theme='primary'
+            type='ghost'
+          >
             Contact
           </Button>
-          <Button href="/#get-started" theme="primary" type="solid">
+          <Button
+            href='/#get-started'
+            theme='primary'
+            type='solid'
+          >
             Get Started
           </Button>
         </ul>
@@ -47,76 +73,117 @@ import Button from "../ui/button.astro";
 
       <!-- Mobile Menu Button -->
       <button
-        id="mobile-menu-toggle"
-        class="lg:hidden p-2 rounded-md hover:bg-secondary/20 transition-colors"
-        aria-label="Toggle menu"
+        id='mobile-menu-toggle'
+        class='lg:hidden p-2 rounded-md hover:bg-secondary/20 transition-colors'
+        aria-label='Toggle menu'
       >
         <svg
-          id="menu-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          id='menu-icon'
+          xmlns='http://www.w3.org/2000/svg'
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
         >
-          <line x1="4" x2="20" y1="12" y2="12"></line>
-          <line x1="4" x2="20" y1="6" y2="6"></line>
-          <line x1="4" x2="20" y1="18" y2="18"></line>
+          <line
+            x1='4'
+            x2='20'
+            y1='12'
+            y2='12'
+          ></line>
+          <line
+            x1='4'
+            x2='20'
+            y1='6'
+            y2='6'
+          ></line>
+          <line
+            x1='4'
+            x2='20'
+            y1='18'
+            y2='18'
+          ></line>
         </svg>
         <svg
-          id="close-icon"
-          class="hidden"
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          id='close-icon'
+          class='hidden'
+          xmlns='http://www.w3.org/2000/svg'
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
         >
-          <path d="M18 6 6 18"></path>
-          <path d="m6 6 12 12"></path>
+          <path d='M18 6 6 18'></path>
+          <path d='m6 6 12 12'></path>
         </svg>
       </button>
     </div>
 
     <!-- Mobile Menu -->
     <nav
-      id="mobile-menu"
-      class="lg:hidden bg-white hidden overflow-hidden transition-all duration-300 py-4 px-6"
+      id='mobile-menu'
+      class='lg:hidden bg-white hidden overflow-hidden transition-all duration-300 py-4 px-6'
     >
-      <ul class="flex flex-col space-y-2">
-        <li class="w-full">
-          <Button href="/#services" theme="primary" type="ghost">
+      <ul class='flex flex-col space-y-2'>
+        <li class='w-full'>
+          <Button
+            href='/#services'
+            theme='primary'
+            type='ghost'
+          >
             Services
           </Button>
         </li>
-        <li class="w-full">
-          <Button href="/about" theme="primary" type="ghost"> About </Button>
+        <li class='w-full'>
+          <Button
+            href='/about'
+            theme='primary'
+            type='ghost'
+          >
+            About
+          </Button>
         </li>
-        <li class="w-full">
-          <Button href="/bootcamps" theme="primary" type="ghost">
+        <li class='w-full'>
+          <Button
+            href='/bootcamps'
+            theme='primary'
+            type='ghost'
+          >
             Bootcamps
           </Button>
         </li>
-        <li class="w-full">
-          <Button href="/articles" theme="primary" type="ghost">
+        <li class='w-full'>
+          <Button
+            href='/articles'
+            theme='primary'
+            type='ghost'
+          >
             Articles
           </Button>
         </li>
-        <li class="w-full">
-          <Button href="/contact" theme="primary" type="ghost">
+        <li class='w-full'>
+          <Button
+            href='/contact'
+            theme='primary'
+            type='ghost'
+          >
             Contact
           </Button>
         </li>
-        <li class="w-full">
-          <Button href="/#get-started" theme="primary" type="solid">
+        <li class='w-full'>
+          <Button
+            href='/#get-started'
+            theme='primary'
+            type='solid'
+          >
             Get Started
           </Button>
         </li>
@@ -126,24 +193,24 @@ import Button from "../ui/button.astro";
 </header>
 
 <script>
-  const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const menuIcon = document.getElementById("menu-icon");
-  const closeIcon = document.getElementById("close-icon");
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle')
+  const mobileMenu = document.getElementById('mobile-menu')
+  const menuIcon = document.getElementById('menu-icon')
+  const closeIcon = document.getElementById('close-icon')
 
-  mobileMenuToggle?.addEventListener("click", () => {
-    const isOpen = !mobileMenu?.classList.contains("hidden");
+  mobileMenuToggle?.addEventListener('click', () => {
+    const isOpen = !mobileMenu?.classList.contains('hidden')
 
     if (isOpen) {
       // Close menu
-      mobileMenu?.classList.add("hidden");
-      menuIcon?.classList.remove("hidden");
-      closeIcon?.classList.add("hidden");
+      mobileMenu?.classList.add('hidden')
+      menuIcon?.classList.remove('hidden')
+      closeIcon?.classList.add('hidden')
     } else {
       // Open menu
-      mobileMenu?.classList.remove("hidden");
-      menuIcon?.classList.add("hidden");
-      closeIcon?.classList.remove("hidden");
+      mobileMenu?.classList.remove('hidden')
+      menuIcon?.classList.add('hidden')
+      closeIcon?.classList.remove('hidden')
     }
-  });
+  })
 </script>

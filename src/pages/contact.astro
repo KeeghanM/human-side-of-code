@@ -1,129 +1,153 @@
 ---
-import Section from "../components/ui/section.astro";
-import MainLayout from "../layouts/MainLayout.astro";
-import Heading from "../components/ui/heading.astro";
-import { ArrowRight, Check, Mail, MessageCircle } from "@lucide/astro";
-import Pill from "../components/ui/pill.astro";
-import Button from "../components/ui/button.astro";
+import Section from '../components/ui/section.astro'
+import MainLayout from '../layouts/MainLayout.astro'
+import Heading from '../components/ui/heading.astro'
+import { ArrowRight, Check, Mail, MessageCircle } from '@lucide/astro'
+import Pill from '../components/ui/pill.astro'
+import Button from '../components/ui/button.astro'
 ---
 
 <MainLayout
   seo={{
-    title: "Get in Touch | Human Side of Code",
+    title: 'Get in Touch | Human Side of Code',
     description:
-      "Have questions about our services? Want to discuss how we can help? Get in touch - no pressure, just a conversation.",
+      'Have questions about our services? Want to discuss how we can help? Get in touch - no pressure, just a conversation.',
   }}
   schema={{
-    "@context": "https://schema.org",
-    "@type": "ContactPage",
-    name: "Contact Human Side of Code",
-    url: "https://www.humansideofcode.com/contact",
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    'name': 'Contact Human Side of Code',
+    'url': 'https://www.humansideofcode.com/contact',
   }}
 >
   <Section
-    classList="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-8"
+    classList='flex flex-col items-center justify-center min-h-[50vh] text-center space-y-8'
   >
-    <Pill theme="accent" classList="mb-4">Get in Touch</Pill>
+    <Pill
+      theme='accent'
+      classList='mb-4'
+      >Get in Touch</Pill
+    >
     <Heading
       level={1}
       text="Let's Have a Conversation"
-      highlight="Conversation"
-      classList="max-w-[70ch]"
+      highlight='Conversation'
+      classList='max-w-[70ch]'
     />
-    <p class="text-xl max-w-[70ch]">
+    <p class='text-xl max-w-[70ch]'>
       Have questions about mentoring, consulting, or bootcamps? Want to discuss
       how HuSOC can help you or your organisation?
     </p>
-    <p class="text-lg max-w-[70ch]">
+    <p class='text-lg max-w-[70ch]'>
       Fill in the form below and I'll get back to you within 48 hours. No
       pressure, no sales pitch - just an honest conversation.
     </p>
 
-    <div class="w-full max-w-[600px] space-y-4 text-left">
+    <div class='w-full max-w-[600px] space-y-4 text-left'>
       <div
-        id="form-success"
-        class="hidden bg-primary text-white rounded-lg p-6 text-center space-y-4"
+        id='form-success'
+        class='hidden bg-primary text-white rounded-lg p-6 text-center space-y-4'
       >
-        <h3 class="text-2xl font-bold flex items-center justify-center gap-4">
+        <h3 class='text-2xl font-bold flex items-center justify-center gap-4'>
           <Check />Message Sent!
         </h3>
-        <p class="text-lg">
+        <p class='text-lg'>
           Thanks for getting in touch. I'll respond within 48 hours.
         </p>
       </div>
       <div
-        id="form-error"
-        class="hidden bg-red-100 text-red-900 rounded-lg p-4 text-center"
+        id='form-error'
+        class='hidden bg-red-100 text-red-900 rounded-lg p-4 text-center'
       >
         <p>
           Something went wrong. Please try again or email me directly at <a
-            href="mailto:hello@humansideofcode.com"
-            class="underline">hello@humansideofcode.com</a
+            href='mailto:hello@humansideofcode.com'
+            class='underline'
+            >hello@humansideofcode.com</a
           >
         </p>
       </div>
-      <form class="space-y-4" id="contact-form">
-        <div class="space-y-2">
-          <label for="name" class="block text-sm font-medium">Name *</label>
+      <form
+        class='space-y-4'
+        id='contact-form'
+      >
+        <div class='space-y-2'>
+          <label
+            for='name'
+            class='block text-sm font-medium'
+            >Name *</label
+          >
           <input
-            type="text"
-            id="name"
-            name="name"
+            type='text'
+            id='name'
+            name='name'
             required
-            class="w-full px-4 py-2 rounded-lg border border-gray-300"
-            placeholder="Your name"
+            class='w-full px-4 py-2 rounded-lg border border-gray-300'
+            placeholder='Your name'
           />
         </div>
-        <div class="space-y-2">
-          <label for="email" class="block text-sm font-medium">Email *</label>
+        <div class='space-y-2'>
+          <label
+            for='email'
+            class='block text-sm font-medium'
+            >Email *</label
+          >
           <input
-            type="email"
-            id="email"
-            name="email"
+            type='email'
+            id='email'
+            name='email'
             required
-            class="w-full px-4 py-2 rounded-lg border border-gray-300"
-            placeholder="your.email@example.com"
+            class='w-full px-4 py-2 rounded-lg border border-gray-300'
+            placeholder='your.email@example.com'
           />
         </div>
-        <div class="space-y-2">
-          <label for="subject" class="block text-sm font-medium"
+        <div class='space-y-2'>
+          <label
+            for='subject'
+            class='block text-sm font-medium'
             >What's this about? *</label
           >
           <select
-            id="subject"
-            name="subject"
+            id='subject'
+            name='subject'
             required
-            class="w-full px-4 py-2 rounded-lg border border-gray-300"
+            class='w-full px-4 py-2 rounded-lg border border-gray-300'
           >
-            <option value="">Select a topic</option>
-            <option value="mentoring">1-on-1 Mentoring</option>
-            <option value="consulting">Technical Consulting</option>
-            <option value="bootcamps">Youth Bootcamps</option>
-            <option value="partnership">Partnership Opportunities</option>
-            <option value="general">General Enquiry</option>
-            <option value="other">Something Else</option>
+            <option value=''>Select a topic</option>
+            <option value='mentoring'>1-on-1 Mentoring</option>
+            <option value='consulting'>Technical Consulting</option>
+            <option value='bootcamps'>Youth Bootcamps</option>
+            <option value='partnership'>Partnership Opportunities</option>
+            <option value='general'>General Enquiry</option>
+            <option value='other'>Something Else</option>
           </select>
         </div>
-        <div class="space-y-2">
-          <label for="message" class="block text-sm font-medium"
+        <div class='space-y-2'>
+          <label
+            for='message'
+            class='block text-sm font-medium'
             >Your Message *</label
           >
           <textarea
-            id="message"
-            name="message"
+            id='message'
+            name='message'
             required
-            rows="6"
-            class="w-full px-4 py-2 rounded-lg border border-gray-300"
+            rows='6'
+            class='w-full px-4 py-2 rounded-lg border border-gray-300'
             placeholder="Tell me a bit about what you're looking for or how I can help..."
           ></textarea>
         </div>
-        <Button id="submit-btn" type="solid" theme="secondary">
+        <Button
+          id='submit-btn'
+          type='solid'
+          theme='secondary'
+        >
           Send Message <ArrowRight />
         </Button>
       </form>
     </div>
 
-    <p class="text-lg italic max-w-[70ch] mx-auto">
+    <p class='text-lg italic max-w-[70ch] mx-auto'>
       I aim to respond to all messages within 48 hours. If you haven't heard
       back, check your spam folder or try emailing me directly.
     </p>
@@ -131,43 +155,43 @@ import Button from "../components/ui/button.astro";
 </MainLayout>
 
 <script>
-  const form = document.getElementById("contact-form") as HTMLFormElement;
-  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
-  const successMessage = document.getElementById("form-success") as HTMLElement;
-  const errorMessage = document.getElementById("form-error") as HTMLElement;
+  const form = document.getElementById('contact-form') as HTMLFormElement
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement
+  const successMessage = document.getElementById('form-success') as HTMLElement
+  const errorMessage = document.getElementById('form-error') as HTMLElement
 
-  form?.addEventListener("submit", async (e) => {
-    e.preventDefault();
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
 
     // Disable button and show loading state
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = "<span>Sending...</span>";
+    submitBtn.disabled = true
+    submitBtn.innerHTML = '<span>Sending...</span>'
 
     // Hide any previous messages
-    successMessage.classList.add("hidden");
-    errorMessage.classList.add("hidden");
+    successMessage.classList.add('hidden')
+    errorMessage.classList.add('hidden')
 
     try {
-      const formData = new FormData(form);
+      const formData = new FormData(form)
 
-      const response = await fetch("/api/contact", {
-        method: "POST",
+      const response = await fetch('/api/contact', {
+        method: 'POST',
         body: formData,
-      });
+      })
 
       if (!response.ok) {
-        throw new Error("Submission failed");
+        throw new Error('Submission failed')
       }
 
       // Show success message and hide form
-      form.classList.add("hidden");
-      successMessage.classList.remove("hidden");
+      form.classList.add('hidden')
+      successMessage.classList.remove('hidden')
     } catch (error) {
       // Show error message and re-enable button
-      errorMessage.classList.remove("hidden");
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = "<span>Send Message</span>";
-      console.error("Form submission error:", error);
+      errorMessage.classList.remove('hidden')
+      submitBtn.disabled = false
+      submitBtn.innerHTML = '<span>Send Message</span>'
+      console.error('Form submission error:', error)
     }
-  });
+  })
 </script>

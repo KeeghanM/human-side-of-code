@@ -1,13 +1,13 @@
 ---
-import { hygraphRequest } from "../../lib/hygraph-client.ts";
-import { query } from "../../lib/graphql-api.ts";
-import MainLayout from "../../layouts/MainLayout.astro";
-import Newsletter from "../../components/sign-up/newsletter.astro";
+import { hygraphRequest } from '../../lib/hygraph-client.ts'
+import { query } from '../../lib/graphql-api.ts'
+import MainLayout from '../../layouts/MainLayout.astro'
+import Newsletter from '../../components/sign-up/newsletter.astro'
 export async function getStaticPaths() {
   // Fetch all articles to generate static paths
   // This is a simple query to get all articles with their slugs
-  const articlesQuery = query((q) => [q.articles({}, (a) => [a.slug])]);
-  const articles = await hygraphRequest(articlesQuery);
+  const articlesQuery = query((q) => [q.articles({}, (a) => [a.slug])])
+  const articles = await hygraphRequest(articlesQuery)
 
   // This will return an array of objects with the slug of each article
   // This is used to generate static paths for each article
@@ -15,54 +15,57 @@ export async function getStaticPaths() {
     ...articles.articles.map((article) => ({
       params: { slug: article.slug },
     })),
-  ];
+  ]
 }
 
 // This function will run at build time to generate the static page for each article
-const { slug } = Astro.params;
+const { slug } = Astro.params
 const articleQuery = query((q) => [
   q.article({ where: { slug } }, (a) => [
     a.title,
     a.content((c) => [c.html, c.text]),
     a.publishedAt,
   ]),
-]);
+])
 
-const articleResponse = await hygraphRequest(articleQuery);
+const articleResponse = await hygraphRequest(articleQuery)
 
 // Check if the article exists, if not redirect to 404 page
 if (!articleResponse.article) {
-  return Astro.redirect("/404");
+  return Astro.redirect('/404')
 }
-const { article } = articleResponse;
+const { article } = articleResponse
 
-const { title, content, publishedAt } = article;
+const { title, content, publishedAt } = article
 ---
 
 <MainLayout
   seo={{
     title: title,
-    description: content.text.substring(0, 150) + "...",
+    description: content.text.substring(0, 150) + '...',
     canonical: `/articles/${slug}`,
   }}
   schema={{
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: title,
-    datePublished: publishedAt,
-    articleBody: content.text,
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    'headline': title,
+    'datePublished': publishedAt,
+    'articleBody': content.text,
   }}
 >
-  <main class="mx-auto max-w-3xl py-8 px-4 select-none">
-    <h1 class="text-3xl font-bold text-primary-500">{title}</h1>
+  <main class='mx-auto max-w-3xl py-8 px-4 select-none'>
+    <h1 class='text-3xl font-bold text-primary-500'>{title}</h1>
     {
       publishedAt && (
-        <p class="text-sm text-accent-700 italic">
-          Published on {new Date(publishedAt).toLocaleDateString("en-GB")}
+        <p class='text-sm text-accent-700 italic'>
+          Published on {new Date(publishedAt).toLocaleDateString('en-GB')}
         </p>
       )
     }
-    <article set:html={content.html} class="mt-4 mb-24 leading-relaxed" />
+    <article
+      set:html={content.html}
+      class='mt-4 mb-24 leading-relaxed'
+    />
   </main>
   <Newsletter />
 </MainLayout>

@@ -1,25 +1,25 @@
 ---
-import tc from "tailcomp";
+import tc from 'tailcomp'
 
 interface Props {
-  theme?: "accent" | "secondary";
-  classList?: string;
+  theme?: 'accent' | 'secondary'
+  classList?: string
 }
-const { theme: bg, classList } = Astro.props;
+const { theme: bg, classList } = Astro.props
 const classes = tc({
   base: {
     static: {
-      "px-6 py-12": true,
-      "bg-accent/10": bg === "accent",
-      "bg-secondary/10": bg === "secondary",
+      'px-6 py-12': true,
+      'bg-accent/10': bg === 'accent',
+      'bg-secondary/10': bg === 'secondary',
     },
   },
   md: {
     static: {
-      "py-24": true,
+      'py-24': true,
     },
   },
-});
+})
 ---
 
 <section class={`${classes}`}>

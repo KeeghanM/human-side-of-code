@@ -1,0 +1,121 @@
+---
+
+---
+
+<script
+  is:inline
+  src='/silktide-consent-manager.js'
+></script>
+<script>
+  // @ts-nocheck
+  !(function (t, e) {
+    var o, n, p, r
+    e.__SV ||
+      ((window.posthog = e),
+      (e._i = []),
+      (e.init = function (i, s, a) {
+        function g(t, e) {
+          var o = e.split('.')
+          2 == o.length && ((t = t[o[0]]), (e = o[1])),
+            (t[e] = function () {
+              t.push([e].concat(Array.prototype.slice.call(arguments, 0)))
+            })
+        }
+        ;((p = t.createElement('script')).type = 'text/javascript'),
+          (p.async = !0),
+          (p.src = s.api_host + '/static/array.js'),
+          (r = t.getElementsByTagName('script')[0]).parentNode.insertBefore(
+            p,
+            r
+          )
+        var u = e
+        for (
+          void 0 !== a ? (u = e[a] = []) : (a = 'posthog'),
+            u.people = u.people || [],
+            u.toString = function (t) {
+              var e = 'posthog'
+              return 'posthog' !== a && (e += '.' + a), t || (e += ' (stub)'), e
+            },
+            u.people.toString = function () {
+              return u.toString(1) + '.people (stub)'
+            },
+            o =
+              'capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId setPersonProperties'.split(
+                ' '
+              ),
+            n = 0;
+          n < o.length;
+          n++
+        )
+          g(u, o[n])
+        e._i.push([i, s, a])
+      }),
+      (e.__SV = 1))
+  })(document, window.posthog || [])
+  posthog.init('phc_HxIlbw6cHqiGxB6kJTOjIG68u0SqmqfupSx2rRLcs3S', {
+    api_host: 'https://eu.i.posthog.com',
+    person_profiles: 'identified_only',
+    cookieless_mode: 'on_reject',
+  })
+  posthog.opt_out_capturing()
+
+  silktideCookieBannerManager.updateCookieBannerConfig({
+    background: {
+      showBackground: true,
+    },
+    cookieIcon: {
+      position: 'bottomRight',
+    },
+    cookieTypes: [
+      {
+        id: 'necessary',
+        name: 'Necessary',
+        description:
+          '<p>These cookies are necessary for the website to function properly and cannot be switched off. They help with things like logging in and setting your privacy preferences.</p>',
+        required: true,
+        onAccept: function () {},
+      },
+      {
+        id: 'analytics',
+        name: 'Analytics',
+        description:
+          '<p>These cookies help us improve the site by tracking which pages are most popular and how visitors move around the site.</p>',
+        defaultValue: true,
+        onAccept: function () {
+          posthog.opt_in_capturing()
+        },
+        onReject: function () {
+          posthog.opt_out_capturing()
+        },
+      },
+    ],
+    text: {
+      banner: {
+        description:
+          '<p>We use cookies on our site to enhance your user experience, provide personalized content, and analyse our traffic. <a href="/cookies" target="_blank">Cookie Policy.</a></p>',
+        acceptAllButtonText: 'Accept all',
+        acceptAllButtonAccessibleLabel: 'Accept all cookies',
+        rejectNonEssentialButtonText: 'Reject non-essential',
+        rejectNonEssentialButtonAccessibleLabel: 'Reject non-essential',
+        preferencesButtonText: 'Preferences',
+        preferencesButtonAccessibleLabel: 'Toggle preferences',
+      },
+      preferences: {
+        title: 'Customize your cookie preferences',
+        description:
+          '<p>We respect your right to privacy. You can choose not to allow some types of cookies. Your cookie preferences will apply across our website.</p>',
+        creditLinkText: 'Get this banner for free',
+        creditLinkAccessibleLabel: 'Get this banner for free',
+      },
+    },
+    position: {
+      banner: 'center',
+    },
+  })
+</script>
+
+<style is:global>
+  #silktide-cookie-icon {
+    display: none !important;
+  }
+</style>

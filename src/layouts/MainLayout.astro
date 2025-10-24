@@ -1,45 +1,62 @@
 ---
-import { Head } from "astro-capo";
-import { SEO, type SEOProps } from "astro-seo";
-import { Schema, type SchemaProps } from "astro-seo-schema";
-import { ClientRouter } from "astro:transitions";
-import Posthog from "../components/posthog.astro";
-import "../styles/global.css";
-import NavBar from "../components/nav-bar/nav-bar.astro";
-import Footer from "../components/footer/footer.astro";
+import { Head } from 'astro-capo'
+import { SEO, type SEOProps } from 'astro-seo'
+import { Schema, type SchemaProps } from 'astro-seo-schema'
+import { ClientRouter } from 'astro:transitions'
+import ConsentAndAnalytics from '../components/consent-and-analytics.astro'
+import '../styles/global.css'
+import NavBar from '../components/nav-bar/nav-bar.astro'
+import Footer from '../components/footer/footer.astro'
 
 interface Props {
-  seo: SEOProps;
-  schema?: SchemaProps<any>["item"];
+  seo: SEOProps
+  schema?: SchemaProps<any>['item']
 }
 
-const { seo, schema } = Astro.props;
-seo.title = seo.title || "Human Side of Code";
+const { seo, schema } = Astro.props
+seo.title = seo.title || 'Human Side of Code'
 seo.description =
   seo.description ||
-  "Bridging technical expertise and human-centred development in the tech industry.";
+  'Bridging technical expertise and human-centred development in the tech industry.'
 ---
 
-<html lang="en">
+<html lang='en'>
   <Head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta charset='utf-8' />
+    <meta
+      name='viewport'
+      content='width=device-width'
+    />
+    <link
+      rel='sitemap'
+      href='/sitemap-index.xml'
+    />
     <SEO {...seo} />
     {schema && <Schema item={schema} />}
-    <Posthog />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <ClientRouter />
-    <script
-      is:inline
-      src="https://analytics.ahrefs.com/analytics.js"
-      data-key="PY61kqfFZwGdho828J8M8Q"
-      async></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <ConsentAndAnalytics />
     <link
-      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
+      rel='icon'
+      type='image/svg+xml'
+      href='/favicon.svg'
+    />
+    <ClientRouter />
+    <link
+      rel='preconnect'
+      href='https://fonts.googleapis.com'
+    />
+    <link
+      rel='preconnect'
+      href='https://fonts.gstatic.com'
+      crossorigin
+    />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap'
+      rel='stylesheet'
+    />
+    <link
+      rel='stylesheet'
+      id='silktide-consent-manager-css'
+      href='/silktide-consent-manager.css'
     />
   </Head>
   <body>
@@ -53,7 +70,7 @@ seo.description =
   * {
     scroll-behavior: smooth;
     font-family:
-      "Inter",
+      'Inter',
       system-ui,
       -apple-system,
       sans-serif;
@@ -81,26 +98,25 @@ seo.description =
 
 <script is:inline>
   const changeScrollBarColor = () => {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const maxScroll =
-      document.documentElement.scrollHeight - window.innerHeight;
-    const scrollPercent = scrollTop / maxScroll;
-    const startSat = 81;
-    const endSat = 0;
-    const startLight = 40;
-    const endLight = 0;
+    const scrollTop = window.scrollY || document.documentElement.scrollTop
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight
+    const scrollPercent = scrollTop / maxScroll
+    const startSat = 81
+    const endSat = 0
+    const startLight = 40
+    const endLight = 0
 
-    const sat = Math.round(startSat + (endSat - startSat) * scrollPercent);
+    const sat = Math.round(startSat + (endSat - startSat) * scrollPercent)
     const light = Math.round(
-      startLight + (endLight - startLight) * scrollPercent,
-    );
+      startLight + (endLight - startLight) * scrollPercent
+    )
 
     document.documentElement.style.setProperty(
-      "--scroll-bar-color",
-      `hsl(104, ${sat}%, ${light}%)`,
-    );
-  };
+      '--scroll-bar-color',
+      `hsl(104, ${sat}%, ${light}%)`
+    )
+  }
 
-  window.addEventListener("scroll", changeScrollBarColor);
-  window.addEventListener("load", changeScrollBarColor);
+  window.addEventListener('scroll', changeScrollBarColor)
+  window.addEventListener('load', changeScrollBarColor)
 </script>

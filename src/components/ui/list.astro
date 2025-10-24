@@ -1,20 +1,20 @@
 ---
-import { type Icon as IconType } from "@lucide/astro";
+import { type Icon as IconType } from '@lucide/astro'
 
 interface Props {
   items: {
-    icon: typeof IconType;
-    text: string;
-  }[];
-  theme: "primary" | "secondary" | "accent";
+    icon: typeof IconType
+    text: string
+  }[]
+  theme: 'primary' | 'secondary' | 'accent'
 }
-const { items, theme } = Astro.props;
+const { items, theme } = Astro.props
 ---
 
-<ul class="text-sm">
+<ul class='text-sm'>
   {
     items.map((item) => (
-      <li class="flex items-center gap-2 p-2">
+      <li class='flex items-center gap-2 p-2'>
         <item.icon color={`var(--color-${theme})`} />
         <span>{item.text}</span>
       </li>

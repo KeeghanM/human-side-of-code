@@ -1,124 +1,188 @@
 ---
-import Heading from "../../components/ui/heading.astro";
-import Section from "../../components/ui/section.astro";
-import MainLayout from "../../layouts/MainLayout.astro";
+import Heading from '../../components/ui/heading.astro'
+import Section from '../../components/ui/section.astro'
+import MainLayout from '../../layouts/MainLayout.astro'
 ---
 
 <MainLayout
   seo={{
-    title: "Cookie Policy | Human Side of Code",
+    title: 'Cookie Policy | Human Side of Code',
   }}
 >
-  <Section classList="space-y-6">
-    <header class="text-center border-b-2 border-primary py-8 bg-white mb-12">
-      <Heading id="policy-title" level={1} text="Human Side of Code - Cookie Policy" />
-      <div class="meta text-sm text-gray-600">
+  <Section classList='space-y-6'>
+    <header class='text-center border-b-2 border-primary py-8 bg-white mb-12'>
+      <Heading
+        id='policy-title'
+        level={1}
+        text='Human Side of Code - Cookie Policy'
+      />
+      <div class='meta text-sm text-gray-600'>
         <strong>Last updated: 14 October 2025</strong><br />
         Covers
-        <a href="https://www.chesstraining.app" class="text-primary">ChessTraining.app</a>,
-        <a href="https://www.spotspot.app" class="text-primary">SpotSpot</a>,
-        <a href="https://pixel-perfection.humansideofcode.org" class="text-primary">Pixel-Perfection</a>,
-        <a href="https://arcaide.humansideofcode.org" class="text-primary">ArcAide</a>,
-        <a href="https://www.page-mon.com" class="text-primary">PageMon</a> &
-        <a href="https://www.humansideofcode.org" class="text-primary">HuSOC</a>
+        <a
+          href='https://www.chesstraining.app'
+          class='text-primary'
+          >ChessTraining.app</a
+        >,
+        <a
+          href='https://www.spotspot.app'
+          class='text-primary'
+          >SpotSpot</a
+        >,
+        <a
+          href='https://pixel-perfection.humansideofcode.org'
+          class='text-primary'
+          >Pixel-Perfection</a
+        >,
+        <a
+          href='https://arcaide.humansideofcode.org'
+          class='text-primary'
+          >ArcAide</a
+        >,
+        <a
+          href='https://www.page-mon.com'
+          class='text-primary'
+          >PageMon</a
+        > &
+        <a
+          href='https://www.humansideofcode.org'
+          class='text-primary'
+          >HuSOC</a
+        >
       </div>
     </header>
 
-    <main aria-labelledby="policy-title" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <section id="what-are-cookies" aria-labelledby="cookies-title">
-        <h2 id="cookies-title">1. What are cookies?</h2>
+    <main
+      aria-labelledby='policy-title'
+      class='grid grid-cols-1 md:grid-cols-2 gap-6'
+    >
+      <section
+        id='what-are-cookies'
+        aria-labelledby='cookies-title'
+      >
+        <h2 id='cookies-title'>1. What are cookies?</h2>
         <p>
-          This Cookie Policy explains how <strong>Human Side of Code</strong> ("we", "us", "our") uses cookies and
-          similar technologies when you visit any of our websites or use our Services.
+          This Cookie Policy explains how <strong>Human Side of Code</strong> ("we",
+          "us", "our") uses cookies and similar technologies when you visit any of
+          our websites or use our Services.
         </p>
         <p>
-          Cookies are small text files placed on your device (computer, tablet, or mobile) when you visit a website.
-          They are widely used to make websites work, or work more efficiently, as well as to provide reporting
-          information and remember your preferences.
+          Cookies are small text files placed on your device (computer, tablet,
+          or mobile) when you visit a website. They are widely used to make
+          websites work, or work more efficiently, as well as to provide
+          reporting information and remember your preferences.
         </p>
       </section>
       <aside>
         <p><strong>What are cookies?</strong></p>
         <p>
-          Cookies are small text files on your device that help our sites work. They remember your login, preferences,
-          and help us understand how you use the site.
+          Cookies are small text files on your device that help our sites work.
+          They remember your login, preferences, and help us understand how you
+          use the site.
         </p>
       </aside>
 
-      <section id="how-we-use" aria-labelledby="use-title">
-        <h2 id="use-title">2. How we use cookies</h2>
+      <section
+        id='how-we-use'
+        aria-labelledby='use-title'
+      >
+        <h2 id='use-title'>2. How we use cookies</h2>
         <p>We use cookies for several key purposes:</p>
-        <ul class="list-disc list-inside text-sm space-y-1">
+        <ul class='list-disc list-inside text-sm space-y-1'>
           <li>
-            <strong>Strictly Necessary Cookies:</strong> These are essential for you to move around the website and
-            use its features, such as accessing secure areas (logging in) and processing payments (via Stripe).
+            <strong>Strictly Necessary Cookies:</strong> These are essential for
+            you to move around the website and use its features, such as accessing
+            secure areas (logging in) and processing payments (via Stripe).
           </li>
           <li>
-            <strong>Analytics & Performance Cookies:</strong> We use <strong>PostHog</strong> (EU-hosted) to
-            collect aggregated, anonymous information about how visitors use our Services. This helps us understand
-            what's popular and how to improve the product.
+            <strong>Analytics & Performance Cookies:</strong> We use <strong
+              >PostHog</strong
+            > (EU-hosted) to collect aggregated, anonymous information about how
+            visitors use our Services. This helps us understand what's popular and
+            how to improve the product.
           </li>
           <li>
-            <strong>Functional Cookies:</strong> These remember choices you make (like your username or region) to
-            provide a more personal experience.
+            <strong>Functional Cookies:</strong> These remember choices you make
+            (like your username or region) to provide a more personal experience.
           </li>
         </ul>
       </section>
       <aside>
         <p><strong>How we use them</strong></p>
         <p>
-          We use cookies for essential things like logging you in, processing payments, and (with your consent)
-          analytics via PostHog to see how the site is used.
+          We use cookies for essential things like logging you in, processing
+          payments, and (with your consent) analytics via PostHog to see how the
+          site is used.
         </p>
       </aside>
 
-      <section id="third-party" aria-labelledby="third-party-title">
-        <h2 id="third-party-title">3. Third-party cookies</h2>
+      <section
+        id='third-party'
+        aria-labelledby='third-party-title'
+      >
+        <h2 id='third-party-title'>3. Third-party cookies</h2>
         <p>
-          Our Services use a few trusted third parties. They may also set cookies to ensure their services function
-          correctly.
+          Our Services use a few trusted third parties. They may also set
+          cookies to ensure their services function correctly.
         </p>
-        <ul class="list-disc list-inside text-sm space-y-1">
+        <ul class='list-disc list-inside text-sm space-y-1'>
           <li>
-            <strong>Stripe:</strong> Our payment processor uses necessary cookies for fraud prevention and to
-            securely process your payments.
+            <strong>Stripe:</strong> Our payment processor uses necessary cookies
+            for fraud prevention and to securely process your payments.
           </li>
           <li>
-            <strong>PostHog:</strong> Our analytics provider uses cookies to help us measure user interactions.
+            <strong>PostHog:</strong> Our analytics provider uses cookies to help
+            us measure user interactions.
           </li>
           <li>
-            <strong>Brevo:</strong> Our email provider may use cookies in emails (e.g., tracking pixels) to measure
-            campaign performance, if you consent.
+            <strong>Brevo:</strong> Our email provider may use cookies in emails
+            (e.g., tracking pixels) to measure campaign performance, if you consent.
           </li>
         </ul>
       </section>
       <aside>
         <p><strong>Third parties</strong></p>
-        <p>Our partners, like Stripe (payments) and PostHog (analytics), also use cookies to make their services work.</p>
+        <p>
+          Our partners, like Stripe (payments) and PostHog (analytics), also use
+          cookies to make their services work.
+        </p>
       </aside>
 
-      <section id="choices" aria-labelledby="choices-title">
-        <h2 id="choices-title">4. Your choices & how to opt-out</h2>
+      <section
+        id='choices'
+        aria-labelledby='choices-title'
+      >
+        <h2 id='choices-title'>4. Your choices & how to opt-out</h2>
         <p>
-          You have control over your cookie preferences. When you first visit our Services, you are presented with a
-          cookie consent banner where you can accept or reject non-essential cookies (like analytics).
+          You have control over your cookie preferences. When you first visit
+          our Services, you are presented with a cookie consent banner where you
+          can accept or reject non-essential cookies (like analytics).
         </p>
         <p>
-          You can change your mind at any time. You can also block or delete cookies by changing your browser
-          settings. Please note that if you block strictly necessary cookies, parts of our Services may not
+          You can change your mind at any time. You can also block or delete
+          cookies by changing your browser settings. Please note that if you
+          block strictly necessary cookies, parts of our Services may not
           function correctly.
         </p>
       </section>
       <aside>
         <p><strong>Your choices</strong></p>
-        <p>You can accept or reject non-essential cookies using our cookie banner. You can also block them in your browser, but this might break parts of the site.</p>
+        <p>
+          You can accept or reject non-essential cookies using our cookie
+          banner. You can also block them in your browser, but this might break
+          parts of the site.
+        </p>
       </aside>
 
-      <section id="changes" aria-labelledby="changes-title">
-        <h2 id="changes-title">5. Changes to this policy</h2>
+      <section
+        id='changes'
+        aria-labelledby='changes-title'
+      >
+        <h2 id='changes-title'>5. Changes to this policy</h2>
         <p>
-          We may update this Cookie Policy from time to time. We will notify you of any significant changes by
-          posting the new policy on this page and updating the "Last updated" date.
+          We may update this Cookie Policy from time to time. We will notify you
+          of any significant changes by posting the new policy on this page and
+          updating the "Last updated" date.
         </p>
       </section>
       <aside>
@@ -126,11 +190,19 @@ import MainLayout from "../../layouts/MainLayout.astro";
         <p>We’ll post any updates to this policy right here.</p>
       </aside>
 
-      <section id="contact" aria-labelledby="contact-title">
-        <h2 id="contact-title">6. Contact us</h2>
+      <section
+        id='contact'
+        aria-labelledby='contact-title'
+      >
+        <h2 id='contact-title'>6. Contact us</h2>
         <p>
-          If you have any questions about our use of cookies, please contact us at:
-          <a href="mailto:privacy@humansideofcode.org" class="text-primary">privacy@humansideofcode.org</a>.
+          If you have any questions about our use of cookies, please contact us
+          at:
+          <a
+            href='mailto:privacy@humansideofcode.org'
+            class='text-primary'
+            >privacy@humansideofcode.org</a
+          >.
         </p>
         <p>
           <strong>Human Side of Code</strong><br />
@@ -166,7 +238,11 @@ import MainLayout from "../../layouts/MainLayout.astro";
     max-width: min(100vw, 30ch);
     padding: 1rem;
     border-radius: 8px;
-    background-color: color-mix(in oklab, var(--color-primary) 10%, transparent);
+    background-color: color-mix(
+      in oklab,
+      var(--color-primary) 10%,
+      transparent
+    );
     height: fit-content;
   }
 </style>

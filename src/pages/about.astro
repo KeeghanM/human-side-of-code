@@ -1,8 +1,8 @@
 ---
-import Section from "../components/ui/section.astro";
-import MainLayout from "../layouts/MainLayout.astro";
-import Heading from "../components/ui/heading.astro";
-import Button from "../components/ui/button.astro";
+import Section from '../components/ui/section.astro'
+import MainLayout from '../layouts/MainLayout.astro'
+import Heading from '../components/ui/heading.astro'
+import Button from '../components/ui/button.astro'
 import {
   ArrowRight,
   BookOpen,
@@ -18,43 +18,47 @@ import {
   Target,
   TrendingUp,
   Users,
-} from "@lucide/astro";
-import List from "../components/ui/list.astro";
-import Card from "../components/ui/card.astro";
-import Pill from "../components/ui/pill.astro";
+} from '@lucide/astro'
+import List from '../components/ui/list.astro'
+import Card from '../components/ui/card.astro'
+import Pill from '../components/ui/pill.astro'
 ---
 
 <MainLayout
   seo={{
-    title: "About HuSOC | Human Side of Code",
+    title: 'About HuSOC | Human Side of Code',
     description:
       "Learn about Keeghan's journey from self-taught developer to Head of Development, and why he created HuSOC to bridge the gap between technical expertise and human-centred skills.",
   }}
   schema={{
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    name: "About Human Side of Code",
-    url: "https://www.humansideofcode.com/about",
-    description:
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    'name': 'About Human Side of Code',
+    'url': 'https://www.humansideofcode.com/about',
+    'description':
       "Learn about Keeghan's journey from self-taught developer to Head of Development, and why he created HuSOC to bridge the gap between technical expertise and human-centred skills.",
   }}
 >
   <Section
-    classList="flex flex-col items-center justify-center min-h-[50vh] text-center space-y-8"
+    classList='flex flex-col items-center justify-center min-h-[50vh] text-center space-y-8'
   >
-    <Pill theme="accent" classList="mb-4">About HuSOC</Pill>
+    <Pill
+      theme='accent'
+      classList='mb-4'
+      >About HuSOC</Pill
+    >
     <Heading
       level={1}
-      text="I was the socially anxious kid who taught himself to code and thought that would be enough."
-      classList="max-w-[70ch]"
+      text='I was the socially anxious kid who taught himself to code and thought that would be enough.'
+      classList='max-w-[70ch]'
     />
-    <p class="text-xl max-w-[70ch]">
+    <p class='text-xl max-w-[70ch]'>
       It wasn't. Here's what I learned about the human side of being a
       developer, and why I'm now teaching it to others - especially those who
       remind me of that 15-year-old who left school with nothing but a Delphi
       book.
     </p>
-    <p class="text-lg max-w-[70ch]">
+    <p class='text-lg max-w-[70ch]'>
       I'm Keeghan, and I created HuSOC because I spent years wondering why my
       technical ability wasn't translating into career progression. The
       breakthrough? <strong
@@ -64,13 +68,16 @@ import Pill from "../components/ui/pill.astro";
     </p>
   </Section>
 
-  <Section classList="space-y-16">
-    <div class="space-y-8">
-      <div class="flex items-center gap-4">
-        <Lightbulb class="w-8 h-8 text-accent" />
-        <Heading level={2} text="It Started With a Book" />
+  <Section classList='space-y-16'>
+    <div class='space-y-8'>
+      <div class='flex items-center gap-4'>
+        <Lightbulb class='w-8 h-8 text-accent' />
+        <Heading
+          level={2}
+          text='It Started With a Book'
+        />
       </div>
-      <div class="text-lg max-w-[70ch] space-y-4">
+      <div class='text-lg max-w-[70ch] space-y-4'>
         <p>
           I taught myself to code at 9 years old by reading "Delphi in a
           Nutshell". By 13, my best friend and I had started a game development
@@ -95,12 +102,15 @@ import Pill from "../components/ui/pill.astro";
       </div>
     </div>
 
-    <div class="space-y-8">
-      <div class="flex items-center gap-4">
-        <Rocket class="w-8 h-8 text-accent" />
-        <Heading level={2} text="The Long Way Round" />
+    <div class='space-y-8'>
+      <div class='flex items-center gap-4'>
+        <Rocket class='w-8 h-8 text-accent' />
+        <Heading
+          level={2}
+          text='The Long Way Round'
+        />
       </div>
-      <div class="text-lg max-w-[70ch] space-y-4">
+      <div class='text-lg max-w-[70ch] space-y-4'>
         <p>
           I grew up below the poverty line in New Zealand and left school at 15.
           No qualifications. No safety net. Just a knack for writing code and a
@@ -121,12 +131,15 @@ import Pill from "../components/ui/pill.astro";
       </div>
     </div>
 
-    <div class="space-y-8">
-      <div class="flex items-center gap-4">
-        <Code2 class="w-8 h-8 text-accent" />
-        <Heading level={2} text="The Career Paradox" />
+    <div class='space-y-8'>
+      <div class='flex items-center gap-4'>
+        <Code2 class='w-8 h-8 text-accent' />
+        <Heading
+          level={2}
+          text='The Career Paradox'
+        />
       </div>
-      <div class="text-lg max-w-[70ch] space-y-4">
+      <div class='text-lg max-w-[70ch] space-y-4'>
         <p>
           After teaching myself to code, I worked my way through nearly every
           role in tech. Database administration. System administration. Android
@@ -149,12 +162,15 @@ import Pill from "../components/ui/pill.astro";
       </div>
     </div>
 
-    <div class="space-y-8">
-      <div class="flex items-center gap-4">
-        <TrendingUp class="w-8 h-8 text-accent" />
-        <Heading level={2} text="The Breakthrough" />
+    <div class='space-y-8'>
+      <div class='flex items-center gap-4'>
+        <TrendingUp class='w-8 h-8 text-accent' />
+        <Heading
+          level={2}
+          text='The Breakthrough'
+        />
       </div>
-      <div class="text-lg max-w-[70ch] space-y-4">
+      <div class='text-lg max-w-[70ch] space-y-4'>
         <p>
           My ability to write code wasn't why I got promoted. My ability to
           communicate and explain those lines of code? That's why.
@@ -177,20 +193,27 @@ import Pill from "../components/ui/pill.astro";
     </div>
   </Section>
 
-  <Section theme="secondary" classList="space-y-12">
-    <div class="text-center space-y-6">
-      <Heading level={2} text="Why This Matters" highlight="Matters" />
-      <p class="text-xl max-w-[70ch] mx-auto">
+  <Section
+    theme='secondary'
+    classList='space-y-12'
+  >
+    <div class='text-center space-y-6'>
+      <Heading
+        level={2}
+        text='Why This Matters'
+        highlight='Matters'
+      />
+      <p class='text-xl max-w-[70ch] mx-auto'>
         Here's a statistic that should worry us: <strong
           >80% of developers are unhappy at work.</strong
         >
       </p>
-      <p class="text-xl max-w-[70ch] mx-auto">
+      <p class='text-xl max-w-[70ch] mx-auto'>
         But here's the twist - it's often not the code that's the problem. It's
         everything else.
       </p>
     </div>
-    <div class="text-lg max-w-[70ch] mx-auto space-y-4">
+    <div class='text-lg max-w-[70ch] mx-auto space-y-4'>
       <p>
         The industry has done a brilliant job teaching people to code. We've got
         bootcamps, university degrees, online courses, and endless tutorials.
@@ -213,17 +236,21 @@ import Pill from "../components/ui/pill.astro";
         worked. I discovered that being introverted and socially anxious didn't
         have to hold me back - I just needed different tools.
       </p>
-      <p class="text-xl font-semibold">
+      <p class='text-xl font-semibold'>
         That's what HuSOC is: the resource I wish I'd had when I was starting
         out.
       </p>
     </div>
   </Section>
 
-  <Section classList="space-y-12">
-    <div class="text-center space-y-6">
-      <Heading level={2} text="What I Bring" highlight="Bring" />
-      <p class="text-xl max-w-[70ch] mx-auto">
+  <Section classList='space-y-12'>
+    <div class='text-center space-y-6'>
+      <Heading
+        level={2}
+        text='What I Bring'
+        highlight='Bring'
+      />
+      <p class='text-xl max-w-[70ch] mx-auto'>
         I've sat in your seat. Whether you're a junior developer trying to
         understand how to communicate with your team, a senior engineer
         wondering why you're not getting promoted, or a manager struggling to
@@ -231,11 +258,11 @@ import Pill from "../components/ui/pill.astro";
         been there.
       </p>
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    <div class='grid grid-cols-1 lg:grid-cols-2 gap-4'>
       <Card
         inline={true}
-        title="15+ Years Experience"
-        theme="primary"
+        title='15+ Years Experience'
+        theme='primary'
         icon={{ icon: Briefcase }}
       >
         <p>
@@ -245,8 +272,8 @@ import Pill from "../components/ui/pill.astro";
       </Card>
       <Card
         inline={true}
-        title="Enterprise Scale"
-        theme="primary"
+        title='Enterprise Scale'
+        theme='primary'
         icon={{ icon: Target }}
       >
         <p>
@@ -255,16 +282,16 @@ import Pill from "../components/ui/pill.astro";
       </Card>
       <Card
         inline={true}
-        title="Startup Experience"
-        theme="primary"
+        title='Startup Experience'
+        theme='primary'
         icon={{ icon: Rocket }}
       >
         <p>Startup environments where you wear every hat and move fast</p>
       </Card>
       <Card
         inline={true}
-        title="Real Products"
-        theme="primary"
+        title='Real Products'
+        theme='primary'
         icon={{ icon: Users }}
       >
         <p>
@@ -274,16 +301,16 @@ import Pill from "../components/ui/pill.astro";
       </Card>
       <Card
         inline={true}
-        title="Compliance & Security"
-        theme="primary"
+        title='Compliance & Security'
+        theme='primary'
         icon={{ icon: Check }}
       >
         <p>Led PCI-DSS certification and enterprise security frameworks</p>
       </Card>
       <Card
         inline={true}
-        title="Full Stack Skills"
-        theme="primary"
+        title='Full Stack Skills'
+        theme='primary'
         icon={{ icon: Code2 }}
       >
         <p>
@@ -292,33 +319,37 @@ import Pill from "../components/ui/pill.astro";
         </p>
       </Card>
     </div>
-    <p class="text-xl text-center max-w-[70ch] mx-auto">
+    <p class='text-xl text-center max-w-[70ch] mx-auto'>
       I speak your language. And I know what it takes to progress, because I've
       done it whilst battling the same social anxiety and introversion that many
       developers face.
     </p>
   </Section>
 
-  <Section classList="space-y-12">
-    <div class="text-center space-y-6">
-      <Heading level={2} text="What HuSOC Does" highlight="Does" />
-      <p class="text-xl max-w-[70ch] mx-auto">
+  <Section classList='space-y-12'>
+    <div class='text-center space-y-6'>
+      <Heading
+        level={2}
+        text='What HuSOC Does'
+        highlight='Does'
+      />
+      <p class='text-xl max-w-[70ch] mx-auto'>
         HuSOC isn't about turning developers into extroverts or teaching you to
         "fake it till you make it". It's about expanding your technical stack to
         include human protocols.
       </p>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div class='grid grid-cols-1 md:grid-cols-3 gap-4'>
       <Card
-        title="Coaching & Mentoring"
+        title='Coaching & Mentoring'
         link={{
-          text: "Learn More",
-          href: "/mentoring",
+          text: 'Learn More',
+          href: '/mentoring',
         }}
         icon={{
           icon: Users,
         }}
-        theme="primary"
+        theme='primary'
       >
         <p>
           For mid to senior engineers who want to level up their communication
@@ -326,32 +357,36 @@ import Pill from "../components/ui/pill.astro";
         </p>
       </Card>
       <Card
-        title="Youth Bootcamps"
+        title='Youth Bootcamps'
         link={{
-          text: "Learn More",
-          href: "/bootcamps",
+          text: 'Learn More',
+          href: '/bootcamps',
         }}
         icon={{
           icon: GraduationCap,
         }}
-        theme="primary"
+        theme='primary'
       >
-        <Pill slot="pill-slot" theme="primary">100% Free Options</Pill>
+        <Pill
+          slot='pill-slot'
+          theme='primary'
+          >100% Free Options</Pill
+        >
         <p>
           For underprivileged young people, because everyone deserves the chance
           tech gave me
         </p>
       </Card>
       <Card
-        title="Technical Consulting"
+        title='Technical Consulting'
         link={{
-          text: "Learn More",
-          href: "/consulting",
+          text: 'Learn More',
+          href: '/consulting',
         }}
         icon={{
           icon: Briefcase,
         }}
-        theme="primary"
+        theme='primary'
       >
         <p>
           For companies who want to build better engineering cultures and more
@@ -359,7 +394,7 @@ import Pill from "../components/ui/pill.astro";
         </p>
       </Card>
     </div>
-    <div class="text-lg max-w-[70ch] mx-auto space-y-4">
+    <div class='text-lg max-w-[70ch] mx-auto space-y-4'>
       <p>
         We also provide <strong>real, actionable advice</strong> through articles
         and resources that you can implement immediately.
@@ -378,11 +413,18 @@ import Pill from "../components/ui/pill.astro";
     </div>
   </Section>
 
-  <Section theme="secondary" classList="space-y-8">
-    <div class="text-center space-y-6">
-      <Heading level={2} text="Beyond Work" highlight="Beyond Work" />
+  <Section
+    theme='secondary'
+    classList='space-y-8'
+  >
+    <div class='text-center space-y-6'>
+      <Heading
+        level={2}
+        text='Beyond Work'
+        highlight='Beyond Work'
+      />
     </div>
-    <div class="text-lg max-w-[70ch] mx-auto space-y-4">
+    <div class='text-lg max-w-[70ch] mx-auto space-y-4'>
       <p>
         When I'm not coding or coaching, you'll find me playing chess (hence
         ChessTraining.app), climbing, or running D&D campaigns. These hobbies
@@ -399,41 +441,53 @@ import Pill from "../components/ui/pill.astro";
     </div>
   </Section>
 
-  <Section theme="accent">
+  <Section theme='accent'>
     <div
-      class="w-full bg-primary rounded-xl text-white flex flex-col items-center gap-6 p-12 overflow-hidden relative"
+      class='w-full bg-primary rounded-xl text-white flex flex-col items-center gap-6 p-12 overflow-hidden relative'
     >
       <div
-        class="rounded-full w-64 h-64 -right-32 -top-32 bg-accent/20 absolute"
+        class='rounded-full w-64 h-64 -right-32 -top-32 bg-accent/20 absolute'
       >
       </div>
       <div
-        class="rounded-full w-64 h-64 -left-32 -bottom-32 bg-accent/20 absolute"
+        class='rounded-full w-64 h-64 -left-32 -bottom-32 bg-accent/20 absolute'
       >
       </div>
-      <Heading classList="z-[1]" level={2} text="Let's Talk" />
-      <p class="text-lg z-[1] text-center max-w-[70ch]">
+      <Heading
+        classList='z-[1]'
+        level={2}
+        text="Let's Talk"
+      />
+      <p class='text-lg z-[1] text-center max-w-[70ch]'>
         Whether you're an engineer looking to level up, a young person eager to
         learn, or a company wanting to build a better culture - I'm here to
         help.
       </p>
-      <p class="z-[1] text-center">
+      <p class='z-[1] text-center'>
         No pressure. No sales pitch. Just a friendly conversation about how we
         can work together.
       </p>
-      <div class="flex gap-6 mt-6 z-[1] flex-wrap justify-center">
-        <Button href="/consultation" theme="secondary" type="solid">
+      <div class='flex gap-6 mt-6 z-[1] flex-wrap justify-center'>
+        <Button
+          href='/consultation'
+          theme='secondary'
+          type='solid'
+        >
           <Calendar />Book a Free Consultation<ArrowRight />
         </Button>
-        <Button href="/contact" theme="accent" type="outline">
+        <Button
+          href='/contact'
+          theme='accent'
+          type='outline'
+        >
           <MessageCircle />Get in Touch
         </Button>
       </div>
     </div>
   </Section>
 
-  <Section classList="text-center">
-    <p class="text-lg italic max-w-[70ch] mx-auto">
+  <Section classList='text-center'>
+    <p class='text-lg italic max-w-[70ch] mx-auto'>
       Remember: Even the most elegant code is written by humans, for humans.
       Let's make sure you're fluent in both languages.
     </p>
