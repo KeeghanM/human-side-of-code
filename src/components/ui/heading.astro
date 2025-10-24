@@ -6,8 +6,9 @@ interface Props {
   text: string;
   highlight?: string;
   classList?: string;
+  id? :string
 }
-const { level, highlight, text, classList } = Astro.props;
+const { level, highlight, text, classList, id} = Astro.props;
 const classes = `${tc({
   base: {
     static: {
@@ -26,11 +27,11 @@ const content = highlight
   : text;
 ---
 
-{level === 1 && <h1 class={classes} set:html={content} />}
-{level === 2 && <h2 class={classes} set:html={content} />}
-{level === 3 && <h3 class={classes} set:html={content} />}
-{level === 4 && <h4 class={classes} set:html={content} />}
-{level === 5 && <h5 class={classes} set:html={content} />}
+{level === 1 && <h1 class={classes} set:html={content} id={id} />}
+{level === 2 && <h2 class={classes} set:html={content}  id={id}/>}
+{level === 3 && <h3 class={classes} set:html={content}  id={id}/>}
+{level === 4 && <h4 class={classes} set:html={content}  id={id}/>}
+{level === 5 && <h5 class={classes} set:html={content}  id={id}/>}
 
 <style is:global>
   .highlight {

@@ -1,0 +1,168 @@
+---
+import Heading from "../../components/ui/heading.astro";
+import Section from "../../components/ui/section.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout
+  seo={{
+    title: "Terms of Service | Human Side of Code",
+  }}
+>
+  <Section classList="space-y-6">
+    <header class="text-center border-b-2 border-primary py-8 bg-white mb-12">
+      <Heading id="policy-title" level={1} text="Human Side of Code - Terms of Service" />
+      <div class="meta text-sm text-gray-600">
+        <strong>Last updated: 14 October 2025</strong><br />
+        <p>
+          These Terms govern your use of HumanSideOfCode.org and our other related sites.
+          <br />Your data is protected by our umbrella
+          <a href="/legal/privacy" class="text-primary">Privacy Policy</a> and
+          <a href="/legal/cookies" class="text-primary">Cookie Policy</a>.
+        </p>
+      </div>
+    </header>
+
+    <main aria-labelledby="policy-title" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <section id="agreement" aria-labelledby="agreement-title">
+        <h2 id="agreement-title">1. Agreement to Terms</h2>
+        <p>
+          By accessing or using our website, HumanSideOfCode.org ("Site"), you agree to be bound by these Terms of
+          Service ("Terms"). These terms also apply generally to all services we operate. If you disagree with any
+          part of the terms, you may not access the Site.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Agreement</strong></p>
+        <p>By using this website, you agree to these rules.</p>
+      </aside>
+
+      <section id="eligibility" aria-labelledby="eligibility-title">
+        <h2 id="eligibility-title">2. Eligibility</h2>
+        <p>You must be at least <strong>13 years old</strong> to use the Site.</p>
+      </section>
+      <aside>
+        <p><strong>Eligibility</strong></p>
+        <p>You must be 13+ to use the site.</p>
+      </aside>
+
+      <section id="content" aria-labelledby="content-title">
+        <h2 id="content-title">3. Use of Content</h2>
+        <p>
+          All content provided on this Site, including blog posts, articles, and guides, is for informational
+          purposes only. It is the intellectual property of Human Side of Code.
+        </p>
+        <p>
+          You may not republish, sell, or duplicate our content without our express written permission.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Our Content</strong></p>
+        <p>Our blog posts and articles are for your information. Please don't copy or sell them without asking us first.</p>
+      </aside>
+
+      <section id="forms" aria-labelledby="forms-title">
+        <h2 id="forms-title">4. Contact Forms & Communications</h2>
+        <p>
+          When you submit information through our contact forms (for mentoring, consulting, or newsletters), you
+          agree to be contacted by us. All personal information you submit is governed by our
+          <a href="/legal/privacy" class="text-primary">Privacy Policy</a>.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Contacting Us</strong></p>
+        <p>If you fill out a form, you agree we can contact you. We'll protect your info as described in our Privacy Policy.</p>
+      </aside>
+
+      <section id="disclaimers" aria-labelledby="disclaimers-title">
+        <h2 id="disclaimers-title">5. Disclaimers</h2>
+        <p>
+          The Site is provided "AS IS" and "AS AVAILABLE". The information on our blog is provided without
+          warranties of any kind, and does not constitute professional advice.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Disclaimers</strong></p>
+        <p>The site is provided "as is." Our blog posts are not professional advice.</p>
+      </aside>
+
+      <section id="liability" aria-labelledby="liability-title">
+        <h2 id="liability-title">6. Limitation of Liability</h2>
+        <p>
+          To the maximum extent permitted by law, Human Side of Code shall not be liable for any indirect,
+          incidental, special, consequential, or punitive damages arising out of your use of the Site.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Liability</strong></p>
+        <p>Our legal liability is limited as much as the law allows.</p>
+      </aside>
+
+      <section id="law" aria-labelledby="law-title">
+        <h2 id="law-title">7. Governing Law</h2>
+        <p>
+          These Terms shall be governed by the laws of <strong>England and Wales</strong>, without regard to its
+          conflict of law provisions.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Governing Law</strong></p>
+        <p>Any legal disputes will be handled under the laws of England and Wales.</p>
+      </aside>
+
+      <section id="changes" aria-labelledby="changes-title">
+        <h2 id="changes-title">8. Changes to Terms</h2>
+        <p>
+          We reserve the right to modify these Terms at any time. Continued use of the Site after changes constitutes
+          your acceptance.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Changes</strong></p>
+        <p>If we make big changes to these rules, we'll post them here.</p>
+      </aside>
+
+      <section id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">9. Contact Us</h2>
+        <p>
+          If you have any questions about these Terms, please contact us at
+          <a href="mailto:privacy@humansideofcode.org" class="text-primary">privacy@humansideofcode.org</a>.
+        </p>
+        <p>
+          <strong>Human Side of Code</strong><br />
+          83 Strathmore Road, NE3 5JS, Newcastle upon Tyne, United Kingdom<br />
+          Companies House No: <strong>16784240</strong>
+        </p>
+      </section>
+      <aside>
+        <p><strong>Contact</strong></p>
+        <p>Email privacy@humansideofcode.org with any questions.</p>
+      </aside>
+    </main>
+  </Section>
+</MainLayout>
+
+<style>
+  main {
+    h2 {
+      font-weight: bold;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    section {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  aside {
+    max-width: min(100vw, 30ch);
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: color-mix(in oklab, var(--color-primary) 10%, transparent);
+    height: fit-content;
+  }
+</style>

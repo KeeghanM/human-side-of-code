@@ -1,0 +1,276 @@
+---
+import Heading from "../../components/ui/heading.astro";
+import Section from "../../components/ui/section.astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+---
+
+<MainLayout
+  seo={{
+    title: "Privacy Policy | Human Side of Code",
+  }}
+>
+  <Section classList="space-y-6">
+    <header class="text-center border-b-2 border-primary py-8 bg-white mb-12">
+      <Heading id="policy-title" level={1} text="Human Side of Code - Privacy Policy" />
+      <div class="meta text-sm text-gray-600">
+        <strong>Last updated: 14 October 2025</strong><br />
+        Covers
+        <a href="https://www.chesstraining.app" class="text-primary">ChessTraining.app</a>,
+        <a href="https://www.spotspot.app" class="text-primary">SpotSpot</a>,
+        <a href="https://pixel-perfection.humansideofcode.org" class="text-primary">Pixel-Perfection</a>,
+        <a href="https://arcaide.humansideofcode.org" class="text-primary">ArcAide</a>,
+        <a href="https://www.page-mon.com" class="text-primary">PageMon</a> &
+        <a href="https://www.humansideofcode.org" class="text-primary">HuSOC</a>
+      </div>
+    </header>
+
+    <main aria-labelledby="policy-title" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Introduction -->
+      <section id="introduction" aria-labelledby="intro-title">
+        <h2 id="intro-title">1. Introduction</h2>
+        <p>
+          This Privacy Policy ("Policy") describes how <strong>Human Side of Code</strong> ("we", "us", "our") collects,
+          uses, discloses, and protects personal information across the websites and services we operate, including but
+          not limited to: ChessTraining.app, SpotSpot.app, Pixel-Perfection, ArcAide, Page-Mon.com, and
+          HumanSideOfCode.org (collectively "Services").
+        </p>
+        <p>
+          We are the data controller for the processing described in this Policy. Our registered address is 83
+          Strathmore Road, NE3 5JS, Newcastle upon Tyne, United Kingdom. Companies House number:
+          <strong>16784240</strong>.
+        </p>
+        <p>
+          This Policy applies to all users worldwide. By using our Services you agree to the terms described here.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Intro</strong></p>
+        <p>
+          Covers all our products. We're based in the UK (Companies House: 16784240).
+        </p>
+        <p>
+          This Policy applies to all users worldwide. By using our Services you agree to the terms described here.
+        </p>
+      </aside>
+
+      <!-- What we collect -->
+      <section id="what-we-collect" aria-labelledby="collect-title">
+        <h2 id="collect-title">2. What information we collect</h2>
+        <p>We only collect the minimum personal information necessary to provide our Services:</p>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li><strong>Account data:</strong> name and email address used to create and manage accounts.</li>
+          <li><strong>Payment data:</strong> payments handled via Stripe (we do not store full card details).</li>
+          <li><strong>Usage & analytics:</strong> session logs, events, and device info collected via PostHog.</li>
+          <li><strong>User content:</strong> items you create or upload (e.g., training sets, campaigns).</li>
+          <li><strong>Communications:</strong> messages and newsletter signups (Brevo processes delivery).</li>
+        </ul>
+        <p>We do not collect unnecessary sensitive personal data and limit collection to what’s required.</p>
+      </section>
+      <aside>
+        <p><strong>What we collect</strong></p>
+        <p>Name, email, usage data, user content, payments via Stripe.</p>
+        <p>We don’t collect sensitive data — only what’s required to deliver the Services.</p>
+      </aside>
+
+      <!-- How we use -->
+      <section id="how-we-use" aria-labelledby="use-title">
+        <h2 id="use-title">3. How we use your information</h2>
+        <p>We process personal data for purposes including:</p>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li>Providing, operating, and improving the Services.</li>
+          <li>Processing payments and payouts via Stripe.</li>
+          <li>Communications: account notices, messages, and marketing with consent.</li>
+          <li>Safety and moderation of user-generated content.</li>
+          <li>Analytics and product improvement (PostHog).</li>
+        </ul>
+      </section>
+      <aside>
+        <p><strong>How we use it</strong></p>
+        <p>To run the service, process payments, communicate, and improve the product.</p>
+        <p>This data helps us operate securely and improve over time.</p>
+      </aside>
+
+      <!-- Legal basis -->
+      <section id="legal-basis">
+        <h2>4. Legal bases for processing (GDPR & UK GDPR)</h2>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li><strong>Contract:</strong> processing necessary for subscriptions or service delivery.</li>
+          <li><strong>Consent:</strong> for cookies or marketing communications.</li>
+          <li><strong>Legitimate interests:</strong> fraud prevention, service improvement, and security.</li>
+          <li><strong>Legal obligation:</strong> compliance with tax or financial laws.</li>
+        </ul>
+      </section>
+      <aside>
+        <p><strong>Legal basis</strong></p>
+        <p>All processing is done lawfully under GDPR/UK GDPR.</p>
+      </aside>
+
+      <!-- Cookies -->
+      <section id="cookies-analytics">
+        <h2>5. Cookies & analytics</h2>
+        <p>
+          We use cookies for authentication, session management, analytics, and performance. Analytics are handled using
+          PostHog (EU-hosted). You may manage cookie preferences via our banner or browser settings.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Cookies</strong></p>
+        <p>We use cookies and PostHog for analytics. Manage via the cookie banner.</p>
+      </aside>
+
+      <!-- Sharing -->
+      <section id="sharing">
+        <h2>6. Sharing your data - Third-party providers</h2>
+        <p>
+          We never sell personal data. We only share it with trusted providers necessary to deliver the Services:
+        </p>
+        <ul class="list-disc list-inside text-sm space-y-1">
+          <li><strong>Stripe</strong> – payments (<a href="https://stripe.com/privacy" class="text-primary">Privacy</a>)</li>
+          <li><strong>PostHog</strong> – analytics (<a href="https://posthog.com/privacy" class="text-primary">Privacy</a>)</li>
+          <li><strong>Brevo</strong> – emails (<a href="https://www.brevo.com/legal/privacypolicy/" class="text-primary">Privacy</a>)</li>
+          <li><strong>Anthropic</strong> – AI processing (<a href="https://www.anthropic.com/legal/privacy" class="text-primary">Privacy</a>)</li>
+          <li><strong>Turso</strong> – database (<a href="https://turso.tech/legal/privacy" class="text-primary">Privacy</a>)</li>
+          <li><strong>PlanetScale</strong> – database (<a href="https://planetscale.com/legal/privacy" class="text-primary">Privacy</a>)</li>
+        </ul>
+      </section>
+      <aside>
+        <p><strong>Sharing</strong></p>
+        <p>We don’t sell data. Shared only with Stripe, PostHog, Brevo, Anthropic, Turso, PlanetScale.</p>
+      </aside>
+
+      <!-- International -->
+      <section id="international">
+        <h2>7. International data transfers</h2>
+        <p>
+          Data is hosted in the EU. If transferred abroad, we apply safeguards like Standard Contractual Clauses.
+        </p>
+      </section>
+      <aside>
+        <p><strong>International</strong></p>
+        <p>Your data stays in the EU or protected by legal safeguards.</p>
+      </aside>
+
+      <!-- Retention -->
+      <section id="retention">
+        <h2>8. Data retention</h2>
+        <p>
+          We retain personal data only as long as needed to deliver services or comply with law. Account deletion triggers
+          anonymisation within 30 days unless retention is legally required.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Retention</strong></p>
+        <p>Data is deleted or anonymised within 30 days of account deletion.</p>
+      </aside>
+
+      <!-- Rights -->
+      <section id="rights">
+        <h2>9. Your rights</h2>
+        <p>
+          Under GDPR/UK GDPR, you may access, correct, delete, restrict, or object to processing. Contact:
+          <a href="mailto:privacy@humansideofcode.org" class="text-primary">privacy@humansideofcode.org</a>.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Rights</strong></p>
+        <p>You can access, correct, delete, or download your data anytime.</p>
+      </aside>
+
+      <!-- Children -->
+      <section id="children">
+        <h2>10. Children's privacy</h2>
+        <p>
+          Services aren’t for children under 13. Users must be 13+ to use, and 18+ to sell content. We delete data from
+          underage users promptly if discovered.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Children</strong></p>
+        <p>13+ to use, 18+ to sell items.</p>
+      </aside>
+
+      <!-- Security -->
+      <section id="security">
+        <h2>11. Security</h2>
+        <p>
+          We use encryption, access controls, and audits to protect data. In case of a data breach, users will be notified
+          within 72 hours.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Security</strong></p>
+        <p>We use industry-standard measures; notify users within 72h of breaches.</p>
+      </aside>
+
+      <!-- AI -->
+      <section id="ai">
+        <h2>12. AI services & automated processing</h2>
+        <p>
+          <strong>ArcAide.io</strong> uses Anthropic (Claude) for AI assistance. AI outputs may be inaccurate—verify before
+          relying. AI moderation is reviewed by humans, not automated decisions.
+        </p>
+      </section>
+      <aside>
+        <p><strong>AI</strong></p>
+        <p>AI helps but humans review all decisions. Verify AI output.</p>
+      </aside>
+
+      <!-- Changes -->
+      <section id="changes">
+        <h2>13. Changes to this policy</h2>
+        <p>
+          Updates may occur; significant ones will be announced by email and on our website. “Last updated” date reflects
+          changes.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Changes</strong></p>
+        <p>We’ll notify users of major policy changes.</p>
+      </aside>
+
+      <!-- Contact -->
+      <section id="contact">
+        <h2>14. Contact & complaints</h2>
+        <p>
+          <strong>Human Side of Code</strong><br />
+          83 Strathmore Road, NE3 5JS, Newcastle upon Tyne, United Kingdom<br />
+          Email: <a href="mailto:privacy@humansideofcode.org" class="text-primary">privacy@humansideofcode.org</a><br />
+          Companies House No: <strong>16784240</strong>
+        </p>
+        <p>
+          You may also lodge a complaint with the UK Information Commissioner’s Office
+          (<a href="https://ico.org.uk" class="text-primary">ico.org.uk</a>) or your local data authority.
+        </p>
+      </section>
+      <aside>
+        <p><strong>Contact</strong></p>
+        <p>Email privacy@humansideofcode.org or contact the ICO if needed.</p>
+      </aside>
+    </main>
+  </Section>
+</MainLayout>
+
+<style>
+  main {
+    h2 {
+      font-weight: bold;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    section {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  aside {
+    max-width: min(100vw, 30ch);
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: color-mix(in oklab, var(--color-primary) 10%, transparent);
+    height: fit-content;
+  }
+</style>
